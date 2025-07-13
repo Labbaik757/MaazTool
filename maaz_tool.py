@@ -24,7 +24,19 @@ loop = 0
 
 #================= TOOLS =================
 
-def best_redmi_ua(): models = [ {"model": "Redmi Note 13", "code": "2312DRAABC", "android": "13", "res": (1080, 2400)}, {"model": "Redmi 9", "code": "Lancelot", "android": "10", "res": (720, 1600)} ] m = random.choice(models) density = round(random.uniform(2.0, 3.5), 2) w, h = m["res"] return ( f"[FBAN/FB4A;FBAV/{random.randint(300, 450)}.0.0.{random.randint(1, 30)}.{random.randint(50, 150)};" f"FBDM={{density={density},width={w},height={h}}};FBLC/en_US;FBMF/Xiaomi;FBBD/Redmi;FBDV/{m['code']};" f"FBSV/{m['android']};FBOP/1;FBCA/arm64-v8a;]" )
+def best_redmi_ua():
+    models = [
+        {"model": "Redmi Note 13", "code": "2312DRAABC", "android": "13", "res": (1080, 2400)},
+        {"model": "Redmi 9", "code": "Lancelot", "android": "10", "res": (720, 1600)}
+    ]
+    m = random.choice(models)
+    density = round(random.uniform(2.0, 3.5), 2)
+    w, h = m["res"]
+    return (
+        f"[FBAN/FB4A;FBAV/{random.randint(300, 450)}.0.0.{random.randint(1, 30)}.{random.randint(50, 150)};"
+        f"FBDM={{density={density},width={w},height={h}}};FBLC/en_US;FBMF/Xiaomi;FBBD/Redmi;FBDV/{m['code']};"
+        f"FBSV/{m['android']};FBOP/1;FBCA/arm64-v8a;]"
+    )
 
 def get_year_from_uid(uid): uid = str(uid) if len(uid) == 15: if uid[:5] in ["10000", "10001", "10002"]: return "2008-2010" elif uid[:5] in ["10003", "10004", "10005"]: return "2011-2013" elif uid[:5] in ["10006", "10007"]: return "2014-2016" elif uid[:5] in ["10008", "10009"]: return "2017-2020" else: return "2021+" return "Unknown"
 
