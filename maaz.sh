@@ -8,11 +8,5 @@ echo -e "\e[92m[+] Updating Termux packages..." pkg update -y && pkg upgrade -y
 
 echo -e "\e[92m[+] Installing Python and dependencies..." pkg install python -y pip install requests pip install futures
 
-echo -e "\e[92m[+] Cloning tool from GitHub..." git clone https://github.com/Labbaik757/MaazTool.git
-
-cd MaazTool
-
-chmod +x * echo -e "\e[93m[✓] Installation complete. Starting tool..."
-
-python maaz_tool.py
+echo -e "\e[92m[+] Running MaazTool now..." python maaz_tool.py
 
