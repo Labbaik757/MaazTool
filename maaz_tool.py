@@ -9,8 +9,13 @@ import random
 import requests
 from time import sleep
 from concurrent.futures import ThreadPoolExecutor as ThreadPool
-R = '\x1b[38;5;196m' G = '\x1b[38;5;46m' Y = '\x1b[38;5;226m' B = '\x1b[38;5;44m' P = '\x1b[38;5;201m' W = '\x1b[0;97m' N = '\x1b[0m'
-
+R = '\x1b[38;5;196m'
+G = '\x1b[38;5;46m'
+Y = '\x1b[38;5;226m'
+B = '\x1b[38;5;44m'
+P = '\x1b[38;5;201m'
+W = '\x1b[0;97m'
+N = '\x1b[0m'
 oks = [] cps = [] loop = 0
 
 #================= TOOLS =================
