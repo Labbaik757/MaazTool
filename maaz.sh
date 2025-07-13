@@ -10,7 +10,7 @@ echo -e "\e[92m[+] Installing Python and dependencies..." pkg install python -y 
 
 echo -e "\e[92m[+] Cloning tool from GitHub..." git clone https://github.com/Labbaik757/MaazTool.git
 
-cd maaz.sh
+cd MaazTool
 
 chmod +x * echo -e "\e[93m[✓] Installation complete. Starting tool..."
 
