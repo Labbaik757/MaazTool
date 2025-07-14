@@ -20,7 +20,7 @@ P = '\x1b[38;5;201m'
 W = '\x1b[0;97m'
 N = '\x1b[0m'
 
-class MAAZ KING:
+class MAAZKING:
     def __init__(self):
         self.loop = 0
         self.oks = []
