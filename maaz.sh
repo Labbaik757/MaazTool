@@ -1,50 +1,40 @@
-#!/bin/bash
+#!/data/data/com.termux/files/usr/bin/bash
 
-clear
-echo -e "\e[92m"
-figlet -f slant "MAAZ TOOL"
-echo -e "\e[93mOne-Command Installer by MaazTool Devs"
-echo -e "\e[90m======================================"
-
-# ✅ Redirect to WhatsApp
-echo -e "\e[94m[+] Redirecting to WhatsApp support group..."
-xdg-open "https://wa.me/923079741690" > /dev/null 2>&1
-sleep 2
-
-# ✅ Update and Install Basic Packages
-echo -e "\e[92m[+] Updating Termux packages..."
+# 1. Update Termux packages
 pkg update -y && pkg upgrade -y
 
-echo -e "\e[92m[+] Installing Python and required libraries..."
-pkg install python -y
-pip install --upgrade pip
-pip install requests futures rich || pip install --break-system-packages requests futures rich
+# 2. Ensure Termux's python-pip is installed (avoids forbidden pip install)
+if ! pkg list-installed | grep -q '^python-pip'; then
+  pkg install -y python-pip
+fi
 
-# ✅ Error Auto-Fix System
-fix_errors() {
-    echo -e "\e[91m[!] Detected crash. Attempting auto-fix...\e[0m"
+# 3. Attempt global pip upgrade (will log forbidden error)
+python3 -m pip install --upgrade pip 2>/tmp/pip_upgrade.log
 
-    # 🛠 Auto-fix line breaks in imports (common paste error)
-    sed -i 's/import os import/import os\nimport/' maaz_tool.py
-    sed -i 's/ import /\nimport /g' maaz_tool.py
+# 4. On forbidden-pip error, create & use a virtual environment to upgrade pip
+if grep -q "Installing pip is forbidden" /tmp/pip_upgrade.log; then
+  echo "Global pip upgrade failed. Creating virtual environment..."
+  python3 -m venv ~/maaz_venv
+  source ~/maaz_venv/bin/activate
+  pip install --upgrade pip
+  deactivate
+fi
 
-    # 🛠 Add missing color variables if broken
-    if ! grep -q "R = '\x1b" maaz_tool.py; then
-        echo -e "\n# Color Fix" >> maaz_tool.py
-        echo "R = '\x1b[38;5;196m'" >> maaz_tool.py
-        echo "G = '\x1b[38;5;46m'" >> maaz_tool.py
-        echo "Y = '\x1b[38;5;226m'" >> maaz_tool.py
-        echo "B = '\x1b[38;5;44m'" >> maaz_tool.py
-        echo "P = '\x1b[38;5;201m'" >> maaz_tool.py
-        echo "W = '\x1b[0;97m'" >> maaz_tool.py
-        echo "N = '\x1b[0m'" >> maaz_tool.py
-    fi
-}
+# 5. Auto-fix mismatched braces in maaz_tool.py
+MAAZ_FILE="$HOME/MaazTool/maaz_tool.py"
+if [ -f "$MAAZ_FILE" ]; then
+  # Replace any standalone ']' line with '}' to correct stray bracket
+  sed -i 's/^[[:space:]]*]\s*$/}/' "$MAAZ_FILE"
+  echo "Applied brace-fix patch to $MAAZ_FILE"
+fi
 
-# ✅ Try to run your main script
-echo -e "\e[92m[+] Starting MaazTool..."
-python maaz_tool.py || {
-    fix_errors
-    echo -e "\e[93m[!] Retrying MaazTool after auto-fix...\e[0m"
-    python maaz_tool.py || echo -e "\e[91m[✘] Still errors. Please contact support.\e[0m"
-}
+# 6. Run MaazTool and capture any syntax errors
+ERROR_LOG=$(python3 "$MAAZ_FILE" 2>&1 >/dev/null)
+
+# 7. If errors remain, notify user
+if echo "$ERROR_LOG" | grep -q "SyntaxError"; then
+  echo "❌ Still errors detected in MaazTool."
+  echo "Please inspect $MAAZ_FILE manually or contact support."
+else
+  echo "✅ MaazTool ran successfully."
+fi
