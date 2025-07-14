@@ -174,7 +174,7 @@ def best_redmi_ua():
     models = [
         {"model": "Redmi Note 13", "code": "2312DRAABC", "android": "13", "res": (1080, 2400)},
         {"model": "Redmi 12", "code": "23053RN02L", "android": "13", "res": (1080, 2460)},
-        {"model": "Redmi Note 11", "code": "2109119DG", "android": "13", "res":
+        {"model": "Redmi Note 11", "code": "2109119DG", "android": "13", "res": (1080, 2400)},
         {"model": "Redmi Note 10", "code": "M2101K7AG", "android": "12", "res": (1080, 2400)},
         {"model": "Redmi 10", "code": "21061119AG", "android": "11", "res": (1080, 2400)},
         {"model": "Redmi 9", "code": "Lancelot", "android": "10", "res": (720, 1600)},
@@ -182,7 +182,9 @@ def best_redmi_ua():
         {"model": "Redmi Note 7", "code": "Lavender", "android": "10", "res": (1080, 2340)},
         {"model": "Redmi Note 6 Pro", "code": "Tulip", "android": "9", "res": (1080, 2280)},
         {"model": "Redmi 6", "code": "cereus", "android": "9", "res": (720, 1440)},
-    }
+    ]
+    return models
+
     m = random.choice(models)
     density = round(random.uniform(2.0, 3.5), 2)
     w, h = m["res"]
