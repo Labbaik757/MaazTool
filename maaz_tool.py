@@ -198,5 +198,5 @@ def best_redmi_ua():
     )
 
 if __name__ == "__main__":
-    MAAZ KING().Main()
+    MAAZKING().Main()
          
