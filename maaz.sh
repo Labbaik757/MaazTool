@@ -1,71 +1,40 @@
 #!/data/data/com.termux/files/usr/bin/bash
-set -eo pipefail
 
-# 1. Prepare logging directory
-LOGDIR="$HOME/.maaz_logs"
-mkdir -p "$LOGDIR"
-PIP_LOG="$LOGDIR/pip_upgrade.log"
-ERR_LOG="$LOGDIR/maaz_error.log"
+# Colors
+green="\e[92m"
+red="\e[91m"
+blue="\e[94m"
+reset="\e[0m"
 
-# 2. Update/upgrade Termux packages safely
-echo "➤ Updating Termux packages…"
-pkg update -y && pkg upgrade -y
+clear
+echo -e "${blue}🔧 Maaz Tool Installer Starting...${reset}"
 
-# 3. Ensure python-pip (Termux-compatible) is installed
-if ! pkg list-installed | grep -q '^python-pip'; then
-  echo "➤ Installing python-pip package…"
-  pkg install -y python-pip
+# Step 1: Install Python silently
+echo -e "${green}📦 Installing Python (if not installed)...${reset}"
+apt-get -qq update > /dev/null 2>&1
+apt-get -qq install python -y > /dev/null 2>&1
+
+# Step 2: Create virtualenv if not already exists
+if [ ! -d "$HOME/maaz_venv" ]; then
+    echo -e "${green}🧪 Creating virtual environment...${reset}"
+    python3 -m venv $HOME/maaz_venv
 fi
 
-# 4. Try upgrading pip globally, log errors
-echo "➤ Attempting global pip upgrade…"
-python3 -m pip install --upgrade pip >"$PIP_LOG" 2>&1 || true
+# Step 3: Activate virtual environment
+source $HOME/maaz_venv/bin/activate
 
-# 5. If forbidden, create & use a venv for pip upgrade
-if grep -q "Installing pip is forbidden" "$PIP_LOG"; then
-  echo "⚠️  Global pip upgrade blocked. Creating virtualenv…"
-  python3 -m venv "$HOME/maaz_venv"
-  source "$HOME/maaz_venv/bin/activate"
-  pip install --upgrade pip
-  deactivate
-  echo "✅ pip upgraded inside virtualenv: ~/maaz_venv"
-else
-  echo "✅ Global pip upgrade successful or not needed."
+# Step 4: Upgrade pip silently
+echo -e "${green}🔄 Upgrading pip inside virtualenv...${reset}"
+python3 -m pip install --upgrade pip --quiet
+echo -e "${green}✅ pip upgraded inside virtualenv: ~/maaz_venv${reset}"
+
+# Step 5: Run Maaz Tool
+echo -e "${blue}🚀 Running Maaz Tool...${reset}"
+python3 maaz_tool.py
+
+# Step 6: Check for SyntaxError
+if [ $? -ne 0 ]; then
+    echo -e "${red}❌ Error: Something went wrong while running Maaz Tool.${reset}"
+    echo -e "${red}🔍 Tip: Check your maaz_tool.py for syntax errors.${reset}"
+    exit 1
 fi
-
-# 6. Auto-fix MaazTool mismatched brackets
-MAAZ_FILE="$HOME/MaazTool/maaz_tool.py"
-if [ ! -f "$MAAZ_FILE" ]; then
-  echo "❌ Cannot find MaazTool script at $MAAZ_FILE"
-  exit 1
-fi
-
-echo "➤ Attempting to run MaazTool and auto-fix SyntaxErrors…"
-MAX_TRIES=5
-try=1
-
-while [ $try -le $MAX_TRIES ]; do
-  # run MaazTool, capture stderr only
-  python3 "$MAAZ_FILE" 2>"$ERR_LOG" 1>/dev/null || true
-
-  if ! grep -q "SyntaxError" "$ERR_LOG"; then
-    echo "✅ MaazTool ran successfully on try #$try."
-    rm -f "$ERR_LOG"
-    exit 0
-  fi
-
-  echo "⚠️  SyntaxError detected (attempt $try/$MAX_TRIES). Parsing error…"
-
-  # extract all line numbers with mismatched-bracket errors
-  lines=$(grep -oP "line \K[0-9]+" "$ERR_LOG" | sort -n | uniq)
-  for ln in $lines; do
-    echo "    ‣ Fixing bracket mismatch at line $ln"
-    # replace any standalone ']' closing a dict with '}', and ')' with '}'
-    sed -i "${ln}s/]/}/g; ${ln}s/)/}/g" "$MAAZ_FILE"
-  done
-
-  try=$((try+1))
-done
-
-echo "❌ Still errors after $MAX_TRIES attempts. Inspect log at $ERR_LOG and file $MAAZ_FILE manually."
-exit 1
