@@ -12,13 +12,13 @@ from time import sleep
 from concurrent.futures import ThreadPoolExecutor as ThreadPool
 
 # ===== COLOR CODES =====
-R = '\x1b[38;5;196m'  # Red
-G = '\x1b[38;5;46m'   # Green
-Y = '\x1b[38;5;226m'  # Yellow
-B = '\x1b[38;5;44m'   # Blue
-P = '\x1b[38;5;201m'  # Purple
-W = '\x1b[0;97m'      # White
-N = '\x1b[0m'         # Reset
+R = '\x1b[38;5;196m'
+G = '\x1b[38;5;46m'
+Y = '\x1b[38;5;226m'
+B = '\x1b[38;5;44m'
+P = '\x1b[38;5;201m'
+W = '\x1b[0;97m'
+N = '\x1b[0m'
 
 class MAAZTOOL:
     def __init__(self):
@@ -30,6 +30,25 @@ class MAAZTOOL:
         self.chunk_size = 5000
         self.rockyou_path = os.path.expanduser("~/rockyou.txt")
         self.wordlist = self.load_passwords()
+
+    def menu(self):
+        print(f"{Y}\n====[🔥 Maaz Tool Menu 🔥]===={N}")
+        print("1. Simulate Random")
+        print("2. Simulate Business")
+        print("3. Simulate Series")
+        choice = input(f"{Y}Select option: {N}")
+
+        uid = input(f"{Y}Enter UID: {N}")
+        passwords = self.smart_passwords(uid, self.wordlist)
+
+        if choice == "1":
+            self.simulate_random(uid, passwords)
+        elif choice == "2":
+            self.simulate_business(uid, passwords)
+        elif choice == "3":
+            self.simulate_series(uid, passwords)
+        else:
+            print(f"{R}❌ Invalid choice{N}")
 
     def load_passwords(self):
         combined = []
@@ -63,6 +82,35 @@ class MAAZTOOL:
             f"Chrome/{chrome_major}.0.{chrome_build}.100 Mobile Safari/537.36"
         )
 
+    def ensure_file(self, filename):
+        if not os.path.exists(filename):
+            with open(filename, "w", encoding="utf-8") as f:
+                f.write("")
+
+    def simulate_random(self, uid, passwords):
+        self.ensure_file("maaz-RANDOM.txt")
+        for pw in passwords:
+            print(f"{Y}[→ RANDOM] Checking: {uid} | {pw}{N}")
+            sleep(0.05)
+            with open("maaz-RANDOM.txt", "a", encoding="utf-8") as f:
+                f.write(f"{uid}|{pw}\n")
+
+    def simulate_business(self, uid, passwords):
+        self.ensure_file("maaz-BUSINESS.txt")
+        for pw in passwords:
+            print(f"{Y}[→ BUSINESS] Checking: {uid} | {pw}{N}")
+            sleep(0.05)
+            with open("maaz-BUSINESS.txt", "a", encoding="utf-8") as f:
+                f.write(f"{uid}|{pw}\n")
+
+    def simulate_series(self, uid, passwords):
+        self.ensure_file("maaz-SERIES.txt")
+        for pw in passwords:
+            print(f"{Y}[→ SERIES] Checking: {uid} | {pw}{N}")
+            sleep(0.05)
+            with open("maaz-SERIES.txt", "a", encoding="utf-8") as f:
+                f.write(f"{uid}|{pw}\n")
+
 def get_proxy():
     proxies = [
         "socks5://127.0.0.1:9050",
@@ -80,54 +128,6 @@ def request_with_proxy(url, headers=None):
     except:
         return None
 
-
-def save_result(self, uid, pw, status):
-    folder = {
-        "OK": "maaz-OLD.txt",
-        "CP": "maaz-CP.txt"
-    }.get(status, "maaz-UNKNOWN.txt")
-
-    self.ensure_file(folder)
-    open(folder, "a").write(f"{uid}|{pw}\n")
-
-    
-    def ensure_file(self, filename):
-        if not os.path.exists(filename):
-            with open(filename, "w", encoding="utf-8") as f:
-                f.write("")  # Create empty file
-
-    
-    def simulate_random(self, uid, passwords):
-        self.ensure_file("maaz-RANDOM.txt")
-        for pw in passwords:
-            print(f"{Y}[→ RANDOM] Checking: {uid} | {pw}{N}")
-            sleep(0.05)
-            open("maaz-RANDOM.txt", "a").write(f"{uid}|{pw}\n")
-
-    def simulate_business(self, uid, passwords):
-        self.ensure_file("maaz-BUSINESS.txt")
-        for pw in passwords:
-            print(f"{Y}[→ BUSINESS] Checking: {uid} | {pw}{N}")
-            sleep(0.05)
-            with open("maaz-BUSINESS.txt", "a", encoding="utf-8") as f:
-                f.write(f"{uid}|{pw}\n")
-
-    def dummy_login_check(self, uid, pw):
-        test_url = "https://httpbin.org/post"
-        payload = {"username": uid, "password": pw}
-        try:
-            res = requests.post(test_url, data=payload)
-            return res.json()
-        except:
-            return None
-
-    def simulate_series(self, uid, passwords):
-        self.ensure_file("maaz-SERIES.txt")
-        for pw in passwords:
-            print(f"{Y}[→ SERIES] Checking: {uid} | {pw}{N}")
-            sleep(0.05)
-            with open("maaz-SERIES.txt", "a", encoding="utf-8") as f:
-                f.write(f"{uid}|{pw}\n")
 
 
     def banner(self):
@@ -333,9 +333,5 @@ Select UID Series:
 
 
 if __name__ == "__main__":
-    try:
-        tool = MAAZTOOL()
-        tool.menu()
-    except KeyboardInterrupt:
-        print(f"\n{R}Interrupted by user. Exiting...{N}")
-        sys.exit()
+    tool = MAAZTOOL()
+    tool.menu()
