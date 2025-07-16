@@ -20,7 +20,7 @@ P = '\x1b[38;5;201m'  # Purple
 W = '\x1b[0;97m'      # White
 N = '\x1b[0m'         # Reset
 
-class MAAZKING:
+class MAAZTOOL:
     def __init__(self):
         self.loop = 0
         self.oks = []
@@ -334,7 +334,7 @@ Select UID Series:
 
 if __name__ == "__main__":
     try:
-        tool = MAAZKING()
+        tool = MAAZTOOL()
         tool.menu()
     except KeyboardInterrupt:
         print(f"\n{R}Interrupted by user. Exiting...{N}")
