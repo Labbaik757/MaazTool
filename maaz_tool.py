@@ -277,11 +277,11 @@ class MAAZTOOL:
         """Displays the main menu and handles user input for method selection."""
         self.banner()
         print(f"""{G}
-[1]  Random Method (Generate random UIDs)
-[2]  Business Method (Generate random emails for a domain)
-[3]  Combo Method (Load UIDs/passwords from combo.txt)
-[4]  Dump Method (Load UIDs from a file)
-[5]  Series Method (Generate UIDs based on a common prefix)
+[1]  Random Method
+[2]  Business Method
+[3]  Combo Method
+[4]  Dump Method
+[5]  Series Method
 {N}""")
         try:
             choice = input(f"{Y}Select Option ➤ {G}")
