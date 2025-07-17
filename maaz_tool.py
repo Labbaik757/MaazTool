@@ -13,19 +13,22 @@ import socket
 from time import sleep
 from concurrent.futures import ThreadPoolExecutor as ThreadPool
 
-# Auto-install required modules
+#=====[🌿] Auto-install Required Modules & Setup Results Folder
+
+# Auto-install required modules if missing
 def auto_install(package):
     try:
         __import__(package)
     except ImportError:
         print(f"[!] Installing missing module: {package}")
-        subprocess.check_call([sys.executable, "-m", "pip", "install", package"])
+        subprocess.check_call([sys.executable, "-m", "pip", "install", package])
 
-# List of modules to check
-for mod in ["requests", "rich"]:
+# List of essential modules to check and install
+required_modules = ["requests", "rich"]
+for mod in required_modules:
     auto_install(mod)
 
-# Create 'results' folder if not exists
+# Create 'results' folder if it doesn't exist
 if not os.path.exists("results"):
     os.makedirs("results")
 
