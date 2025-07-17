@@ -74,7 +74,7 @@ def banner(self):
     
     print(f"{W}USE AT YOUR OWN RISK | EDUCATIONAL PURPOSE ONLY\n{N}")
 
-    def Main(self):
+def Main(self):
         self.banner()
         code = input(f"{Y}ENTER SIM CODE тЄ {G}")
         try:
@@ -102,7 +102,7 @@ def banner(self):
         print(f"{G}CLONING FINISHED! OK: {len(self.oks)} | CP: {len(self.cps)}{N}")
         print(f"{Y}CHECK /sdcard FOR RESULTS{N}")
 
-    def method(self, uid, passlist):
+def method(self, uid, passlist):
     sys.stdout.write(f"\r{W} MAAZ-KING-XD {self.loop} | OK: {G}{len(self.oks)}{W} | CP: {Y}{len(self.cps)}{N} ")
     sys.stdout.flush()
     try:
