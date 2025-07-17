@@ -29,18 +29,7 @@ for mod in ["requests", "rich"]:
 if not os.path.exists("results"):
     os.makedirs("results")
 
-# Check internet connection
-def check_connection():
-    try:
-        socket.create_connection(("www.google.com", 80), timeout=5)
-    except OSError:
-        print("\n[!] No internet connection. Please check your network.")
-        exit()
-
-
-
-
-                    
+            
 # ===== COLOR CODES =====
 R = '\x1b[38;5;196m'
 G = '\x1b[38;5;46m'
@@ -50,6 +39,7 @@ P = '\x1b[38;5;201m'
 W = '\x1b[0;97m'
 N = '\x1b[0m'
 
+            
 class MAAZKING:
     def __init__(self):
         self.loop = 0
@@ -173,7 +163,10 @@ except ValueError:
 
     
             if "access_token" in response:
-try:
+    try:
+        ...
+    except Exception as e:
+        ...
         uid_logged = str(response.get("uid")) if response.get("uid") else uid
         year = get_year_from_uid(uid_logged)
         cookies = response.get("session_cookies", [])
