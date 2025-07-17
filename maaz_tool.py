@@ -72,7 +72,7 @@ def banner(self):
 """
     print(banner)
     
-        print(f"{W}USE AT YOUR OWN RISK | EDUCATIONAL PURPOSE ONLY\n{N}")
+    print(f"{W}USE AT YOUR OWN RISK | EDUCATIONAL PURPOSE ONLY\n{N}")
 
     def Main(self):
         self.banner()
