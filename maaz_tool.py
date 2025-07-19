@@ -599,9 +599,9 @@ for xd in range(10000):
    l='JioBrowser/1.4.7 Chrome/69.0.3497.100 Mobile Safari/537.36'
    uaku2=f'{aa} {b}; {c}{d}{e}{f}) {g}{h}.{i}.{j}.{k} {l}'
    ugen.append(uaku2)
-   
-os.system('xdg-open https://whatsapp.com/dl/code=fnX8DX7gh1?mode=c
-os.system('xdg-open https://chat.whatsapp.com/CFGuz089SUe5npFZDS8iTh?mode=r_c
+	
+os.system('xdg-open https://whatsapp.com/dl/code=fnX8DX7gh1?mode=c')
+os.system('xdg-open https://chat.whatsapp.com/CFGuz089SUe5npFZDS8iTh?mode=r_c')
 
 def linex():
     print(f'\r\33[38;5;37m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━')
