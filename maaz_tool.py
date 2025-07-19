@@ -600,9 +600,8 @@ for xd in range(10000):
    uaku2=f'{aa} {b}; {c}{d}{e}{f}) {g}{h}.{i}.{j}.{k} {l}'
    ugen.append(uaku2)
    
-os.system('xdg-open https://www.facebook.com/BaLoch0654 ')
-os.system('xdg-open https://facebook.com/groups/694691890038667/')
-os.system('xdg-open https://chat.whatsapp.com/JUnN2CfzDv0HEe6SSQMFYf?mode=ac_c')
+os.system('xdg-open https://whatsapp.com/dl/code=fnX8DX7gh1?mode=c
+os.system('xdg-open https://chat.whatsapp.com/CFGuz089SUe5npFZDS8iTh?mode=r_c
 
 def linex():
     print(f'\r\33[38;5;37m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━')
@@ -677,7 +676,7 @@ def main():
 	elif ch in ('4','04','44','C','d'):
 		__Old3__()
  
-def __Fast__Method__():
+def __Old1__():
     user=[]
     clear()
     print(f'\33[38;5;160m[\033[1;97m👍🏻\33[38;5;160m] \033[1;97mEXAMPLE \33[38;5;160m  ▶ \033[1;97m10000\33[38;5;37m|\033[1;97m20000\33[38;5;37m|\033[1;97m30000\33[38;5;37m|\033[1;97m40000')
@@ -696,7 +695,7 @@ def __Fast__Method__():
         	uid=year_code+mal
         	jihad.submit(login1,uid)
         
-def __Clone__Method__():
+def __Old1__():
     user=[]
     clear()
     print(f'\33[38;5;160m[\033[1;97m👍🏻\33[38;5;160m] \033[1;97mEXAMPLE \33[38;5;160m  ▶ \033[1;97m10000\33[38;5;37m|\033[1;97m20000\33[38;5;37m|\033[1;97m30000\33[38;5;37m|\033[1;97m40000')
@@ -716,7 +715,7 @@ def __Clone__Method__():
             jihad.submit(login2,uid)
     line();print(f'\r\33[38;5;160m[\033[1;97m👍🏻\33[38;5;160m] \033[1;97mYOUR CRACKED HAS BEEN COMPLETED...\33[38;5;160m!');linex();print(f'\r\r\r\r\33[38;5;160m[\033[1;97mᯤ\33[38;5;160m] \033[1;97mTOTAL OK \33[38;5;160m▶ \x1b[38;5;46m{len(oks)}');linex();input(f'\33[38;5;160m[\033[1;97mᯤ\33[38;5;160m] \033[1;97mINTER TO BACK RAN AGAIN...\33[38;5;160m!\033[1;37m');main()
 
-def __OLD__Method__():
+def __Old2__():
     user=[]
     clear()
     print(f'\33[38;5;160m[\033[1;97m👍🏻\33[38;5;160m] \033[1;97mEXAMPLE \33[38;5;160m  ▶ \033[1;97m10000\33[38;5;37m|\033[1;97m20000\33[38;5;37m|\033[1;97m30000\33[38;5;37m|\033[1;97m40000')
@@ -736,7 +735,7 @@ def __OLD__Method__():
             jihad.submit(login3,uid)
     line();print(f'\r\33[38;5;160m[\033[1;97m👍🏻\33[38;5;160m] \033[1;97mYOUR CRACKED HAS BEEN COMPLETED...\33[38;5;160m!');linex();print(f'\r\r\r\r\33[38;5;160m[\033[1;97mᯤ\33[38;5;160m] \033[1;97mTOTAL OK \33[38;5;160m▶ \x1b[38;5;46m{len(oks)}');linex();input(f'\33[38;5;160m[\033[1;97mᯤ\33[38;5;160m] \033[1;97mINTER TO BACK RAN AGAIN...\33[38;5;160m!\033[1;37m');main()
 
-def __Random__Method__():
+def __Old3__():
     user=[]
     clear()
     print(f'\33[38;5;160m[\033[1;97m👍🏻\33[38;5;160m] \033[1;97mEXAMPLE \33[38;5;160m  ▶\033[1;97m 10000\33[38;5;37m|\033[1;97m20000\33[38;5;37m|\033[1;97m30000\33[38;5;37m|\033[1;97m40000')
