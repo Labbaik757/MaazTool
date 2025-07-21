@@ -1,4 +1,3 @@
-
 import os
 import time
 import random
@@ -79,15 +78,32 @@ def create_account(thread_id):
     # This function is not executed in the dry-run but is part of the script.
     # Its logic remains the same as before.
     print(f"Account creation logic for thread {thread_id} would run here.")
+    # In a real run, you would add the created account to the global list
+    # with LOCK:
+    #     CREATED_ACCOUNTS.append({"email": "example@email.com", "password": "password123"})
     return None
+
+def save_results(data, filename):
+    """
+    Saves the given data to a file in email:password format.
+    """
+    try:
+        with open(filename, 'w') as f:
+            for account in data:
+                f.write(f"{account['email']}:{account['password']}\n")
+        print(f"Results successfully saved to {filename}")
+    except Exception as e:
+        print(f"An error occurred while saving the file: {e}")
+
 
 # --- Dashboard UI and Sound ---
 
 def play_welcome_message():
-    """Generates and plays a welcome message."""
+    """Generates and plays a welcome message with a male voice."""
     try:
         text = "Welcome To MAAZ Fb Auto Creator"
-        tts = gTTS(text=text, lang='en')
+        # Using 'co.uk' tld for a British English (typically male) voice
+        tts = gTTS(text=text, lang='en', tld='co.uk')
         tts.save("welcome.mp3")
         display(Audio("welcome.mp3", autoplay=True))
     except Exception as e:
@@ -110,7 +126,7 @@ def run_creator_workflow():
     """Main workflow to run the account creation process."""
     display_banner()
     play_welcome_message()
-    
+
     # The rest of the execution logic remains the same
     thread_list = []
     for i in range(num_accounts_to_create):
@@ -125,10 +141,13 @@ def run_creator_workflow():
     print(f"\n[bold cyan]✨ Process Complete. Total Accounts Created: {len(CREATED_ACCOUNTS)}[/bold cyan]")
 
     if CREATED_ACCOUNTS:
+        save_results(CREATED_ACCOUNTS, "maaz_auto_ok.txt")
         created_accounts_df = pd.DataFrame(CREATED_ACCOUNTS)
         # display(created_accounts_df)
     else:
         print("[yellow]No accounts were created in this run.[/yellow]")
+        # Save an empty file if no accounts were created
+        save_results([], "maaz_auto_ok.txt")
         created_accounts_df = pd.DataFrame(columns=['email', 'password'])
 
 # We call the main function to run the workflow
