@@ -11,14 +11,12 @@ OTP_POLL = 4
 OTP_ROUNDS = 30
 CSV_FILE = "created_fb_accounts.csv"
 PROFILE_PICS = "profile_pics"
-PROXY_FILE = "proxies.txt"
 UA_FILE = "useragents.txt"
-MIN_PROFILE_PICS = 6
+MIN_PROFILE_PICS = 10
 
 console = Console()
 LOCK = threading.Lock()
 CREATED = []
-BLACKLISTED = set()
 
 FALLBACK_UAS = [
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
@@ -31,11 +29,9 @@ def log(msg, color="cyan"):
 
 def ensure_folder_and_files():
     if not os.path.exists(PROFILE_PICS): os.makedirs(PROFILE_PICS)
-    if not os.path.exists(PROXY_FILE): open(PROXY_FILE, "a").close()
     if not os.path.exists(UA_FILE): open(UA_FILE, "a").close()
 
 def dummy_image(path, text="IMG"):
-    # Make a 128x128 PNG image with a colored bg and the text
     img = Image.new("RGB", (128,128), random.choice([(80,150,200),(200,180,80),(150,80,180)]))
     d = ImageDraw.Draw(img)
     d.text((40,50), text, fill=(255,255,255))
@@ -72,44 +68,9 @@ def auto_download_images():
             except Exception as e:
                 continue
         if not success:
-            # draw a dummy image if all fail
             fname = f"profile_{int(time.time())}_{i}.png"
             dummy_image(os.path.join(PROFILE_PICS, fname))
     log("Profile images download complete.", "green")
-
-def get_proxies():
-    # Try multiple sources, fallback to nothing
-    proxies = []
-    sources = [
-        "https://www.proxy-list.download/api/v1/get?type=https",
-        "https://raw.githubusercontent.com/clarketm/proxy-list/master/proxy-list-raw.txt",
-        "https://www.sslproxies.org/"
-    ]
-    for src in sources:
-        try:
-            if "sslproxies" in src:
-                r = requests.get(src, timeout=10)
-                txt = r.text
-                lines = txt.split("<tbody>")[1].split("</tbody>")[0].split("</tr>")
-                for line in lines:
-                    parts = line.replace("<td>", "").split("</td>")
-                    if len(parts) > 2:
-                        ip, port = parts[0], parts[1]
-                        if ip.count(".") == 3 and port.isdigit():
-                            proxies.append(f"{ip}:{port}")
-            else:
-                r = requests.get(src, timeout=10)
-                proxies += [p for p in r.text.strip().splitlines() if ":" in p]
-            if proxies: break
-        except Exception: continue
-    # File backup
-    if proxies:
-        with open(PROXY_FILE, "w") as f:
-            for p in proxies: f.write(p + "\n")
-    proxies = list(set(proxies))
-    if not proxies:
-        log("No proxies found. Using direct connection.", "yellow")
-    return proxies
 
 def get_user_agents():
     try:
@@ -153,7 +114,7 @@ def poll_otp(login, domain):
 def save_csv(accounts):
     file_exists = os.path.exists(CSV_FILE)
     with open(CSV_FILE, "a", newline='', encoding='utf-8') as f:
-        w = csv.DictWriter(f, fieldnames=['email', 'password', 'name', 'proxy', 'user_agent'])
+        w = csv.DictWriter(f, fieldnames=['email', 'password', 'name', 'user_agent'])
         if not file_exists: w.writeheader()
         for a in accounts: w.writerow(a)
 
@@ -166,14 +127,14 @@ def s_fill(page, sel, val): return any([page.fill(s, val, timeout=3000) or True 
 def s_click(page, sel): return any([page.click(s, timeout=3000) or True for s in sel if page.query_selector(s)])
 def s_select(page, sel, val): return any([page.select_option(s, val) or True for s in sel if page.query_selector(s)])
 
-def create_account(idx, proxy, ua, progress=None, task=None):
+def create_account(idx, ua, progress=None, task=None):
     name = gen_name()
     password = gen_pass()
     login, domain, email = temp_mail()
     status = f"{idx}. {email}"
     try:
         with sync_playwright() as p:
-            browser = p.chromium.launch(headless=True, proxy={"server": f"http://{proxy}"} if proxy else None)
+            browser = p.chromium.launch(headless=True)
             context = browser.new_context(user_agent=ua)
             page = context.new_page()
             page.goto("https://www.facebook.com/reg", timeout=20000)
@@ -190,7 +151,6 @@ def create_account(idx, proxy, ua, progress=None, task=None):
             s_fill(page, [
                 'input[name="reg_passwd__"]', 'input[type="password"]'
             ], password)):
-                BLACKLISTED.add(proxy)
                 raise Exception("Form fields fail")
             s_select(page, ['select[name="birthday_day"]'], str(random.randint(2,28)))
             s_select(page, ['select[name="birthday_month"]'], str(random.randint(1,12)))
@@ -206,7 +166,6 @@ def create_account(idx, proxy, ua, progress=None, task=None):
                 s_click(page, ['button[name="websubmit"]', 'button[type="submit"]'])
                 time.sleep(4)
             else:
-                BLACKLISTED.add(proxy)
                 raise Exception("OTP fail")
             pic = get_profile_pic()
             if pic:
@@ -229,11 +188,10 @@ def create_account(idx, proxy, ua, progress=None, task=None):
                     ])
                 except: pass
             with LOCK:
-                CREATED.append({"email": email, "password": password, "name": name, "proxy": proxy or "DIRECT", "user_agent": ua})
+                CREATED.append({"email": email, "password": password, "name": name, "user_agent": ua})
             if progress: progress.update(task, description=f"[green]{status} OK")
         if progress: progress.update(task, advance=1)
     except Exception as e:
-        BLACKLISTED.add(proxy)
         if progress: progress.update(task, description=f"[red]{status} Fail: {e}")
         time.sleep(2)
         if progress: progress.update(task, advance=1)
@@ -241,11 +199,8 @@ def create_account(idx, proxy, ua, progress=None, task=None):
 def main():
     ensure_folder_and_files()
     auto_download_images()
-    proxies = get_proxies()
     uas = get_user_agents()
-    if not proxies: proxies = [None]
-    if not uas: uas = FALLBACK_UAS
-    log(f"[FB Creator] Proxies: {len([p for p in proxies if p])} | UserAgents: {len(uas)} | ProfilePics: {len(os.listdir(PROFILE_PICS)) if os.path.exists(PROFILE_PICS) else 0}", "green")
+    log(f"[FB Creator] UserAgents: {len(uas)} | ProfilePics: {len(os.listdir(PROFILE_PICS)) if os.path.exists(PROFILE_PICS) else 0}", "green")
     total = NUM_ACCOUNTS
     done = 0
     with Progress(
@@ -261,9 +216,8 @@ def main():
             threads = []
             tsk = progress.add_task(f"[cyan]Batch {done+1}-{done+batch}", total=batch)
             for i in range(batch):
-                proxy = random.choice([p for p in proxies if p not in BLACKLISTED]) if proxies else None
                 ua = random.choice(uas)
-                t = threading.Thread(target=create_account, args=(done+i+1, proxy, ua, progress, tsk))
+                t = threading.Thread(target=create_account, args=(done+i+1, ua, progress, tsk))
                 t.start()
                 threads.append(t)
                 time.sleep(random.uniform(1,2))
@@ -274,7 +228,7 @@ def main():
             if done < total:
                 log(f"Batch done. Sleeping {BATCH_DELAY}s...", "yellow")
                 time.sleep(BATCH_DELAY)
-    log(f"Done! Accounts created: {len(CREATED)} | Blacklisted Proxies: {len(BLACKLISTED)}", "magenta")
+    log(f"Done! Accounts created: {len(CREATED)}", "magenta")
     log(f"Saved to {CSV_FILE}", "cyan")
 
 if __name__ == "__main__":
