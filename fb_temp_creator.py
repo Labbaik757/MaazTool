@@ -1,4 +1,5 @@
 import time, random, string, threading, requests, csv, os
+from PIL import Image, ImageDraw
 from rich.console import Console
 from rich.progress import Progress, SpinnerColumn, BarColumn, TextColumn, TimeElapsedColumn
 from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeoutError
@@ -12,32 +13,13 @@ CSV_FILE = "created_fb_accounts.csv"
 PROFILE_PICS = "profile_pics"
 PROXY_FILE = "proxies.txt"
 UA_FILE = "useragents.txt"
-MIN_PROFILE_PICS = 6  # Minimum images to have (can increase)
-
-SELECTOR_MAP = {
-    "firstname": ['input[name="firstname"]', 'input[aria-label="First name"]'],
-    "lastname": ['input[name="lastname"]', 'input[aria-label="Surname"]'],
-    "email": ['input[name="reg_email__"]', 'input[aria-label="Mobile number or email address"]'],
-    "password": ['input[name="reg_passwd__"]', 'input[type="password"]'],
-    "birthday_day": ['select[name="birthday_day"]'],
-    "birthday_month": ['select[name="birthday_month"]'],
-    "birthday_year": ['select[name="birthday_year"]'],
-    "gender_male": ['input[name="sex"][value="2"]', 'input[aria-label="Male"]'],
-    "submit": ['button[name="websubmit"]', 'button[type="submit"]'],
-    "otp_field": ['input[name="code"]', 'input[aria-label="Confirmation code"]'],
-    "profile_photo_edit": [
-        'div[aria-label="Edit profile photo"]', 'div[aria-label="Update profile picture"]'
-    ],
-    "profile_photo_file_input": ['input[type="file"]'],
-    "profile_photo_save": ['div[aria-label="Save"]', 'div[aria-label="Apply"]'],
-}
+MIN_PROFILE_PICS = 6
 
 console = Console()
 LOCK = threading.Lock()
 CREATED = []
 BLACKLISTED = set()
 
-# --- Fallback UserAgents (most common)
 FALLBACK_UAS = [
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.1 Safari/605.1.15",
@@ -48,84 +30,96 @@ def log(msg, color="cyan"):
     console.print(f"[{color}]{msg}[/{color}]")
 
 def ensure_folder_and_files():
-    if not os.path.exists(PROFILE_PICS):
-        os.makedirs(PROFILE_PICS)
-    if not os.path.exists(PROXY_FILE):
-        open(PROXY_FILE, "a").close()
-    if not os.path.exists(UA_FILE):
-        open(UA_FILE, "a").close()
-    # CSV auto
+    if not os.path.exists(PROFILE_PICS): os.makedirs(PROFILE_PICS)
+    if not os.path.exists(PROXY_FILE): open(PROXY_FILE, "a").close()
+    if not os.path.exists(UA_FILE): open(UA_FILE, "a").close()
+
+def dummy_image(path, text="IMG"):
+    # Make a 128x128 PNG image with a colored bg and the text
+    img = Image.new("RGB", (128,128), random.choice([(80,150,200),(200,180,80),(150,80,180)]))
+    d = ImageDraw.Draw(img)
+    d.text((40,50), text, fill=(255,255,255))
+    img.save(path)
 
 def auto_download_images():
     images = [f for f in os.listdir(PROFILE_PICS) if f.lower().endswith((".jpg",".png",".jpeg",".jfif"))]
     missing = MIN_PROFILE_PICS - len(images)
     if missing <= 0: return
     log(f"Downloading {missing} profile images...", "yellow")
+    sources = [
+        "https://randomuser.me/api/",
+        "https://api.dicebear.com/7.x/adventurer/png?seed={rnd}",
+        "https://loremflickr.com/128/128/face?lock={rnd}",
+        "https://avatars.dicebear.com/api/personas/{rnd}.png"
+    ]
     for i in range(missing):
-        try:
-            resp = requests.get("https://randomuser.me/api/", timeout=10)
-            imgurl = resp.json()["results"][0]["picture"]["large"]
-            imgdata = requests.get(imgurl, timeout=10).content
-            ext = imgurl.split('.')[-1]
-            fname = f"profile_{int(time.time())}_{i}.{ext}"
-            with open(os.path.join(PROFILE_PICS, fname), "wb") as f:
-                f.write(imgdata)
-        except Exception as e:
-            log(f"Image download failed: {e}", "red")
-    images2 = [f for f in os.listdir(PROFILE_PICS) if f.lower().endswith((".jpg",".png",".jpeg",".jfif"))]
-    if len(images2) < 1:
-        # fallback: add placeholder image if none downloaded
-        url = "https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png"
-        try:
-            imgdata = requests.get(url, timeout=10).content
-            with open(os.path.join(PROFILE_PICS, "fallback.png"), "wb") as f:
-                f.write(imgdata)
-            log("Fallback image used.", "yellow")
-        except Exception as e:
-            log(f"Fallback image failed: {e}", "red")
+        success = False
+        for src in sources:
+            try:
+                url = src.format(rnd=random.randint(1000,9999))
+                if "randomuser" in url:
+                    resp = requests.get(url, timeout=10)
+                    imgurl = resp.json()["results"][0]["picture"]["large"]
+                else:
+                    imgurl = url
+                imgdata = requests.get(imgurl, timeout=10).content
+                ext = imgurl.split('.')[-1][:4]
+                fname = f"profile_{int(time.time())}_{i}.{ext}"
+                with open(os.path.join(PROFILE_PICS, fname), "wb") as f:
+                    f.write(imgdata)
+                success = True
+                break
+            except Exception as e:
+                continue
+        if not success:
+            # draw a dummy image if all fail
+            fname = f"profile_{int(time.time())}_{i}.png"
+            dummy_image(os.path.join(PROFILE_PICS, fname))
     log("Profile images download complete.", "green")
 
-def load_list(filename, fallback=None):
-    if os.path.exists(filename):
-        with open(filename, "r") as f:
-            lines = [x.strip() for x in f if x.strip()]
-            return lines if lines else (fallback or [])
-    return fallback or []
-
 def get_proxies():
-    proxies = load_list(PROXY_FILE)
-    if not proxies:
+    # Try multiple sources, fallback to nothing
+    proxies = []
+    sources = [
+        "https://www.proxy-list.download/api/v1/get?type=https",
+        "https://raw.githubusercontent.com/clarketm/proxy-list/master/proxy-list-raw.txt",
+        "https://www.sslproxies.org/"
+    ]
+    for src in sources:
         try:
-            res = requests.get("https://www.proxy-list.download/api/v1/get?type=https", timeout=10)
-            proxies = [p for p in res.text.strip().splitlines() if p]
-            with open(PROXY_FILE, "w") as f:
-                for p in proxies: f.write(p + "\n")
-        except Exception as e:
-            log(f"Proxy fetch fail: {e}", "red")
-            proxies = []
+            if "sslproxies" in src:
+                r = requests.get(src, timeout=10)
+                txt = r.text
+                lines = txt.split("<tbody>")[1].split("</tbody>")[0].split("</tr>")
+                for line in lines:
+                    parts = line.replace("<td>", "").split("</td>")
+                    if len(parts) > 2:
+                        ip, port = parts[0], parts[1]
+                        if ip.count(".") == 3 and port.isdigit():
+                            proxies.append(f"{ip}:{port}")
+            else:
+                r = requests.get(src, timeout=10)
+                proxies += [p for p in r.text.strip().splitlines() if ":" in p]
+            if proxies: break
+        except Exception: continue
+    # File backup
+    if proxies:
+        with open(PROXY_FILE, "w") as f:
+            for p in proxies: f.write(p + "\n")
+    proxies = list(set(proxies))
     if not proxies:
-        # fallback: direct connection if no proxies
         log("No proxies found. Using direct connection.", "yellow")
     return proxies
 
-def is_proxy_ok(proxy):
-    if not proxy: return True
-    if proxy in BLACKLISTED: return False
-    try:
-        r = requests.get("https://www.facebook.com/", proxies={"http": f"http://{proxy}", "https": f"http://{proxy}"}, timeout=8)
-        return r.status_code == 200
-    except:
-        BLACKLISTED.add(proxy)
-        return False
-
 def get_user_agents():
-    uas = load_list(UA_FILE, FALLBACK_UAS)
+    try:
+        with open(UA_FILE, "r") as f:
+            uas = [x.strip() for x in f if x.strip()]
+    except Exception: uas = []
     if not uas:
-        log("UserAgent fetch fail. Using fallback UAs.", "yellow")
         uas = FALLBACK_UAS
         with open(UA_FILE, "w") as f:
-            for ua in uas:
-                f.write(ua + "\n")
+            for ua in uas: f.write(ua + "\n")
     return uas
 
 def gen_name():
@@ -164,7 +158,7 @@ def save_csv(accounts):
         for a in accounts: w.writerow(a)
 
 def get_profile_pic():
-    pics = [os.path.join(PROFILE_PICS, f) for f in os.listdir(PROFILE_PICS) if f.lower().endswith((".jpg",".png",".jpeg",".jfif","png"))]
+    pics = [os.path.join(PROFILE_PICS, f) for f in os.listdir(PROFILE_PICS) if f.lower().endswith((".jpg",".png",".jpeg",".jfif"))]
     if pics: return random.choice(pics)
     return None
 
@@ -184,24 +178,32 @@ def create_account(idx, proxy, ua, progress=None, task=None):
             page = context.new_page()
             page.goto("https://www.facebook.com/reg", timeout=20000)
             time.sleep(2)
-            if not (s_fill(page, SELECTOR_MAP["firstname"], name.split()[0]) and
-                    s_fill(page, SELECTOR_MAP["lastname"], name.split()[1]) and
-                    s_fill(page, SELECTOR_MAP["email"], email) and
-                    s_fill(page, SELECTOR_MAP["password"], password)):
+            if not (s_fill(page, [
+                'input[name="firstname"]', 'input[aria-label="First name"]'
+            ], name.split()[0]) and
+            s_fill(page, [
+                'input[name="lastname"]', 'input[aria-label="Surname"]'
+            ], name.split()[1]) and
+            s_fill(page, [
+                'input[name="reg_email__"]', 'input[aria-label="Mobile number or email address"]'
+            ], email) and
+            s_fill(page, [
+                'input[name="reg_passwd__"]', 'input[type="password"]'
+            ], password)):
                 BLACKLISTED.add(proxy)
                 raise Exception("Form fields fail")
-            s_select(page, SELECTOR_MAP["birthday_day"], str(random.randint(2,28)))
-            s_select(page, SELECTOR_MAP["birthday_month"], str(random.randint(1,12)))
-            s_select(page, SELECTOR_MAP["birthday_year"], str(random.randint(1990,2001)))
-            s_click(page, SELECTOR_MAP["gender_male"])
+            s_select(page, ['select[name="birthday_day"]'], str(random.randint(2,28)))
+            s_select(page, ['select[name="birthday_month"]'], str(random.randint(1,12)))
+            s_select(page, ['select[name="birthday_year"]'], str(random.randint(1990,2001)))
+            s_click(page, ['input[name="sex"][value="2"]', 'input[aria-label="Male"]'])
             time.sleep(1)
-            if not s_click(page, SELECTOR_MAP["submit"]): raise Exception("Submit fail")
+            if not s_click(page, ['button[name="websubmit"]', 'button[type="submit"]']): raise Exception("Submit fail")
             if progress: progress.update(task, description=f"[yellow]{status} OTP wait")
             time.sleep(8)
             otp = poll_otp(login, domain)
             if otp:
-                s_fill(page, SELECTOR_MAP["otp_field"], otp)
-                s_click(page, SELECTOR_MAP["submit"])
+                s_fill(page, ['input[name="code"]', 'input[aria-label="Confirmation code"]'], otp)
+                s_click(page, ['button[name="websubmit"]', 'button[type="submit"]'])
                 time.sleep(4)
             else:
                 BLACKLISTED.add(proxy)
@@ -211,12 +213,20 @@ def create_account(idx, proxy, ua, progress=None, task=None):
                 try:
                     page.goto("https://www.facebook.com/me")
                     time.sleep(3)
-                    s_click(page, SELECTOR_MAP["profile_photo_edit"])
+                    s_click(page, [
+                        'div[aria-label="Edit profile photo"]', 
+                        'div[aria-label="Update profile picture"]'
+                    ])
                     time.sleep(1)
-                    el = next((page.query_selector(s) for s in SELECTOR_MAP["profile_photo_file_input"] if page.query_selector(s)), None)
+                    el = next((page.query_selector(s) for s in [
+                        'input[type="file"]'
+                    ] if page.query_selector(s)), None)
                     if el: el.set_input_files(pic)
                     time.sleep(3)
-                    s_click(page, SELECTOR_MAP["profile_photo_save"])
+                    s_click(page, [
+                        'div[aria-label="Save"]', 
+                        'div[aria-label="Apply"]'
+                    ])
                 except: pass
             with LOCK:
                 CREATED.append({"email": email, "password": password, "name": name, "proxy": proxy or "DIRECT", "user_agent": ua})
@@ -231,8 +241,10 @@ def create_account(idx, proxy, ua, progress=None, task=None):
 def main():
     ensure_folder_and_files()
     auto_download_images()
-    proxies = [p for p in get_proxies() if is_proxy_ok(p)] or [None]  # fallback: allow no proxy
-    uas = get_user_agents() or FALLBACK_UAS
+    proxies = get_proxies()
+    uas = get_user_agents()
+    if not proxies: proxies = [None]
+    if not uas: uas = FALLBACK_UAS
     log(f"[FB Creator] Proxies: {len([p for p in proxies if p])} | UserAgents: {len(uas)} | ProfilePics: {len(os.listdir(PROFILE_PICS)) if os.path.exists(PROFILE_PICS) else 0}", "green")
     total = NUM_ACCOUNTS
     done = 0
