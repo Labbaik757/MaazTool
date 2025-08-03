@@ -2,7 +2,7 @@ import os
 import datetime
 import time
 import sys
-import rae
+import re
 import subprocess
 import platform
 import struct
