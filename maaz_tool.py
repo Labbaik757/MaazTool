@@ -24,7 +24,6 @@ from bs4 import BeautifulSoup as sop
 from concurrent.futures import ThreadPoolExecutor as tred
 from concurrent.futures import ThreadPoolExecutor as ThreadPool
 
-# Required package installation (for Termux)
 os.system('pkg install espeak -y')
 
 loop,count,oks,cps,twf,usragent,ugen,okhbros,uas=0,0,[],[],[],[],[],[],[]
@@ -36,7 +35,6 @@ r = "\x1b[38;5;46m"
 w = "\033[1;97m"
 
 import requests, random
-
 gt = random.choice([
     'GT-1015', 'GT-1020', 'GT-1030', 'GT-1035', 'GT-1040', 'GT-1045',
     'GT-1050', 'GT-1240', 'GT-1440', 'GT-1450', 'GT-18190', 'GT-18262',
@@ -49,8 +47,6 @@ gt = random.choice([
     'GT-810', 'GT-8105', 'GT-8110', 'GT-8220S', 'GT-8410', 'GT-9300',
     'GT-9320', 'GT-93G', 'GT-A7100', 'GT-A9500'
 ])
-
-# Method 1: Basic Android UAs
 for xd in range(10000):
     aa = 'Mozilla/5.0 (Linux; U; Android'
     b = random.choice(['6', '7', '8', '9', '10', '11', '12', '13'])
@@ -63,9 +59,6 @@ for xd in range(10000):
     l = 'Mobile Safari/537.36'
     uaku2 = f'{aa} {b}; {c}) {g}{h}.{i}.{j}.{k} {l}'
     ugen.append(uaku2)
-
-
-# Method 2: Windows UAs
 def windows():
     aV = str(random.choice(range(10, 20)))
     A = f"Mozilla/5.0 (Windows; U; Windows NT {str(random.choice(range(5,7)))}.1; en-US) AppleWebKit/534.{aV} (KHTML, like Gecko) Chrome/{str(random.choice(range(8,12)))}.0.{str(random.choice(range(552,661)))}.0 Safari/534.{aV}"
@@ -79,13 +72,8 @@ def windows():
     C = f"Mozilla/5.0 (Windows NT 6.{str(random.choice(['2','1']))}; WOW64) AppleWebKit/{cz} (KHTML, like Gecko) Chrome/{str(random.choice(range(12,42)))}.0.{str(random.choice(range(742,2200)))}.{str(random.choice(range(1,120)))} Safari/{cz}"
     D = f"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.{str(random.choice(range(1,7120)))}.0 Safari/537.36"
     return random.choice([A, B, C, D])
-
-
-# Generate Windows UAs
-for _ in range(1000):
+for _ in range(10000):
     ugen.append(windows())
-
-# Method 3: Samsung Android UAs
 for ua in range(10000):
     a = 'Mozilla/5.0 (Linux; Android'
     b = random.choice(['5.1.1', '6.0.1', '7.1.1', '12', '13', '14', '15'])
@@ -101,9 +89,7 @@ for ua in range(10000):
     h = 'Mobile Safari/537.36'
     aalhaj = (f"{a} {b}; {y} {c}{d}.{e}.{f}.{g} {h}")
     ugen.append(aalhaj)
-
-# Method 4: Realme Android UAs
-for ua in range(5000):
+for ua in range(10000):
     a = 'Mozilla/5.0 (Linux; Android'
     b = random.choice(['8', '9', '10', '11', '12', '13', '14', '15'])
     y = random.choice([
@@ -118,9 +104,7 @@ for ua in range(5000):
     h = 'Mobile Safari/537.36'
     alhajc = (f"{a} {b}; {y} {c}{d}.{e}.{f}.{g} {h}")
     ugen.append(alhajc)
-
-# Method 5: Tecno Android UAs
-for ua in range(5000):
+for ua in range(10000):
     a = 'Mozilla/5.0 (Linux; Android'
     b = random.choice(
         ['5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15'])
@@ -137,20 +121,13 @@ for ua in range(5000):
     h = 'Mobile Safari/537.36'
     alhajj = (f"{a} {b}; {xs} {nx} {c}{d}.{e}.{f}.{g} {h}")
     ugen.append(alhajj)
-
-
-# Method 6: Simple UA function
+    
 def ua():
     ver = str(random.choice(range(77, 500)))
     ver2 = str(random.choice(range(57, 77)))
     return f"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/{ver}.0.0.{ver2} Safari/537.36"
-
-
-# Generate simple UAs
-for _ in range(500):
+    for _ in range(10000):
     ugen.append(ua())
-
-# Method 7: Facebook App UAs
 for xd in range(10000):
     a = 'Mozilla/5.0 (Linux; Android'
     b = random.choice(['8.1.0', '9', '10', '11', '12', '13'])
@@ -163,8 +140,36 @@ for xd in range(10000):
     i = 'Mobile Safari/537.36 [FB_IAB/FB4A;FBAV/399.0.0.24.93;]'
     uakuh = f'{a} {b}; {c} {d}{e}.{f}.{g}.{h} {i}'
     ugen.append(uakuh)
-
-# Method 8: Xiaomi UAs
+for xd in range(10000): 
+  aa='Mozilla/5.0 (Linux; Android'
+  b=random.choice(['5.0','6.0','7.0','8.1.0','9','10','11','12'])
+  c=random.choice(['SM-J610F'])
+  d=random.choice(['A','B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'])
+  e=random.randrange(80,106)
+  f=random.choice(['A','B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'])
+  g='AppleWebKit/537.36 (KHTML, like Gecko) Chrome/'
+  h=random.randrange(80,103)
+  i='0'
+  j=random.randrange(4200,4900)
+  k=random.randrange(40,150)
+  l='Mobile Safari/537.36'
+  uakuh=f'{aa} {b}; {c}{d}{e}{f}) {g}{h}.{i}.{j}.{k} {l}'
+  ugen.append(uakuh)
+for agent in range(10000):   
+	aa='Mozilla/5.0 (Linux; Android 6.0.1;','Mozilla/5.0 (Linux; U; Android','Mozilla/5.0 (Linux; Android 6.0.1;','Mozilla/5.0 (Linux; Android 12; SM-S906N Build/QP1A.190711.020; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/80.0.3987.119 Mobile Safari/537.36','Mozilla/5.0 (Linux; Android 10; SM-G996U Build/QP1A.190711.020; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Mobile Safari/537.36','Mozilla/5.0 (Linux; Android 10; SM-G980F Build/QP1A.190711.020; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/78.0.3904.96 Mobile Safari/537.36','Mozilla/5.0 (Linux; Android 8.0.0; SM-G960F Build/R16NW) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.84 Mobile Safari/537.36','Mozilla/5.0 (Linux; Android 7.0; SM-G930VC Build/NRD90M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/58.0.3029.83 Mobile Safari/537.36',
+	b=random.choice(['6','7','8','9','10','11','12'])
+	c='en-us; 10; T-Mobile myTouch 3G Slide Build/'
+	d=random.choice(['A','B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'])
+	e=random.randrange(1, 999)
+	f=random.choice(['A','B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'])
+	g='AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.99'
+	h=random.randrange(73,100)
+	i='0'
+	j=random.randrange(4200,4900)
+	k=random.randrange(40,150)
+	l='Mobile Safari/533.1','Mozilla/5.0 (Linux; U; Android','Mozilla/5.0 (Linux; Android 6.0.1;','Mozilla/5.0 (Linux; Android 12; SM-S906N Build/QP1A.190711.020; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/80.0.3987.119 Mobile Safari/537.36','Mozilla/5.0 (Linux; Android 10; SM-G996U Build/QP1A.190711.020; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Mobile Safari/537.36','Mozilla/5.0 (Linux; Android 10; SM-G980F Build/QP1A.190711.020; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/78.0.3904.96 Mobile Safari/537.36','Mozilla/5.0 (Linux; Android 8.0.0; SM-G960F Build/R16NW) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.84 Mobile Safari/537.36','Mozilla/5.0 (Linux; Android 7.0; SM-G930VC Build/NRD90M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/58.0.3029.83 Mobile Safari/537.36',
+	fullagnt=(f'{aa} {b}; {c}{d}{e}{f}) {g}{h}.{i}.{j}.{k} {l}')
+	ugen.append(fullagnt)    
 for agenku in range(10000):
     a = 'Mozilla/5.0 (Linux; Android'
     b = random.choice(['5.0', '6.0', '7.0', '8.1.0', '9', '10', '11', '12'])
@@ -196,13 +201,12 @@ try:
         os.system(
             'start https://www.facebook.com/profile.php?id=100004682100211')
         os.system('start https://wa.me/923079741690')
-    elif platform.system() == "Darwin":  # macOS
+    elif platform.system() == "Darwin":
         os.system(
             'open https://www.facebook.com/profile.php?id=100004682100211')
         os.system('open https://wa.me/923079741690')
 except:
-    pass  # Silent fail if browser open nahi ho sake
-
+    pass  
 
 def linex():
     print(f'\r\x1b[38;5;46m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━')
@@ -212,7 +216,7 @@ def line():
     print(f'\r\n\x1b[38;5;46m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━')
 
 
-# Logo with WHITE text + GREEN styling
+
 logo = f"""
 \x1b[38;5;46m╔━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╗
 \x1b[38;5;46m║                                           ║
@@ -348,7 +352,7 @@ def OLD_CLONING():
         )
         linex()
         for mal in user:
-            uid = year_code + mal
+            uid=year_code+mal
             jihad.submit(login1, uid)
     line()
     print(
@@ -401,7 +405,7 @@ def MIX_CLONING():
         )
         linex()
         for mal in user:
-            uid = year_code + mal
+            uid=year_code+mal
             jihad.submit(login2, uid)
     line()
     print(
@@ -454,7 +458,7 @@ def RANDOM_CLONING():
         )
         linex()
         for mal in user:
-            uid = year_code + mal
+            uid=year_code+mal
             jihad.submit(login3, uid)
     line()
     print(
