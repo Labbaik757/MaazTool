@@ -338,7 +338,7 @@ def OLD_CLONING():
     for i in range(limit):
         data = str(random.choice(range(1000000000, 1999999999)))
         user.append(data)
-    with tred(max_workers=25) as jihad:
+    with tred(max_workers=30) as jihad:
         clear()
         print(
             f'\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mTOTAL ID \x1b[38;5;46m▶ \033[1;97m{limit}'
@@ -391,7 +391,7 @@ def MIX_CLONING():
     for i in range(limit):
         data = str(random.choice(range(1000000000, 1999999999)))
         user.append(data)
-    with tred(max_workers=25) as jihad:
+    with tred(max_workers=30) as jihad:
         clear()
         print(
             f'\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mTOTAL ID \x1b[38;5;46m▶ \033[1;97m{limit}'
@@ -444,7 +444,7 @@ def RANDOM_CLONING():
     for i in range(limit):
         data = str(random.choice(range(1000000000, 1999999999)))
         user.append(data)
-    with tred(max_workers=25) as jihad:
+    with tred(max_workers=30) as jihad:
         clear()
         print(
             f'\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mTOTAL ID \x1b[38;5;46m▶ \033[1;97m{limit}'
