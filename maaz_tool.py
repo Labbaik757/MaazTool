@@ -14,7 +14,7 @@ import zlib
 import json
 import ssl
 import certifi
-import _socket
+import socket
 from bs4 import BeautifulSoup
 from concurrent.futures import ThreadPoolExecutor as tred
 import requests
