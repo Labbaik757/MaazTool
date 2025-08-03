@@ -1,25 +1,31 @@
 import os
-import datetime
-import time
 import sys
-import re
-import subprocess
-import platform
-import struct
-import string
+import time
+import json
 import uuid
 import base64
-import hashlib
 import zlib
-import json
 import ssl
-import certifi
+import struct
+import string
+import random
 import socket
-from bs4 import BeautifulSoup
-from concurrent.futures import ThreadPoolExecutor as tred
-import requests
+import certifi
+import hashlib
+import platform
+import datetime
+import subprocess
+import re
 
-os.system('pkg install espeak')
+import bs4
+from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup as sop
+
+from concurrent.futures import ThreadPoolExecutor as tred
+from concurrent.futures import ThreadPoolExecutor as ThreadPool
+
+# Required package installation (for Termux)
+os.system('pkg install espeak -y')
 
 loop,count,oks,cps,twf,usragent,ugen,okhbros,uas=0,0,[],[],[],[],[],[],[]
 
