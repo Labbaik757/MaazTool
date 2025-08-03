@@ -127,7 +127,7 @@ def ua():
     ver2 = str(random.choice(range(57, 77)))
     return f"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/{ver}.0.0.{ver2} Safari/537.36"
     for _ in range(10000):
-    ugen.append(ua())
+     ugen.append(ua())
 for xd in range(10000):
     a = 'Mozilla/5.0 (Linux; Android'
     b = random.choice(['8.1.0', '9', '10', '11', '12', '13'])
