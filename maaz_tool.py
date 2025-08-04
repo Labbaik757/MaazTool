@@ -338,7 +338,7 @@ def OLD_CLONING():
         OLD_CLONING()
         return
     linex()
-    year_code = '10000'
+    year_code = '100000'
     for i in range(limit):
         data = str(random.choice(range(1000000000, 1999999999)))
         user.append(data)
@@ -391,7 +391,7 @@ def MIX_CLONING():
         MIX_CLONING()
         return
     linex()
-    year_code = '100001'
+    year_code = '100004'
     for i in range(limit):
         data = str(random.choice(range(1000000000, 1999999999)))
         user.append(data)
@@ -444,7 +444,7 @@ def RANDOM_CLONING():
         RANDOM_CLONING()
         return
     linex()
-    year_code = '100002'
+    year_code = '100005'
     for i in range(limit):
         data = str(random.choice(range(1000000000, 1999999999)))
         user.append(data)
