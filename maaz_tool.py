@@ -337,7 +337,7 @@ def OLD_CLONING():
         OLD_CLONING()
         return
     linex()
-    year_code = '100000'
+    year_code = '100001'
     for i in range(limit):
         data = str(random.choice(range(1000000000, 1999999999)))
         user.append(data)
