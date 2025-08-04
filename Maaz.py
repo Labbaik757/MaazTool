@@ -697,7 +697,7 @@ def main():
         f'\x1b[38;5;46m[\033[1;97m4\x1b[38;5;46m] \033[1;97mRANDOM CLONING \x1b[38;5;46m[\x1b[38;5;46m2016\x1b[38;5;46m/\x1b[38;5;46m2017-2018\x1b[38;5;46m]\033[1;97m'
     )
     print(
-        f'\x1b[38;5;46m[\033[1;97m0\x1b[38;5;46m] \033[1;97mEXIT PROGRAM\033[1;97m'
+        f'\x1b[38;5;46m[\033[1;97m5\x1b[38;5;46m] \033[1;97mEXIT PROGRAM\033[1;97m'
     )
     linex()
 
@@ -713,7 +713,9 @@ elif ch in ('3', '03', '22', 'c', 'C'):
     MIX_CLONING()
 elif ch in ('4', '04', '33', 'd', 'D'):
     RANDOM_CLONING()
-elif ch in ('0', '00'):
+elif ch in ('5', '05'):
+    print("Exiting program...")
+    exit():
  
 def BRUTE_CLONING():
     user=[]
