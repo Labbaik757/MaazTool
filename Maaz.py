@@ -23,18 +23,18 @@ gt = random.choice(['GT-1015','GT-1020','GT-1030','GT-1035','GT-1040','GT-1045',
 for xd in range(10000):
         aa='Mozilla/5.0 (Linux; U; Android'
         b=random.choice(['6','7','8','9','10','11','12','13'])
-        c=f' TL-tl; {str(gt)}'
+        c = f'TL-tl; {str(gt)}'
         g='AppleWebKit/537.36 (KHTML, like Gecko) Chrome/'
         h=random.randrange(73,100)
         i='0'
         j=random.randrange(4200,4900)
         k=random.randrange(40,150)
         l='Mobile Safari/537.36'
-        uaku2=f'{aa} {b}; {c}) \x1b[38;5;46m{h}.{i}.{j}.{k} {l}'
+        uaku2 = f'{aa} {b}; {c}) \x1b[38;5;46m{h}.{i}.{j}.{k} {l}'
         ugen.append(uaku2)
 def windows():
     aV=str(random.choice(range(10,20)))
-    A=f"Mozilla/5.0 (Windows; U; Windows NT {str(random.choice(range(5,7)))}.1; en-US) AppleWebKit/534.{aV} (KHTML, like Gecko) Chrome/{str(random.choice(range(8,12)))}.0.{str(random.choice(range(552,661)))}.0 Safari/534.{aV}"
+    A = f"Mozilla/5.0 (Windows; U; Windows NT {str(random.choice(range(5,7)))}.1; en-US) AppleWebKit/534.{aV} (KHTML, like Gecko) Chrome/{str(random.choice(range(8,12)))}.0.{str(random.choice(range(552,661)))}.0 Safari/534.{aV}"
     bV=str(random.choice(range(1,36)))
     bx=str(random.choice(range(34,38)))
     bz=f"5{bx}.{bV}"
@@ -628,29 +628,28 @@ def line():
 
 
 logo = f"""
-\x1b[38;5;46m╔━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╗
-\x1b[38;5;46m║                                           ║
-\x1b[38;5;46m║    ███╗░░░███╗░█████╗░░█████╗░███████╗    ║
-\x1b[38;5;46m║    ████╗░████║██╔══██╗██╔══██╗╚════██║    ║
-\x1b[38;5;46m║    ██╔████╔██║███████║███████║░░███╔═╝    ║
-\x1b[38;5;46m║    ██║╚██╔╝██║██╔══██║██╔══██║██╔══╝░░    ║
-\x1b[38;5;46m║    ██║░╚═╝░██║██║░░██║██║░░██║███████╗    ║
-\x1b[38;5;46m║    ╚═╝░░░░░╚═╝╚═╝░░╚═╝╚═╝░░╚═╝╚══════╝    ║
-\x1b[38;5;46m║                                           ║
-\x1b[38;5;46m╚━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╝
+print("\x1b[38;5;46m╔━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╗")
+print("\x1b[38;5;46m║                                           ║")
+print("\x1b[38;5;46m║    ███╗░░░███╗░█████╗░░█████╗░███████╗    ║")
+print("\x1b[38;5;46m║    ████╗░████║██╔══██╗██╔══██╗╚════██║    ║")
+print("\x1b[38;5;46m║    ██╔████╔██║███████║███████║░░███╔═╝    ║")
+print("\x1b[38;5;46m║    ██║╚██╔╝██║██╔══██║██╔══██║██╔══╝░░    ║")
+print("\x1b[38;5;46m║    ██║░╚═╝░██║██║░░██║██║░░██║███████╗    ║")
+print("\x1b[38;5;46m║    ╚═╝░░░░░╚═╝╚═╝░░╚═╝╚═╝░░╚═╝╚══════╝    ║")
+print("\x1b[38;5;46m║                                           ║")
+print("\x1b[38;5;46m╚━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╝")
 
-\x1b[38;5;46m╔═══════════════════════════════════════════╗
-\x1b[38;5;46m║     \033[1;97m[ PREMIUM FACEBOOK CRACKING TOOL ]     \x1b[38;5;46m║
-\x1b[38;5;46m╚═══════════════════════════════════════════╝
+print("\x1b[38;5;46m╔═══════════════════════════════════════════╗")
+print("\x1b[38;5;46m║     \033[1;97m[ PREMIUM FACEBOOK CRACKING TOOL ]     \x1b[38;5;46m║")
+print("\x1b[38;5;46m╚═══════════════════════════════════════════╝")
 
-\x1b[38;5;46m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mDEVELOPER   \x1b[38;5;46m▶  \033[1;97mMohammad MAAZ
-\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mWHATSAPP    \x1b[38;5;46m▶  \033[1;97m+923079741690
-\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mFEATURE     \x1b[38;5;46m▶  \033[1;97mOLD FACEBOOK CLONE
-\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mVERSION     \x1b[38;5;46m▶  \033[1;97mv2.2 PREMIUM
-\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mSTATUS      \x1b[38;5;46m▶  \033[1;97mFULLY WORKING ✓
-\x1b[38;5;46m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"""
-
+print("\x1b[38;5;46m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
+print("\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mDEVELOPER   \x1b[38;5;46m▶  \033[1;97mMohammad MAAZ")
+print("\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mWHATSAPP    \x1b[38;5;46m▶  \033[1;97m+923079741690")
+print("\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mFEATURE     \x1b[38;5;46m▶  \033[1;97mOLD CLONE")
+print("\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mVERSION     \x1b[38;5;46m▶  \033[1;97mv2.2 PREMIUM")
+print("\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mSTATUS      \x1b[38;5;46m▶  \033[1;97mFULLY WORKING ✓")
+print("\x1b[38;5;46m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
 
 def clear():
     os.system('clear')
