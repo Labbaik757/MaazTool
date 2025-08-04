@@ -1,29 +1,28 @@
 import os
 import sys
-import time
+import re
+import bs4
+import ssl
 import json
+import time
+import zlib
 import uuid
 import base64
-import zlib
-import ssl
-import struct
-import string
-import random
-import socket
 import certifi
+import socket as _socket
+import random
+import string
+import struct
 import hashlib
 import platform
 import datetime
 import subprocess
-import re
 
-import bs4
 from bs4 import BeautifulSoup
 from bs4 import BeautifulSoup as sop
 
 from concurrent.futures import ThreadPoolExecutor as tred
 from concurrent.futures import ThreadPoolExecutor as ThreadPool
-
 os.system('pkg install espeak -y')
 
 loop,count,oks,cps,twf,usragent,ugen,okhbros,uas=0,0,[],[],[],[],[],[],[]
