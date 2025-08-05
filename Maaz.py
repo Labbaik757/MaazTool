@@ -627,9 +627,7 @@ try:
     elif platform.system() == "Darwin":
         os.system(
             'open https://www.facebook.com/profile.php?id=100004682100211')
-        os.system('open https://wa.me/923079741690')
-except:
-    pass  
+        os.system('open https://wa.me/923079741690')  
 
 def linex():
     print(f'\r\x1b[38;5;46m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━')
@@ -637,7 +635,6 @@ def linex():
 
 def line():
     print(f'\r\n\x1b[38;5;46m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━')
-
 
 
 logo = f"""
@@ -669,13 +666,13 @@ def clear():
     print(logo)
 
 
+os.system('clear')
+
+# ✅ Main Function (Runs after successful login)
+os.system('espeak -a 300 "well,come to,Maaz, tools"')
+
 def main():
     clear()
-    try:
-        os.system('espeak -a 300 "Welcome to MAAZ tools"')
-    except:
-        pass
-
     animation = [
         "[\x1b[38;5;46m■\033[1;97m□□□□□□□□□]",
         "[\x1b[38;5;46m■■\033[1;97m□□□□□□□□]",
@@ -727,9 +724,6 @@ def main():
         MIX_CLONING()
     elif ch in ('4', '04', '33', 'd', 'D'):
         RANDOM_CLONING()
-    elif ch in ('5', '05'):
-        print("Exiting program...")
-        exit()
  
 def BRUTE_CLONING():
     user=[]
