@@ -617,21 +617,19 @@ for xd in range(10000):
    
 try:
     if platform.system() == "Linux":
-        os.system(
-            'xdg-open https://www.facebook.com/profile.php?id=100004682100211')
+        os.system('xdg-open https://www.facebook.com/profile.php?id=100004682100211')
         os.system('xdg-open https://wa.me/923079741690')
     elif platform.system() == "Windows":
-        os.system(
-            'start https://www.facebook.com/profile.php?id=100004682100211')
+        os.system('start https://www.facebook.com/profile.php?id=100004682100211')
         os.system('start https://wa.me/923079741690')
     elif platform.system() == "Darwin":
-        os.system(
-            'open https://www.facebook.com/profile.php?id=100004682100211')
-        os.system('open https://wa.me/923079741690')  
+        os.system('open https://www.facebook.com/profile.php?id=100004682100211')
+        os.system('open https://wa.me/923079741690')
+except:
+    pass
 
 def linex():
     print(f'\r\x1b[38;5;46m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━')
-
 
 def line():
     print(f'\r\n\x1b[38;5;46m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━')
