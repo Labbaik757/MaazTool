@@ -886,7 +886,7 @@ def login1(uid):
                 continue
         loop += 1
     except Exception as e:
-    time.sleep(random.uniform(5, 10))
+        time.sleep(random.uniform(5, 10))
 
 def login2(uid):
     global oks,loop,cps
@@ -957,7 +957,7 @@ def login2(uid):
                 continue
         loop += 1
     except Exception as e:
-    time.sleep(random.uniform(5, 10))
+        time.sleep(random.uniform(5, 10))
 def login3(uid):
     global oks, loop, cps
     Session = requests.session()
@@ -1027,7 +1027,7 @@ def login3(uid):
                 continue
         loop += 1
     except Exception as e:
-    time.sleep(random.uniform(5, 10))
+        time.sleep(random.uniform(5, 10))
 
 def login4(uid):
     global oks, loop, cps
@@ -1098,6 +1098,6 @@ def login4(uid):
                 continue
         loop += 1
     except Exception as e:
-    time.sleep(random.uniform(5, 10))
+        time.sleep(random.uniform(5, 10))
 if __name__ == "__main__":
     main()
