@@ -719,17 +719,17 @@ def main():
         f'\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mSELECTION \x1b[38;5;46m▶ \033[1;97m'
     )
 
-if ch in ('1', '01', '44', 'a', 'A'):
-    BRUTE_CLONING()
-elif ch in ('2', '02', '11', 'b', 'B'):
-    OLD_CLONING()
-elif ch in ('3', '03', '22', 'c', 'C'):
-    MIX_CLONING()
-elif ch in ('4', '04', '33', 'd', 'D'):
-    RANDOM_CLONING()
-elif ch in ('5', '05'):
-    print("Exiting program...")
-    exit()
+    if ch in ('1', '01', '44', 'a', 'A'):
+        BRUTE_CLONING()
+    elif ch in ('2', '02', '11', 'b', 'B'):
+        OLD_CLONING()
+    elif ch in ('3', '03', '22', 'c', 'C'):
+        MIX_CLONING()
+    elif ch in ('4', '04', '33', 'd', 'D'):
+        RANDOM_CLONING()
+    elif ch in ('5', '05'):
+        print("Exiting program...")
+        exit()
  
 def BRUTE_CLONING():
     user=[]
