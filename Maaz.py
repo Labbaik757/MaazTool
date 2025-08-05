@@ -700,10 +700,10 @@ def main():
         f'\x1b[38;5;46m[\033[1;97m2\x1b[38;5;46m] \033[1;97mOLD CLONING \x1b[38;5;46m[\x1b[38;5;46m\x1b[38;5;46m/\x1b[38;5;46m2011-2012\x1b[38;5;46m]\033[1;97m'
     )
     print(
-        f'\x1b[38;5;46m[\033[1;97m3\x1b[38;5;46m] \033[1;97mMIX CLONING \x1b[38;5;46m[\x1b[38;5;46m\x1b[38;5;46m/\x1b[38;5;46m2013-2015\x1b[38;5;46m]\033[1;97m'
+        f'\x1b[38;5;46m[\033[1;97m3\x1b[38;5;46m] \033[1;97mMIX CLONING \x1b[38;5;46m[\x1b[38;5;46m\x1b[38;5;46m/\x1b[38;5;46m2013-2017\x1b[38;5;46m]\033[1;97m'
     )
     print(
-        f'\x1b[38;5;46m[\033[1;97m4\x1b[38;5;46m] \033[1;97mRANDOM CLONING \x1b[38;5;46m[\x1b[38;5;46m\x1b[38;5;46m/\x1b[38;5;46m2017-2018\x1b[38;5;46m]\033[1;97m'
+        f'\x1b[38;5;46m[\033[1;97m4\x1b[38;5;46m] \033[1;97mRANDOM CLONING \x1b[38;5;46m[\x1b[38;5;46m\x1b[38;5;46m/\x1b[38;5;46m2018-2019\x1b[38;5;46m]\033[1;97m'
     )
     print(
         f'\x1b[38;5;46m[\033[1;97m5\x1b[38;5;46m] \033[1;97mEXIT PROGRAM\033[1;97m'
@@ -730,7 +730,7 @@ def BRUTE_CLONING():
     linex()
     limit=input(f'\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mSELECTION \x1b[38;5;46m▶ \033[1;97m')
     linex()
-    year_code = '100000'
+    year_code = '10000'
     for i in range(int(limit)):
     	data=str(random.choice(range(1000000000,1999999999)));user.append(data)
     with tred(max_workers=30) as jihad:
@@ -796,7 +796,7 @@ def RANDOM_CLONING():
     linex()
     limit=input(f'\33[38;5;46m[\033[1;97m✅\33[38;5;46m] \033[1;97mSELECTION \33[38;5;46m▶ \033[1;97m')
     linex()
-    year_code = '10000'
+    year_code = '1000'
     for i in range(int(limit)):
     	data=str(random.choice(range(1000000000,1999999999)));user.append(data)
     with tred(max_workers=30) as jihad:
