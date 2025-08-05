@@ -752,7 +752,7 @@ def OLD_CLONING():
     linex()
     limit = input(f'\33[38;5;46m[\033[1;97m✅\33[38;5;46m] \033[1;97mSELECTION \33[38;5;46m▶ \033[1;97m')
     linex()
-    year_code = '10000'
+    year_code = '100001'
     for i in range(int(limit)):
     	data=str(random.choice(range(1000000000,1999999999)));user.append(data)
     with tred(max_workers=30) as jihad:
@@ -772,7 +772,7 @@ def MIX_CLONING():
     linex()
     limit=input(f'\33[38;5;46m[\033[1;97m✅\33[38;5;46m] \033[1;97mSELECTION \33[38;5;46m▶ \033[1;97m')
     linex()
-    year_code = '100001'
+    year_code = '100002'
     for i in range(int(limit)):
         data=str(random.choice(range(1000000000,1999999999)))
         user.append(data)
@@ -1084,4 +1084,5 @@ def login4(uid):
         loop += 1
     except Exception as e:
         time.sleep(30)
+if __name__ == "__main__":
     main()
