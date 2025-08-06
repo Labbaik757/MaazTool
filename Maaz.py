@@ -669,7 +669,7 @@ os.system('clear')
 # ✅ Main Function (Runs after successful login)
 os.system('espeak -a 300 "well,come to,Maaz, tools"')
 
-def main():
+def show_loading():
     clear()
     animation = [
         "[\x1b[38;5;46m■\033[1;97m□□□□□□□□□]",
@@ -694,19 +694,19 @@ def main():
 def main():	    
     clear()
     print(
-        f'\x1b[38;5;46m[\033[1;97m1\x1b[38;5;46m] \033[1;97mBRUTE_CLONING \x1b[38;5;46m[\x1b[38;5;46m2009-2010\x1b[38;5;46m]\033[1;97m'
+        f'\x1b[38;5;46m[\033[1;97m1\x1b[38;5;46m]\033[1;97mBRUTE_CLONING\x1b[38;5;46m[\x1b[38;5;46m2009-2010\x1b[38;5;46m]\033[1;97m'
 	    )
     print(
-        f'\x1b[38;5;46m[\033[1;97m2\x1b[38;5;46m] \033[1;97mOLD CLONING \x1b[38;5;46m[\x1b[38;5;46m2011-2012\x1b[38;5;46m]\033[1;97m'
+        f'\x1b[38;5;46m[\033[1;97m2\x1b[38;5;46m]\033[1;97mOLD CLONING\x1b[38;5;46m[\x1b[38;5;46m2011-2012\x1b[38;5;46m]\033[1;97m'
     )
     print(
-        f'\x1b[38;5;46m[\033[1;97m3\x1b[38;5;46m] \033[1;97mMIX CLONING \x1b[38;5;46m[\x1b[38;5;46m2013-2017\x1b[38;5;46m]\033[1;97m'
+        f'\x1b[38;5;46m[\033[1;97m3\x1b[38;5;46m]\033[1;97mMIX CLONING\x1b[38;5;46m[\x1b[38;5;46m2013-2017\x1b[38;5;46m]\033[1;97m'
     )
     print(
-        f'\x1b[38;5;46m[\033[1;97m4\x1b[38;5;46m] \033[1;97mRANDOM CLONING \x1b[38;5;46m[\x1b[38;5;46m2018-2019\x1b[38;5;46m]\033[1;97m'
+        f'\x1b[38;5;46m[\033[1;97m4\x1b[38;5;46m]\033[1;97mRANDOM CLONING\x1b[38;5;46m[\x1b[38;5;46m2018-2019\x1b[38;5;46m]\033[1;97m'
     )
     print(
-        f'\x1b[38;5;46m[\033[1;97m5\x1b[38;5;46m] \033[1;97mEXIT PROGRAM\033[1;97m'
+        f'\x1b[38;5;46m[\033[1;97m5\x1b[38;5;46m]\033[1;97mEXIT PROGRAM\033[1;97m'
     )
     linex()
 
@@ -1100,4 +1100,5 @@ def login4(uid):
     except Exception as e:
         time.sleep(random.uniform(5, 10))
 if __name__ == "__main__":
-    main()
+	show_loading()
+	main()
