@@ -963,7 +963,7 @@ def login2(uid):
 
             loop += 1
 
-        except Exception:
+    except Exception:
             time.sleep(random.uniform(5, 10))
 def login3(uid):
     global oks, loop, cps
@@ -1040,7 +1040,7 @@ def login3(uid):
 
             loop += 1
 
-        except Exception:
+    except Exception:
             time.sleep(random.uniform(5, 10))
 
 def login4(uid):
@@ -1118,7 +1118,7 @@ def login4(uid):
 
             loop += 1
 
-        except Exception:
+    except Exception:
             time.sleep(random.uniform(5, 10))
 if __name__ == "__main__":
 	show_loading()
