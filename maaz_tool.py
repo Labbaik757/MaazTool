@@ -428,8 +428,4 @@ def login1(uid):
     except Exception as e:time.sleep(30)
 
 if __name__ == "__main__":
-    try:
-        main()
-    except Exception as e:
-        print(f"\n\033[1;91m[!] Unexpected Error: {e}\033[0m")
-        exit()
+    main()
