@@ -886,7 +886,7 @@ def login1(uid):
 
             loop += 1
 
-        except Exception:
+    except Exception:
             time.sleep(random.uniform(5, 10))
 def login2(uid):
     global oks,loop,cps
