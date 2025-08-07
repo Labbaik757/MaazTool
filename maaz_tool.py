@@ -329,7 +329,7 @@ def START_SERIES_CLONING(series_code):
     linex()
     
     # Generate IDs with selected series code (15 digits total)
-    for i in range(5000):
+    for i in range(limit):
         uid = series_code + ''.join(random.choices(string.digits, k=9))
         user.append(uid)
     with tred(max_workers=30) as jihad:
