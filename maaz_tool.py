@@ -191,7 +191,7 @@ for agenku in range(10000):
     l = 'Mobile Safari/537.36'
     uakuh = f'{a} {b}; {c}{d}{e}{f}) {g}{h}.{i}.{j}.{k} {l}'
     ugen.append(uakuh)
-
+try:
     if platform.system() == "Linux":
         os.system(
             'xdg-open https://www.facebook.com/profile.php?id=100004682100211')
@@ -204,8 +204,9 @@ for agenku in range(10000):
         os.system(
             'open https://www.facebook.com/profile.php?id=100004682100211')
         os.system('open https://wa.me/923079741690')
-  
-
+except: 
+    pass
+	    
 def linex():
     print(f'\r\x1b[38;5;46m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━')
 
