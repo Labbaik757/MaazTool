@@ -192,7 +192,6 @@ for agenku in range(10000):
     uakuh = f'{a} {b}; {c}{d}{e}{f}) {g}{h}.{i}.{j}.{k} {l}'
     ugen.append(uakuh)
 
-try:
     if platform.system() == "Linux":
         os.system(
             'xdg-open https://www.facebook.com/profile.php?id=100004682100211')
@@ -205,8 +204,7 @@ try:
         os.system(
             'open https://www.facebook.com/profile.php?id=100004682100211')
         os.system('open https://wa.me/923079741690')
-except:
-    pass  
+  
 
 def linex():
     print(f'\r\x1b[38;5;46m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━')
@@ -272,15 +270,12 @@ def main():
         sys.stdout.flush()
 
     clear()
-    print(f'\x1b[38;5;46m[\033[1;97m1\x1b[38;5;46m] \033[1;97mOLD CLONING \x1b[38;5;46m[\x1b[38;5;46m2009\x1b[38;5;46m/\x1b[38;5;46m2010\x1b[38;5;46m]\033[1;97m')
+    print(f'\x1b[38;5;46m[\033[1;97m1\x1b[38;5;46m] \033[1;97mSERIES SELECTION \x1b[38;5;46m[\x1b[38;5;46mSeries\x1b[38;5;46m/\x1b[38;5;46mBased\x1b[38;5;46m]\033[1;97m')
     linex()
     ch = input(f'\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mSELECTION \x1b[38;5;46m▶ \033[1;97m')
 
     if ch in ('1', '01', '11', 'a', 'A'):
         SERIES_SELECTION()
-
-def OLD_CLONING():
-    SERIES_SELECTION()
     
 
 def SERIES_SELECTION():
