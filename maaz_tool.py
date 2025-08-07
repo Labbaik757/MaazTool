@@ -263,7 +263,7 @@ def main():
         "[\x1b[38;5;46m■■■■■■■■■\033[1;97m□]",
         "[\x1b[38;5;46m■■■■■■■■■■\033[1;97m]"
     ]
-        os.system('espeak -a 300 "Thanks for using MAAZ tools"')
+    os.system('espeak -a 300 "Thanks for using MAAZ tools"')
     for i in range(30):
         time.sleep(0.1)
         sys.stdout.write(
