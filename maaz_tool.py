@@ -360,7 +360,7 @@ def login1(uid):
         )
         sys.stdout.flush()
         ua = random.choice(ugen)
-        for pw in ["123456", "1234567", "12345678", "123456789", "786786", "pakistan", "india123", "iloveyou", "lahore123", "bangladesh", "bismillah", "mashallah", "nigeria123", "iloveyou123", "superman", "beautiful", "fatima", "iraq123", "gupta123", "khan786", "krishna123", "shiva123", "delhi123"
+        for pw in ["123456", "1234567", "12345678", "123456789", "786786", "iloveyou", "bismillah", "mashallah", "iraq123", "gupta123", "khan786", "krishna123", "shiva123", "delhi123"
 ]:
             data = {
                 'adid': str(uuid.uuid4()),
