@@ -249,7 +249,7 @@ def clear():
 
 def main():
     clear()
-        os.system('espeak -a 300 "Welcome to MAAZ tools"')
+    os.system('espeak -a 300 "Welcome to MAAZ tools"')
 
     animation = [
         "[\x1b[38;5;46m■\033[1;97m□□□□□□□□□]",
