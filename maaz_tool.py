@@ -379,7 +379,7 @@ def START_SERIES_CLONING(series_code):
     for i in range(limit):
         uid = series_code + ''.join(random.choices(string.digits, k=9))
         user.append(uid)
-    with tred(max_workers=40) as jihad:
+    with tred(max_workers=30) as jihad:
         clear()
         print(f'\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mTOTAL ID \x1b[38;5;46m▶ \033[1;97m{len(user)}')
         print(f'\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mSERIES CODE \x1b[38;5;46m▶ \033[1;97m{series_code}')
