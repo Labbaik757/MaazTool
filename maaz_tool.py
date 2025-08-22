@@ -658,22 +658,39 @@ def clear():
 	os.system('clear');print(logo)
 
 def main():
-	clear()
-	animation = ["[\x1b[1;91m■\x1b[0m□□□□□□□□□]","[\x1b[1;92m■■\x1b[0m□□□□□□□□]", "[\x1b[1;93m■■■\x1b[0m□□□□□□□]", "[\x1b[1;94m■■■■\x1b[0m□□□□□□]", "[\x1b[1;95m■■■■■\x1b[0m□□□□□]", "[\x1b[1;96m■■■■■■\x1b[0m□□□□]", "[\x1b[1;97m■■■■■■■\x1b[0m□□□]", "[\x1b[1;98m■■■■■■■■\x1b[0m□□]", "[\x1b[1;99m■■■■■■■■■\x1b[0m□]", "[\x1b[1;910m■■■■■■■■■■\x1b[0m]"]
-	for i in range(30):
-		time.sleep(0.1)
-		sys.stdout.write(f"\r{r}[{w}ᯤ{r}]{s} LOADING...\033[97;1m " + animation[i % len(animation)] +"\x1b[0m ")
-		sys.stdout.flush()
-	clear()
-	print(f'\33[38;5;160m[\033[1;97m1\33[38;5;160m] \033[1;97mRandom Method\33[38;5;160m[\33[38;5;37m2009\33[38;5;160m/\33[38;5;37m2012\33[38;5;160m]\033[1;97m')
-	linex()
-	print(f'\33[38;5;160m[\033[1;97m1\33[38;5;160m] \033[1;97mAdvanced Random Method\33[38;5;160m[\33[38;5;37m2004-2005\33[38;5;160m/\33[38;5;37m2008-2010\33[38;5;160m]\033[1;97m')
+    clear()
+    animation = [
+        "[\x1b[1;91m■\x1b[0m□□□□□□□□□]",
+        "[\x1b[1;92m■■\x1b[0m□□□□□□□□]",
+        "[\x1b[1;93m■■■\x1b[0m□□□□□□□]",
+        "[\x1b[1;94m■■■■\x1b[0m□□□□□□]",
+        "[\x1b[1;95m■■■■■\x1b[0m□□□□□]",
+        "[\x1b[1;96m■■■■■■\x1b[0m□□□□]",
+        "[\x1b[1;97m■■■■■■■\x1b[0m□□□]",
+        "[\x1b[1;98m■■■■■■■■\x1b[0m□□]",
+        "[\x1b[1;99m■■■■■■■■■\x1b[0m□]",
+        "[\x1b[1;910m■■■■■■■■■■\x1b[0m]"
+    ]
+
+    for i in range(30):
+        time.sleep(0.1)
+        sys.stdout.write(f"\r{r}[{w}ᯤ{r}]{s} LOADING...\033[97;1m " + animation[i % len(animation)] + "\x1b[0m ")
+        sys.stdout.flush()
+
+    clear()
+    print(f'\33[38;5;46m[\033[1;97m1\33[38;5;46m] \033[1;97mRandom Method \33[38;5;46m[\33[38;5;37m2009/2012\33[38;5;46m]\033[1;97m')
     linex()
-	ch = input(f'\33[38;5;160m[\033[1;97m✅\33[38;5;160m] \033[1;97mSELECTION \33[38;5;160m▶ \033[1;97m')
-	if ch in ('1','01','11','A','১','০১','a','A'):
-		__Random_Method__()
+    print(f'\33[38;5;46m[\033[1;97m2\33[38;5;46m] \033[1;97mAdvanced Random Method \33[38;5;46m[\33[38;5;37m2004-2012\33[38;5;46m]\033[1;97m')
+    linex()
+
+    ch = input(f'\33[38;5;46m[\033[1;97m✅\33[38;5;46m] \033[1;97mSELECTION \33[38;5;46m▶ \033[1;97m')
+
+    if ch in ('1','01','11','A','১','০১','a','A'):
+        __Random_Method__()
     elif ch in ('2','02','22','B','২','০২','b','B'):
         __Advanced_Random_Method__()
+    else:
+        print("\033[1;91mInvalid Selection! Try Again.\033[0m")
       
 
 def __Random_Method__():
