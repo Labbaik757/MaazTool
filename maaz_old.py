@@ -370,19 +370,20 @@ def START_SERIES_CLONING(series_code):
     linex()
     
     # Generate IDs with selected series code (15 digits total)  
-    for i in range(limit):  
-        uid = series_code + ''.join(random.choices(string.digits, k=9))  
+    for i in range(limit):
+        data = ''.join(random.choice(string.digits) for _ in range(9))
+        uid = series_code + data
         user.append(uid)  
-    with tred(max_workers=30) as jihad:  
+    with tred(max_workers=30) as jihad:
+        for mal in user:
+            uid = mal
+            jihad.submit(login1, uid)  
         clear()  
         print(f'\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mTOTAL ID \x1b[38;5;46m▶ \033[1;97m{len(user)}')  
         print(f'\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mSERIES CODE \x1b[38;5;46m▶ \033[1;97m{series_code}')  
         print(f'\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mUSED AIRPLANE MODE AFTER 5 MINUTE')  
         linex()  
-        for mal in user:  
-            uid = mal  
-            jihad.submit(login1, uid)  
-  
+        
 line()  
 print(f'\r\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mYOUR SERIES CRACKED HAS BEEN COMPLETED...\x1b[38;5;46m!')  
 linex()  
