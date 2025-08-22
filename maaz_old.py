@@ -384,14 +384,6 @@ def START_SERIES_CLONING(series_code):
         print(f'\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mUSED AIRPLANE MODE AFTER 5 MINUTE')  
         linex()  
         
-line()  
-print(f'\r\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mYOUR SERIES CRACKED HAS BEEN COMPLETED...\x1b[38;5;46m!')  
-linex()  
-print(f"\r\r\r\r\x1b[38;5;46m[\033[1;97mᯤ\x1b[38;5;46m] \033[1;97mTOTAL OK \x1b[38;5;46m▶ \x1b[38;5;46m{len(oks) if 'oks' in globals() else 0}")  
-linex()  
-input(f'\x1b[38;5;46m[\033[1;97mᯤ\x1b[38;5;46m] \033[1;97mINTER TO BACK RAN AGAIN...\x1b[38;5;46m!\033[1;37m')  
-main()
-
 def login1(uid):
     global oks, loop, cps
     Session = requests.session()
