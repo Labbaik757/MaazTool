@@ -717,7 +717,7 @@ def __Random_Method__():
         clear()
         print(f'\33[38;5;46m[\033[1;97m✅\33[38;5;46m] \033[1;97mTOTAL ID \33[38;5;46m▶ \033[1;97m{limit}')
         print(f'\33[38;5;46m[\033[1;97m✅\33[38;5;46m] \033[1;97mUSED AIRPLANE MODE AFTER 5 MINUTE ')
-        print(f'\33[38;5;46m[\033[1;97m✅\33[38;5;46m] \033[1;97mMOSTLY SERIES \33[38;5;46m▶ \033[1;97m10001')
+        print(f'\33[38;5;46m[\033[1;97m✅\33[38;5;46m] \033[1;97mMOSTLY SERIES \33[38;5;46m▶ \033[1;97m100001')
         linex()
         for uid in user:
             jihad.submit(login1, uid)
