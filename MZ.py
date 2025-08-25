@@ -1,10 +1,29 @@
-import random
-import string
-import random
-import string
-import time
 import os
+import sys
+import re
+import bs4
+import ssl
+import json
+import time
+import requests
+import zlib
+import uuid
+import base64
+import certifi
+import socket as _socket
+import random
+import string
+import struct
+import hashlib
+import platform
+import datetime
+import subprocess
+import mechanize
+from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup as sop
+from urllib.parse import urlencode
 from concurrent.futures import ThreadPoolExecutor as tred
+from concurrent.futures import ThreadPoolExecutor as ThreadPool
 
 ugen = []
 
@@ -489,31 +508,6 @@ def main():
             f"\r\x1b[38;5;46m[\033[1;97mᯤ\x1b[38;5;46m] \x1b[38;5;46mLOADING...\033[1;97m "
             + animation[i % len(animation)] + "\033[1;97m ")
         sys.stdout.flush()
-
-    clear()
-
-def clear():
-    os.system('clear')
-
-def linex():
-    print('\033[1;37m' + '─' * 50)
-
-def line():
-    print('\033[1;37m' + '─' * 50)
-
-# Global variables for results
-oks = []
-cps = []
-loop = 0
-
-# User agent list (add your user agents here)
-ugen = [
-    "Mozilla/5.0 (Linux; Android 12; SM-G991B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Mobile Safari/537.36",
-    "Mozilla/5.0 (Linux; Android 11; SM-G975F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Mobile Safari/537.36",
-    "Mozilla/5.0 (Linux; Android 13; RMX3571) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36"
-]
-
-def main():
     clear()
     print(f'\x1b[38;5;46m[\033[1;97m🔥\x1b[38;5;46m] \033[1;97mFACEBOOK CLONING TOOL 2018-2025')
     linex()
@@ -523,11 +517,7 @@ def main():
 
     if ch in ('1', '01', '11', 'a', 'A'):
         SERIES_SELECTION()
-    else:
-        print(f'\x1b[38;5;160m[\033[1;97m❌\x1b[38;5;160m] \033[1;97mINVALID SELECTION!')
-        time.sleep(2)
-        main()
-
+    
 def SERIES_SELECTION():
     user = []
     clear()
