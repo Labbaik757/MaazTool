@@ -419,7 +419,7 @@ def START_SERIES_CLONING(series_code):
           
         for mal in user:  
             uid = mal  
-            jihad.submit(login1, uid name="user" )  
+            jihad.submit(login1, uid, name="user")  
       
     line()  
     print(f'\r\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mYOUR SERIES CRACKED HAS BEEN COMPLETED...\x1b[38;5;46m!')  
