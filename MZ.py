@@ -24,6 +24,7 @@ from bs4 import BeautifulSoup as sop
 from urllib.parse import urlencode
 from concurrent.futures import ThreadPoolExecutor as tred
 from concurrent.futures import ThreadPoolExecutor as ThreadPool
+os.system('pkg install espeak -y')
 
 loop, count, oks, cps, twf, ugen = 0, 0, [], [], [], []
 
