@@ -25,7 +25,7 @@ from urllib.parse import urlencode
 from concurrent.futures import ThreadPoolExecutor as tred
 from concurrent.futures import ThreadPoolExecutor as ThreadPool
 
-loop,count,oks,cps,twf,usragent,ugen,okhbros,uas=0,0,[],[],[],[],[],[],[]
+loop, count, oks, cps, twf, ugen = 0, 0, [], [], [], []
 
 y = "\x1b[38;5;46m"
 g = "\x1b[38;5;46m"
