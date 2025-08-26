@@ -459,7 +459,7 @@ def login1(uid):
                 continue
         loop += 1
     except Exception as e:
-        time.sleep(10)
+        time.sleep(5)
 
 if __name__ == "__main__":
     main()		
