@@ -454,7 +454,7 @@ def login1(uid):
                 oks.append(uid)
                 with open("/sdcard/OLD_CLONING.txt", "a") as f:
                     f.write(uid + "|" + pw + "|" + cookies + "\n")
-                print(f'\r\033[38;5;46m[MAAZ-OK] {uid} ● {pw}\033[1;97m')
+                print(f'\r\033[38;5;46m[💪OK] {uid} ● {pw}\033[1;97m')
                 break
 
             elif "www.facebook.com" in rp.get('error', {}).get('message', ''):
@@ -462,7 +462,7 @@ def login1(uid):
                 cps.append(uid)
                 with open("/sdcard/OLD_CLONING.txt", "a") as f:
                     f.write(uid + "|" + pw + "|" + cookies + "\n")
-                print(f'\r\033[38;5;226m[MAAZ-CP] {uid} ● {pw}\033[1;97m')
+                print(f'\r\033[38;5;226m[💪OK] {uid} ● {pw}\033[1;97m')
                 break
 
             else:
