@@ -104,4 +104,4 @@ while True:
     if int(success) > int(0):
         z = "\n".join(accounts)
         print("CREATED ACCOUNTS>>\n",z)
-    #os.system('clear') #Commentout
+    os.system('clear')
